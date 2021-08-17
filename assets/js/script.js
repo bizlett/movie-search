@@ -34,8 +34,10 @@ function getWatch(e) {
         // logs data from api to console 
         .then((data) => {
             // data.results
-            console.log('Data: ', data);
-            // data is being returned as a single object - need to get into object to access results
+            let myWatch = data.results;
+            // drop results into container that's been created...? (need to create container!!) 
+            
+            // append results container into watch list section
         })
         // if error - logs error to console 
         .catch((error) => {
@@ -57,30 +59,29 @@ function getWatch(e) {
 
 
 // watch list div to create 
-{/* <div id="watch-list" class="row">
-            <div class="listing">
+/* <div class="listing">
                 <div class="listing-image"></div>
                 <div class="listing-content">
                     <p></p>
-                </div>
-            </div>
-        </div> */}
+                </div> */
 
 
 // function to display api data to page
-function myWatchList() {
+function createWatchList() {
     // create div (listing) to hold watch list information
-
-    // create div to hold listing image
-
+    // create listing image div and content
     // write content to listing image div (innerhtml?)
+    let listingTemplate = `
+        <div class="listing">
+                <div class="listing-image"></div>
+                <div class="listing-content">
+                    <p></p>
+                </div>`;
+
 
     // append listing image div to parent (#watch-list)
-
     // create div to hold object content 
-
     // write content to object content div (innerhtml?)
-
     // append content div to parent (#watch-list)
 
 };
