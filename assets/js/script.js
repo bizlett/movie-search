@@ -1,6 +1,6 @@
 // Global variables
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
-const url = `https://api.themoviedb.org/3/movie/550?api_key=${API_KEY}`;
+const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&append_to_response=videos,images`;
 
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-text');
@@ -13,7 +13,7 @@ searchButton.addEventListener('click', getWatch);
 
 // Functions 
 
-// Search movie function
+// Search movie/person/series function
 function getWatch(e) {
     // prevent form from sumitting
     e.preventDefault();
@@ -25,7 +25,7 @@ function getWatch(e) {
     if (search != "") {
 
         // define parameters 
-        let myUrl = url + '&guery=' + search;
+        let myUrl = url + '&query=' + search;
 
         fetch(myUrl) 
         .then((res) => res.json())
