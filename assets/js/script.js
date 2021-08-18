@@ -5,6 +5,7 @@ const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`;
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
+const watchList = document.querySelector('#watch-list');
 
 // Event Listeners
 // searchForm.addEventListener('submit', getMovie);
@@ -28,24 +29,24 @@ function getWatch(e) {
         let myUrl = url + '&query=' + search;
 
         // calls to api url to get information
-        fetch(myUrl) 
-        // responds and returns response as json
-        .then((res) => res.json())
-        // logs data from api to console 
-        .then((data) => {
-            // data.results - need to iterate over the results to drop each result into its listing container
-            // iterate over results in listing container function?
-            // let myWatch = data.results;
-            console.log(data);
+        fetch(myUrl)
+            // responds and returns response as json
+            .then((res) => res.json())
+            // logs data from api to console 
+            .then((data) => {
+                // data.results - need to iterate over the results to drop each result into its listing container
+                // iterate over results in listing container function?
+                // let myWatch = data.results;
+                console.log(data);
 
-            // drop results into container that's been created...? (need to create container!!) 
-            
-            // append results container into watch list section
-        })
-        // if error - logs error to console 
-        .catch((error) => {
-            console.log(error);
-        });
+                // drop results into container that's been created...? (need to create container!!) 
+
+                // append results container into watch list section
+            })
+            // if error - logs error to console 
+            .catch((error) => {
+                console.log(error);
+            });
 
 
         // logs search results to console?? we will want to display into page
@@ -57,7 +58,7 @@ function getWatch(e) {
     } else {
         // Alert message when search box is empty
         alert("Give us a hint! Search a movie or series for more information.");
-    }    
+    }
 };
 
 
@@ -78,20 +79,22 @@ function createWatchList(Search) {
     // write content to listing image div (innerhtml?)
     let listingTemplate = `
                 <div class="listing-image">
+                ${search.map((listing) => {
+                    return `
                     <img src=${listing.poster_path} data-movie-id=${listing.id}/>
+                    `;
+                })}
                 </div>
                 <div class="listing-info">
                     <p></p>
                 </div>
                 `;
+                // .map should iterate through the array returned by search
 
+    // write listing template to listing container
+    listingContainer.innerHTML = listingTemplate;
 
-    // append listing image div to parent (#watch-list)
-    // create div to hold object content 
-    // write content to object content div (innerhtml?)
-    // append content div to parent (#watch-list)
+    // append listing container to parent (#watch-list)
+    watchList.appendChild(listingContainer);
 
 };
-
-
-
