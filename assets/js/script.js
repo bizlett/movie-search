@@ -34,7 +34,12 @@ function getWatch(e) {
         // logs data from api to console 
         .then((data) => {
             // data.results
-            let myWatch = data.results;
+            // let myWatch = data.results;
+            console.log(data);
+
+            // iterate through results??
+
+
             // drop results into container that's been created...? (need to create container!!) 
             
             // append results container into watch list section
@@ -61,22 +66,26 @@ function getWatch(e) {
 // watch list div to create 
 /* <div class="listing">
                 <div class="listing-image"></div>
-                <div class="listing-content">
+                <div class="listing-info">
                     <p></p>
                 </div> */
 
 
 // function to display api data to page
-function createWatchList() {
+function createWatchList(Search) {
     // create div (listing) to hold watch list information
-    // create listing image div and content
+    let listingContainer = document.createElement('div');
+    listingContainer.classList.add('listing');
+    // create listing image div and info
     // write content to listing image div (innerhtml?)
     let listingTemplate = `
-        <div class="listing">
-                <div class="listing-image"></div>
-                <div class="listing-content">
+                <div class="listing-image">
+                    <img src=${listing.poster_path} data-movie-id=${listing.id}/>
+                </div>
+                <div class="listing-info">
                     <p></p>
-                </div>`;
+                </div>
+                `;
 
 
     // append listing image div to parent (#watch-list)
