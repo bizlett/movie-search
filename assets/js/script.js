@@ -33,12 +33,10 @@ function getWatch(e) {
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
-            // data.results
+            // data.results - need to iterate over the results to drop each result into its listing container
+            // iterate over results in listing container function?
             // let myWatch = data.results;
             console.log(data);
-
-            // iterate through results??
-
 
             // drop results into container that's been created...? (need to create container!!) 
             
