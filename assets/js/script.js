@@ -34,10 +34,20 @@ function getWatch(e) {
             .then((res) => res.json())
             // logs data from api to console 
             .then((data) => {
-                // data.results - need to iterate over the results to drop each result into its listing container
-                // iterate over results in listing container function?
-                // let myWatch = data.results;
-                console.log(data);
+                // iterate over results and create listing container to hold it within
+                data.results.forEach(movie => {
+                    let listingContainer = document.createElement('div');
+                    listingContainer.classList.add('listing');
+
+                    listing.innerHTML = `
+                    <img src="${poster_path}" alt="movie poster"/>
+                    <div class="listing-info">
+                    <h3>${title}</h3>
+                    <span>Rating ${}</span>
+                </div>
+                    `
+
+                });
 
                 // drop results into container that's been created...? (need to create container!!) 
 
@@ -69,40 +79,33 @@ function getWatch(e) {
                     <p></p>
                 </div> */
 
-function createWatchListing() {
-    ${search.map((listing) => {
-        // returns value from search and maps into listing
-        return `
-        <img src=${listing.poster_path} data-movie-id=${listing.id}/>
-        `;
-    })}
-}
-
 
 // function to display api data to page
-function createWatchList(Search) {
+// function createWatchList(Search) {
     // create div (listing) to hold watch list information
-    let listingContainer = document.createElement('div');
-    listingContainer.classList.add('listing');
+    
     // create listing image div and info
     // write content to listing image div (innerhtml?)
-    let listingTemplate = `
-                <div class="listing-image">
-                
-                </div>
-                <div class="listing-info">
-                    <p></p>
-                </div>
-                `;
+    // let listingTemplate = `
+    //             <div class="listing-image">
+    //             ${search.map((listing) => {
+    //                 // returns value from search and maps into listing
+    //                 return `
+    //                 <img src=${listing.poster_path} data-movie-id=${listing.id}/>
+    //                 `;
+    //             })}
+    //             </div>
+               
+    //             `;
                 // .map should iterate through the array returned by search
 
     // write listing template to listing container
-    listingContainer.innerHTML = listingTemplate;
+    // listingContainer.innerHTML = listingTemplate;
 
     // return value to listing template - what are my expectations here? What do I want the code to do?
-    return listingContainer;
+    // return listingContainer;
 
     // append listing container to parent (#watch-list)
     // watchList.appendChild(listingContainer);
 
-};
+// };
