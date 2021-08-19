@@ -39,11 +39,11 @@ function getWatch(e) {
                     let listingContainer = document.createElement('div');
                     listingContainer.classList.add('listing');
 
-                    listing.innerHTML = `
-                    <img src="${poster_path}" alt="movie poster"/>
+                    listingContainer.innerHTML = `
+                    <img src="${poster_path}" alt="${title}"/>
                     <div class="listing-info">
                     <h3>${title}</h3>
-                    <span>Rating ${}</span>
+                    <span>Rating ${vote_average}</span>
                 </div>
                     `
 
