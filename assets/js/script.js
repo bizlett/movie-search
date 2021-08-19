@@ -69,6 +69,15 @@ function getWatch(e) {
                     <p></p>
                 </div> */
 
+function createWatchListing() {
+    ${search.map((listing) => {
+        // returns value from search and maps into listing
+        return `
+        <img src=${listing.poster_path} data-movie-id=${listing.id}/>
+        `;
+    })}
+}
+
 
 // function to display api data to page
 function createWatchList(Search) {
@@ -79,12 +88,7 @@ function createWatchList(Search) {
     // write content to listing image div (innerhtml?)
     let listingTemplate = `
                 <div class="listing-image">
-                ${search.map((listing) => {
-                    // returns value from search and maps into listing
-                    return `
-                    <img src=${listing.poster_path} data-movie-id=${listing.id}/>
-                    `;
-                })}
+                
                 </div>
                 <div class="listing-info">
                     <p></p>
