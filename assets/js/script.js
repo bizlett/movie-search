@@ -36,6 +36,8 @@ function getWatch(e) {
             .then((data) => {
                 // iterate over results and create listing container to hold it within
                 data.results.forEach(movie => {
+                    let {poster_path, title, vote_average} = movie;
+
                     let listingContainer = document.createElement('div');
                     listingContainer.classList.add('listing');
 
