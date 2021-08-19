@@ -80,6 +80,7 @@ function createWatchList(Search) {
     let listingTemplate = `
                 <div class="listing-image">
                 ${search.map((listing) => {
+                    // returns value from search and maps into listing
                     return `
                     <img src=${listing.poster_path} data-movie-id=${listing.id}/>
                     `;
@@ -95,7 +96,7 @@ function createWatchList(Search) {
     listingContainer.innerHTML = listingTemplate;
 
     // return value to listing template - what are my expectations here? What do I want the code to do?
-    return listingTemplate();
+    return listingContainer;
 
     // append listing container to parent (#watch-list)
     // watchList.appendChild(listingContainer);
