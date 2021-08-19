@@ -94,7 +94,10 @@ function createWatchList(Search) {
     // write listing template to listing container
     listingContainer.innerHTML = listingTemplate;
 
+    // return value to listing template - what are my expectations here? What do I want the code to do?
+    return listingTemplate();
+
     // append listing container to parent (#watch-list)
-    watchList.appendChild(listingContainer);
+    // watchList.appendChild(listingContainer);
 
 };
