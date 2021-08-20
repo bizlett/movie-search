@@ -1,4 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+body {
+    background: #065a60;
+}
+
+
+/* Navbar */
+
+.navbar {
+    background-color: transparent;
+    margin-bottom: 0px;
+}
+
+.navbar-brand {
+    font-family: 'Righteous', sans-serif;
+    color: #fff;
+    font-size: 2.5rem;
+}
+
+/* Search bar section - jumbotron */
+
+.jumbotron {
+    height: 100vh;
+    width: 100%;
+
+    background: url(../images/hero.jpeg) no-repeat top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
 #watch-list {
     display: flex; 
     flex-wrap: wrap;
 }
+
+#search-button {
+    border-radius: 50px;
+    border: solid red 1px;
+}
+
