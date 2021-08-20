@@ -50,7 +50,7 @@ function getWatch(e) {
                 
                     // write content to listing container - poster image, title, rating
                     listingContainer.innerHTML = `
-                    <img src="${poster_path}" alt="${title}"/>
+                    <img src="${posterImagePath} + ${poster_path}" alt="${title}"/>
                     <div class="listing-info">
                     <h3>${title}</h3>
                     <span>Rating ${vote_average}</span>
