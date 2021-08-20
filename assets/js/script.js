@@ -2,7 +2,7 @@
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
 const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`;
 
-const posterImagePath = 'https://image.tmdb.org/t/p/w500/'
+const posterImagePath = 'https://image.tmdb.org/t/p/w185/'
 
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
@@ -50,9 +50,9 @@ function getWatch(e) {
                 
                     // write content to listing container - poster image, title, rating
                     listingContainer.innerHTML = `
-                    <img src="${posterImagePath + poster_path}" alt="${title}"/>
+                    <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
                     <div class="listing-info">
-                    <h3>${title}</h3>
+                    <h4>${title}</h4>
                     <span>Rating ${vote_average}</span>
                     </div>
                     `;
