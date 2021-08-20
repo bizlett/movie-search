@@ -8,7 +8,7 @@
   }
 
 body {
-    background: #065a60;
+    background-color: slategray;
 }
 
 
@@ -17,6 +17,12 @@ body {
 .navbar {
     background-color: transparent;
     margin-bottom: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 1;
 }
 
 .navbar-brand {
@@ -29,7 +35,7 @@ body {
 
 .jumbotron {
     height: 100vh;
-    width: 100%;
+    width: auto;
 
     background: url(../images/hero.jpeg) no-repeat top fixed;
     -webkit-background-size: cover;
@@ -43,6 +49,27 @@ body {
 
     position: relative;
 }
+
+.search-container {
+    background-color: rgba(33, 47, 69, .7);
+    color: #fff;
+    justify-content: space-around;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.search-container h2 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+
+.search-container h3 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+
+/* Search results container styling */
 
 #watch-list {
     display: flex; 
