@@ -2,6 +2,8 @@
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
 const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`;
 
+const posterImagePath = 'https://image.tmdb.org/t/p/w500/'
+
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
@@ -36,9 +38,28 @@ function getWatch(e) {
             .then((data) => {
                 // iterate over results and create listing container to hold it within
                 data.results.forEach(movie => {
-                    return createWatchList;
+                    let {
+                        poster_path,
+                        title,
+                        vote_average
+                    } = movie;
+                
+                    // create container to hold search results
+                    let listingContainer = document.createElement('div');
+                    listingContainer.classList.add('listing');
+                
+                    // write content to listing container - poster image, title, rating
+                    listingContainer.innerHTML = `
+                    <img src="${poster_path}" alt="${title}"/>
+                    <div class="listing-info">
+                    <h3>${title}</h3>
+                    <span>Rating ${vote_average}</span>
+                    </div>
+                    `;
+                
+                    // append results container into watch list section
+                    watchList.appendChild(listingContainer);
                 });
-
             })
             // if error - logs error to console 
             .catch((error) => {
@@ -58,29 +79,9 @@ function getWatch(e) {
 };
 
 // function to display search results to watchList
-function createWatchList(Search) {
-    let {
-        poster_path,
-        title,
-        vote_average
-    } = movie;
-
-    // create container to hold search results
-    let listingContainer = document.createElement('div');
-    listingContainer.classList.add('listing');
-
-    // write content to listing container - poster image, title, rating
-    listingContainer.innerHTML = `
-    <img src="${poster_path}" alt="${title}"/>
-    <div class="listing-info">
-    <h3>${title}</h3>
-    <span>Rating ${vote_average}</span>
-    </div>
-    `;
-
-    // append results container into watch list section
-    watchList.appendChild(listingContainer);
-};
+// function createWatchList(Search) {
+    
+// };
 
 
 
