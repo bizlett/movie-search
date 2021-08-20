@@ -31,6 +31,10 @@ body {
     font-size: 2.5rem;
 }
 
+.navbar-brand:hover {
+    color: #4d194d;
+} 
+
 /* Search bar section - jumbotron */
 
 .jumbotron {
@@ -75,7 +79,23 @@ body {
     font-size: 1rem;
     margin-bottom: 2rem;
     padding: 15px;
+    outline: none;
 }
+
+/* Search  button */
+
+#search-button {
+    background-color: #006466;
+    color: #fff;
+    border-radius: 50px;
+    border: solid #144552 2px;
+    box-shadow: none;
+}
+
+#search-button:hover {
+    background-color: #3e1f47;
+    border: solid #4d194d 2px;
+} 
 
 
 /* Search results container styling */
@@ -86,7 +106,6 @@ body {
 }
 
 #search-button {
-    border-radius: 50px;
-    border: solid red 1px;
+    
 }
 
