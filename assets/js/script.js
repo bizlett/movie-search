@@ -36,27 +36,7 @@ function getWatch(e) {
             .then((data) => {
                 // iterate over results and create listing container to hold it within
                 data.results.forEach(movie => {
-                    let {
-                        poster_path,
-                        title,
-                        vote_average
-                    } = movie;
-
-                    // create container to hold search results
-                    let listingContainer = document.createElement('div');
-                    listingContainer.classList.add('listing');
-
-                    // write content to listing container - poster image, title, rating
-                    listingContainer.innerHTML = `
-                    <img src="${poster_path}" alt="${title}"/>
-                    <div class="listing-info">
-                    <h3>${title}</h3>
-                    <span>Rating ${vote_average}</span>
-                    </div>
-                    `;
-
-                    // append results container into watch list section
-                    watchList.appendChild(listingContainer);
+                    return createWatchList;
                 });
 
             })
@@ -64,7 +44,6 @@ function getWatch(e) {
             .catch((error) => {
                 console.log(error);
             });
-
 
         // logs search results to console?? we will want to display into page
         console.log(search);
@@ -78,6 +57,33 @@ function getWatch(e) {
     }
 };
 
+// function to display search results to watchList
+function createWatchList(Search) {
+    let {
+        poster_path,
+        title,
+        vote_average
+    } = movie;
+
+    // create container to hold search results
+    let listingContainer = document.createElement('div');
+    listingContainer.classList.add('listing');
+
+    // write content to listing container - poster image, title, rating
+    listingContainer.innerHTML = `
+    <img src="${poster_path}" alt="${title}"/>
+    <div class="listing-info">
+    <h3>${title}</h3>
+    <span>Rating ${vote_average}</span>
+    </div>
+    `;
+
+    // append results container into watch list section
+    watchList.appendChild(listingContainer);
+};
+
+
+
 
 // watch list div to create 
 /* <div class="listing">
@@ -87,8 +93,7 @@ function getWatch(e) {
                 </div> */
 
 
-// function to display api data to page
-// function createWatchList(Search) {
+
 // create div (listing) to hold watch list information
 
 // create listing image div and info
