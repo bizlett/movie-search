@@ -34,10 +34,10 @@ body {
 /* Search bar section - jumbotron */
 
 .jumbotron {
-    height: 100vh;
+    height: 90vh;
     width: auto;
 
-    background: url(../images/hero.jpeg) no-repeat top fixed;
+    background: url(../images/hero.jpeg) no-repeat bottom fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
