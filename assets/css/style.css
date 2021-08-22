@@ -107,11 +107,17 @@ body {
 /* Search results container styling */
 
 #watch-list {
-    display: flex; 
-    flex-wrap: wrap;
-}
-
-#search-button {
     
 }
+
+.listing {
+    color:#fff;
+    background-color: #006466;
+}
+
+.overview {
+    
+    
+}
+
 
