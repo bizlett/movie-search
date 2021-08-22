@@ -46,6 +46,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    box-shadow: inset 0rem 0rem 10rem 4rem rgba(0,0,0,0.8);
 
     display: flex;
     align-items: center;
