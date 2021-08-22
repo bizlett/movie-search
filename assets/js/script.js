@@ -43,9 +43,6 @@ function getWatch(e) {
                 console.log(error);
             });
 
-        // logs search results to console?? we will want to display into page
-        console.log(search);
-
         // clear search input
         searchInput.value = '';
 
