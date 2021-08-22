@@ -36,30 +36,7 @@ function getWatch(e) {
             .then((res) => res.json())
             // logs data from api to console 
             .then((data) => {
-                // iterate over results and create listing container to hold it within
-                data.results.forEach(movie => {
-                    let {
-                        poster_path,
-                        title,
-                        vote_average
-                    } = movie;
-                
-                    // create container to hold search results
-                    let listingContainer = document.createElement('div');
-                    listingContainer.classList.add('listing');
-                
-                    // write content to listing container - poster image, title, rating
-                    listingContainer.innerHTML = `
-                    <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
-                    <div class="listing-info">
-                    <h4>${title}</h4>
-                    <span>Rating ${vote_average}</span>
-                    </div>
-                    `;
-                
-                    // append results container into watch list section
-                    watchList.appendChild(listingContainer);
-                });
+                createWatchList(data.results);
             })
             // if error - logs error to console 
             .catch((error) => {
@@ -79,6 +56,34 @@ function getWatch(e) {
 };
 
 // function to display search results to watchList
-// function createWatchList(Search) {
+function createWatchList(data) {
+    // iterate over results and create listing container to hold it within
+    data.forEach(movie => {
+        let {
+            poster_path,
+            title,
+            vote_average,
+            overview
+        } = movie;
     
-// };
+        // create container to hold search results
+        let listingContainer = document.createElement('div');
+        listingContainer.classList.add('listing');
+    
+        // write content to listing container - poster image, title, rating
+        listingContainer.innerHTML = `
+        <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
+        <div class="listing-info">
+        <h4>${title}</h4>
+        <span>Rating ${vote_average}</span>
+        </div>
+        <div class="overview">
+        <h4>Overview</h4>
+        ${overview}  
+        </div>
+        `;
+    
+        // append results container into watch list section
+        watchList.appendChild(listingContainer);
+    });
+};
