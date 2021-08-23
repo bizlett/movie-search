@@ -55,6 +55,9 @@ function getWatch(e) {
 
 // function to display search results to watchList
 function createWatchList(data) {
+    // clear current results before adding new results
+    watchList.innerHTML = '';
+
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {
         let {
@@ -84,3 +87,8 @@ function createWatchList(data) {
         watchList.appendChild(listingContainer);
     });
 };
+
+// clear previous search results function
+// function clearResults(e) {
+    
+// };
