@@ -75,7 +75,6 @@ function createWatchList(data) {
         <span>Rating ${vote_average}</span>
         </div>
         <div class="overview">
-        <h4>Overview</h4>
         ${overview}  
         </div>
         `;
