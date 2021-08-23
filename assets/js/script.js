@@ -1,6 +1,8 @@
 // Global variables
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
-const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`;
+const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
+
+// const searchPerson = &with_cast
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/'
 
@@ -28,7 +30,7 @@ function getWatch(e) {
     if (search != "") {
 
         // define parameters 
-        let myUrl = url + '&query=' + search;
+        let myUrl = url + '&with_cast=' + search;
 
         // calls to api url to get information
         fetch(myUrl)
