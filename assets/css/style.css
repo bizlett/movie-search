@@ -110,6 +110,12 @@ body {
     justify-content: space-around;
 }
 
+#search-heading {
+    color: #98d7d8;
+    margin-left: 2rem;
+    font-size: 1.75rem;
+}
+
 .listing {
     color:#fff;
     background-color: rgba(53, 126, 128, .4);
