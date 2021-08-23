@@ -1,6 +1,6 @@
 // Global variables
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
-const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
+const url = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}`;
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/'
 
@@ -37,6 +37,7 @@ function getWatch(e) {
             .then((res) => res.json())
             // logs data from api to console 
             .then((data) => {
+                console.log(data);
                 createWatchList(data.results);
             })
             // if error - logs error to console 
@@ -58,6 +59,16 @@ function createWatchList(data) {
     // clear current results before adding new results
     watchList.innerHTML = '';
 
+    // create container to hold search results heading
+    let resultsHeader = document.createElement('div');
+    resultsHeader.classList.add('results-header');
+
+    // write content to results header
+    resultsHeader.textContent = 'Search results';
+
+    // append results header into watch list section
+    watchList.appendChild(resultsHeader);
+
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {
         let {
@@ -66,11 +77,11 @@ function createWatchList(data) {
             vote_average,
             overview
         } = movie;
-    
+
         // create container to hold search results
         let listingContainer = document.createElement('div');
         listingContainer.classList.add('listing');
-    
+
         // write content to listing container - poster image, title, rating
         listingContainer.innerHTML = `
         <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
@@ -82,13 +93,8 @@ function createWatchList(data) {
         ${overview}  
         </div>
         `;
-    
+
         // append results container into watch list section
         watchList.appendChild(listingContainer);
     });
 };
-
-// clear previous search results function
-// function clearResults(e) {
-    
-// };

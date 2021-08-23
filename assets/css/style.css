@@ -110,7 +110,7 @@ body {
     justify-content: space-around;
 }
 
-#search-heading {
+.results-header {
     color: #98d7d8;
     margin-left: 2rem;
     font-size: 1.75rem;
