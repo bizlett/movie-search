@@ -1,104 +1,362 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# **watcha - discover movies database**
 
-Welcome bizlett,
+![Mock up image]()
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. The last update to this file was: **July 2, 2021**
+## **Goal for this project**
 
-## Gitpod Reminders
+Want to watch a movie but can't decide what? Let watcha do the hard work for you.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Powered by TMDb, our movie search recommends the most popular and trending movies for you to kick back and chill. Not feeling inspired? You can always search by [actor/director/genre/TBC] to discover something new!
 
-`python3 -m http.server`
+Thank you for visiting my project! If you have any feedback or questions, head over to my GitHub contact details and feel free to reach out to me. 
 
-A blue button should appear to click: _Make Public_,
+---
+<a></a>
 
-Another blue button should appear to click: _Open Browser_.
+## Table of Contents
+1. [UX](#ux)
+    * [User Stories](#user-stories)
+        * [First Time Visitor Goals](#first-time-visitor-goals)
+        * [Returning Visitor Goals](#returning-visitor-goals)
+        * [Frequent Visitor Goals](#frequent-visitor-goals)
+    * [Business Goals](#business-goals)
+    * [Design Choices](#design-choices)
+        * [Fonts](#fonts)
+        * [Favicon](#favicon)
+        * [Colours](#colours)
+        * [Structure](#structure)
+        * [Imagery](#imagery)
+2. [Wireframes](#wireframes)
+3. [Roadmap](#roadmap)
+    * [Existing Features](#existing-features)
+    * [Future Features](#future-features)
+4. [Technologies](#technologies)
+5. [Testing](#testing)
+    * [Approach and Tools](#approach-and-tools)
+    * [Validator Testing](#validator-testing)
+    * [Bugs and Solutions](#bugs-and-solutions)
+6. [Deployment](#deployment)
+7. [Credits](#credits)
+    * [Code](#code)
+    * [Media](#media)
+    * [Acknowledgements](#acknowledgements)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+<a name="ux"></a>
 
-A blue button should appear to click: _Make Public_,
+## **UX**
 
-Another blue button should appear to click: _Open Browser_.
+<a></a>
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### **User Stories**
+#### **First Time Visitor Goals**
+* As a first time user, I want to easily understand the purpose of the site.
+* As a first time user, I want to easily understand how to use the site.
+* As a first time user, I want content and search results to load quickly.
 
-To log into the Heroku toolbelt CLI:
+#### **Returning Visitor Goals**
+* As a returning user, I want to see different film recommendations to what I've seen before. 
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+#### **Frequent Visitor Goals**
+* As a frequent user, I want to be able to search for movies to watch based on different queries.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+<a></a>
 
-------
+### **Business Goals**
+* Inform the user about popular movies
+* Provide the user with recommendations for movies to watch that fit their requirements
 
-## Release History
+<a></a>
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### **Design Choices**
+#### *Fonts*
+I selected all my fonts from [Google fonts](https://fonts.google.com/).
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+The website name on the nav bar has its own font in order to make it stand out. I used [Righteous](https://fonts.google.com/specimen/Righteous). I made the font colour white to make it stand out. However, I added a hover pseudo element to change the text to a complementary colour from my palette. Clicking the text refreshes the page.   
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+The overall content is written in [Poppins](https://fonts.google.com/specimen/Poppins), with sans serif as the secondary. 
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+#### *Favicon*
+I created a favicon for the website using the logo generator at [Favicon](http//favicon.io). I selected colours from my Coolors palette when creating it.
+        
+#### *Colours*
+I used [Coolors](https://coolors.co/) to put together a palette for my website. I used my hero image as the starting point, using a colour picker to draw out blues initially. 
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+<img src="assets/readme/coolors-palette.png" alt="coolors palette for watcha website">
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+#### *Structure*
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+I have used [Bootstrap v5.0.2](https://getbootstrap.com/) to create the overall structure of my website.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+#### *Imagery*
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+My hero image was sourced from [Pexels](https://www.pexels.com/). I sought an image that has an almost retro feel to it to appeal to my target demographic of university students.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+[Back to Top](#table-of-contents)
 
 ---
 
-Happy coding!
+<a name="wireframes"></a>
+
+## **Wireframes**
+
+I used [Balsamiq](https://balsamiq.com/wireframes/) to create wireframes for my project:
+
+<a></a>
+
+* [Desktop](raw github user content link)
+
+<a></a>
+
+* [Tablet](https://raw.githubusercontent.com/bizlett/tbc)
+
+<a></a>
+
+* [Mobile](https://raw.githubusercontent.com/bizlett/tbc)
+
+[Back to Top](#table-of-contents)
+
+---
+
+<a name="roadmap"></a>
+
+## **Roadmap**
+
+<a></a>
+
+### **Existing Features**
+
+#### Navigation
+
+![screenshot of nav bar]()
+
+Text
+
+#### Hero Image
+
+![screenshot of hero]()
+
+I opted for a 100% width hero image and transparent nav bar for a minimalist feel. I added the search input in a container that was centered to draw the user directly to directions on using the website, though made the background colour slightly transparent so as not to interfere with the hero image. 
+
+I also added a box shadow to the hero image to make the 'watcha' text on the nav bar stand out. It also helps to draw the eye to the centre. 
+
+#### Results
+
+![screenshot of results section]()
+
+Text
+
+#### Recommended 
+
+![screenshot of recommended section]()
+
+Text
+
+#### Trending
+
+![screenshot of trending section]()
+
+Text
+
+#### Footer
+
+![screenshot of footer]()
+
+Text
+
+#### Scrollbar
+
+![screenshot of custom scroll bar](assets/readme/scroll-bar.png)
+
+I decided to style the scrollbar at a late stage in response to user feedback. I used -webkit- extensions to style it in order to cover as many different browsers in one go. I styled the scrollbar in line with my Coolors palette. 
+
+<a></a>
+
+### **Future Features**
+
+User responses from testing have been very useful when thinking about future designs:
+
+*"I signed up to the newsletter but got no confirmation to say it worked"*
+
+In a future version, I would add custom error messages and confirmation that information has been submitted. 
+
+*"Clicking on the photo didn't open it or give it the option to zoom in"*
+
+In a future version, I would add an image modal to give functionality for images to be opened.
+
+*"I was kind of expecting the Watch links would link to the film's page..."*
+
+If this was a real film, once the film was released these images would link to the appropriate page on the streamer website. To manage this expectation, in a future version I would disable the links and edit the text to note that the film will be released on these platforms from December 2021.
+
+Other features which could be added:
+
+* Reviews section
+* Blog page featuring content as part of the release plans. This would have a comments section for fans of the film and potential audiences to comment
+* Mini-game page - an interactive viral campaign which allows the user to make choices for the character about what to do next. Based on challenges the protogonist faces in the film to enable a user to experience the world firsthand
+
+[Back to Top](#table-of-contents)
+
+---
+
+<a name="technologies"></a>
+
+## **Technologies**
+
+### **Languages**
+* [HTML](https://html.com/)
+* [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+* [JavaScript](https://www.javascript.com/)
+
+### **Libraries & Frameworks**
+* [Favicon](https://favicon.io/)
+* [Bootstrap](https://getbootstrap.com/)
+* [Google Fonts](https://fonts.google.com/)
+
+### **Tools**
+* [Github](https://github.com/)
+* [Gitpod](https://gitpod.io/workspaces)
+* [Balsamiq](https://balsamiq.com/)
+* [W3C HTML Validation Service](https://validator.w3.org/)
+* [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+* [JShint](https://jshint.com/)
+* [Promo Image Resizer](https://promo.com/tools/image-resizer/)
+
+[Back to Top](#table-of-contents)
+
+---
+
+<a name="testing"></a>
+
+## **Testing**
+
+<a></a>
+
+### **Approach and Tools**
+
+I deployed my website early which meant I was able to test as I go. I also used Chrome dev tools to test after each change to ensure expectations met reality / intended application.
+
+Once I had the structure in place, I began testing across other devices. I checked features and formatting across an iPhone 7 and iPhone 10 as well as using dev tools and resizing the browser to check responsiveness. I also used a [free responsive test tool](http://responsivetesttool.com/). 
+
+Finally, I asked friends and family to test the website on their devices. I asked them to make a note of anything they found unusual or that they thought was wrong. This proved particularly helpful for user stories and when considering future features.
+
+<a></a>
+
+### **Validator Testing**
+* HTML
+    * No errors were returned when passing through [W3C HTML Validation Service](https://validator.w3.org/)
+
+* CSS
+    * No errors were returned when passing through [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+
+* JS
+    * No errors were returned when passing through [JShint](https://jshint.com/)
+
+<a></a>
+
+### **Bugs and Solutions**
+
+* Hero Image
+    * *Bug* - The hero image worked correctly on desktop and appeared to render correctly when using dev tools to test mobile responsiveness. However, when I deployed the site and checked on mobile devices, the image was rendering far too large - only a small corner was appearing. 
+
+    * *Fix* - Applied flex-wrap to the hero image id in css.
+
+    * *Verdict* - Image now shows as expected on all browsers.
+
+* Hamburger dropdown menu
+    * *Bug* - On mobile devices when you click the hamburger icon, the menu appeared. When you click on one of the links the dropdown menu didn't disappear but stayed open. This was not a good user experience.
+
+    * *Fix* - I found various suggestions on fixes suggested on various forums, but this one from [Stack Overflow](https://stackoverflow.com/questions/42401606/how-to-hide-collapsible-bootstrap-navbar-on-click) provided me with a code that I could edit to fix the issue. I tried the data-bs-toggle and data-bs-target data attributes suggestion on each link to toggle the Collapse navbar but this didn't work. So I used the JavaScript solution to add a click event listener on the menu items and linked it to the navbarNavDropdown id.
+
+    * *Verdict* - The burger menu now collapses on click/tap of the nav link.
+
+* Creative team names and imdb Icons
+    * *Bug* - The creative team names and icons were originally in <p> tags within a div. They weren't particularly mobile responsive and the formatting and spacing was out when testing on other devices.  
+
+    * *Fix* - I rewrote the html to put the creative team names and imdb icons into a list. I put the icons as their own list item.
+   
+    * *Verdict* - The icons move responsively within the div now across all devices. 
+   
+* Fixed navigation bar
+    * *Bug* - The navigation bar wasn't sticking at the top of the page on scroll.
+
+    * *Fix* - I removed overflow: hidden properties which I had originally included as a fix to a white space issue (see further down!)
+
+    * *Verdict* - Navbar now stays at the top of the page when you scroll down across all devices.
+
+* Navigation bar width
+    * *Bug* - There was small gap on the left side of the website between the browser edge and the nav bar. The hero image was visible in the gap across all devices.
+
+    * *Fix* - I created a .row class to override the Bootstrap properties and remove the gutters.
+
+    * *Verdict* - Navbar now stretches 100% width with no gap.
+
+* Navigation and footer bar overflow
+    * *Bug* - White space was rendering on the right side of the website by the scroll bar caused by the navbar and footer overflowing.
+
+    * *Fix* - I reworked my html to adhere to container - row - column rules. I removed unnecessary nested divs and applied container-fluid class across the whole structure.
+
+    * *Verdict* - Containers all align and overflow on y-axis has disappeared. The user has a clean scrolling experience across all devices now.
+
+* Footer images
+    * *Bug* - Images in footer not rendering due to broken links/missing pathways.
+
+    * *Fix* - I tried to fix with absolute and relative pathways and neither solution appeared to be working. The issue was due to the cache! I couldn't see the fix from Gitpod workspace.
+
+    * *Verdict* - Relative paths did work. After pushing the code, I could see the issue was fixed.
+   
+[Back to Top](#table-of-contents)
+
+---
+
+<a name="deployment"></a>
+
+## **Deployment**
+
+This project was deployed via GitHub by executing the following steps. After writing the code, committing and pushing it to GitHub:
+
+1. Navigate to the repository on github and click Settings.
+2. From there, go to the Source section within the Github Pages section.
+3. Select master branch on the dropdown menu, and click save.
+4. Now the website is live on https://bizlett.github.io/watcha-movie-search/
+5. Any time commits and pushes are sent to Github, the Github Pages site should update shortly after.
+
+To run the project locally:
+
+1. Click the green Clone or Download button on the Github Repository
+2. Using the Clone with HTTPS option, copy the link displayed.
+3. Open your IDE, and ensure the Git Terminal is open.
+4. Change the working directory to the location where the cloned directory is to go.
+5. Use the "git clone" command and paste the url copied in the second step.
+
+[Back to Top](#table-of-contents)
+
+---
+
+<a name="credits"></a>
+
+## **Credits**
+
+<a></a>
+
+### **Code**
+
+* [W3Schools Online](https://www.w3schools.com/)
+* [Stackoverflow]()
+* [CSS Tricks](https://css-tricks.com/)
+* [Javascfript & Jquery by Jon Duckett]()
+
+<a></a>
+
+### **Media**
+
+* [Lucas Pezeta](pexels link)
+
+<a></a>
+
+### **Acknowledgements**
+
+* [Simen Dahlin](https://github.com/Eventyret) for his support in creating this website
+* Stack Overflow community
+
+[Back to Top](#table-of-contents)
+
+---
