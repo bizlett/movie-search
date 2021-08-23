@@ -28,6 +28,7 @@ function getWatch(e) {
     if (search != "") {
 
         // define parameters 
+        // with_cast for search person - though currently not returning any results
         let myUrl = url + '&query=' + search;
 
         // calls to api url to get information

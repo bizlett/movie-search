@@ -28,6 +28,7 @@ body {
     font-family: 'Righteous', sans-serif;
     color: #fff;
     font-size: 2.5rem;
+    padding-left: 2rem;
 }
 
 .navbar-brand:hover {
@@ -112,8 +113,8 @@ body {
 .listing {
     color:#fff;
     background-color: rgba(53, 126, 128, .4);
-    height: 400px;
-    width: 300px;
+    height: 23rem;
+    width: 16rem;
     margin: 1rem;
     border-radius: 3px;    
 
@@ -126,14 +127,18 @@ body {
     border-radius: 3px;
 }
 
+.listing-info h4 {
+    font-size: 1.2rem;
+}
+
 .overview {
     position: absolute;
-    height: 400px;
-    width: 300px;
+    height: 23rem;
+    width: 16rem;
     opacity: 0;
     transition: .5s ease;
     background-color: #312244;
-    transform: translateY(-85%);
+    transform: translateY(-92.6%) translateX(-3.1%);
     border-radius: 3px;
     font-size: 1rem;
     text-align: justify;
@@ -143,6 +148,7 @@ body {
 
 .listing:hover .overview {
     opacity: 1;
+    overflow: hidden;
 }
 
 
