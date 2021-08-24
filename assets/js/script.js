@@ -44,7 +44,7 @@ function getWatch(e) {
             // logs data from api to console 
             .then((data) => {
                 console.log(data);
-                createWatchList(data.results);
+                createWatchList(data.results[0].known_for);
             })
             // if error - logs error to console 
             .catch((error) => {
@@ -60,6 +60,7 @@ function getWatch(e) {
     }
 };
 
+
 // function to get popular movies
 function getPopularMovies(e) {
     // calls to api url to get information
@@ -68,7 +69,7 @@ function getPopularMovies(e) {
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             createPopularList(data.results);
         })
         // if error - logs error to console 
@@ -76,6 +77,7 @@ function getPopularMovies(e) {
             console.log(error);
         });
 }
+
 
 // function to get trending movies
 function getTrendingMovies(e) {
@@ -93,6 +95,7 @@ function getTrendingMovies(e) {
            console.log(error);
        });
 }
+
 
 // function to display movies from search 
 function createWatchList(data) {
@@ -139,6 +142,7 @@ function createWatchList(data) {
    });
 };
 
+
 // function to display popular movies  
 function createPopularList(data) {
    // clear current results before adding new results
@@ -173,6 +177,7 @@ function createPopularList(data) {
        popularList.appendChild(listingContainer);
    });
 };
+
 
 // function to display trending movies  
 function createTrendingList(data) {
