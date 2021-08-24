@@ -21,6 +21,7 @@ searchButton.addEventListener('click', getWatch);
 popularList.addEventListener('load', getPopularMovies);
 trendingList.addEventListener('load', getTrendingMovies);
 
+
 // Functions 
 
 // Search movie/series function
