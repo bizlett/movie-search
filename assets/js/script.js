@@ -20,12 +20,8 @@ searchButton.addEventListener('click', getWatch);
 
 window.addEventListener('load', (event) => {
     getPopularMovies();
-  });
-
-window.addEventListener('load', (event) => {
     getTrendingMovies();
   });
-
 
 // Functions 
 
