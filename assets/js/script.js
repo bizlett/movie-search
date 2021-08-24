@@ -2,8 +2,8 @@
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
 const url = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}`;
 
-const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
-const trendingUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_count.desc`;
+const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&sort_by=popularity.desc`;
+const trendingUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_average.desc`;
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
@@ -16,10 +16,15 @@ const popularList = document.querySelector('#popular-list');
 const trendingList = document.querySelector('#trending-list');
 
 // Event Listeners
-// searchForm.addEventListener('submit', getMovie);
 searchButton.addEventListener('click', getWatch);
-popularList.addEventListener('load', getPopularMovies);
-trendingList.addEventListener('load', getTrendingMovies);
+
+window.addEventListener('load', (event) => {
+    getPopularMovies();
+  });
+
+window.addEventListener('load', (event) => {
+    getTrendingMovies();
+  });
 
 
 // Functions 
@@ -57,7 +62,7 @@ function getWatch(e) {
 
     } else {
         // Alert message when search box is empty
-        alert("Give us a hint! Search an actor or director for recommendations.");
+        alert("Give us a hint! Search an actor or director for inspiration!");
     }
 };
 
