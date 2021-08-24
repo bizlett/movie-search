@@ -103,7 +103,6 @@ body {
     border: solid #4d194d 2px;
 } 
 
-
 /* Search results container styling */
 
 #watch-list {
@@ -111,7 +110,7 @@ body {
 }
 
 .results-header {
-    color: #98d7d8;
+    color: #fff;
     margin-left: 2rem;
     font-size: 1.75rem;
 }

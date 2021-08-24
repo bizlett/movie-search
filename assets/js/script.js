@@ -10,12 +10,16 @@ const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
+
 const watchList = document.querySelector('#watch-list');
+const popularList = document.querySelector('#popular-list');
+const trendingList = document.querySelector('#trending-list');
 
 // Event Listeners
 // searchForm.addEventListener('submit', getMovie);
 searchButton.addEventListener('click', getWatch);
-
+popularList.addEventListener('load', getPopularMovies);
+trendingList.addEventListener('load', getTrendingMovies);
 
 // Functions 
 
@@ -31,10 +35,10 @@ function getWatch(e) {
     if (search != "") {
 
         // define parameters 
-        let myUrl = url + '&query=' + search;
+        let mySearchUrl = url + '&query=' + search;
 
         // calls to api url to get information
-        fetch(myUrl)
+        fetch(mySearchUrl)
             // responds and returns response as json
             .then((res) => res.json())
             // logs data from api to console 
@@ -52,51 +56,6 @@ function getWatch(e) {
 
     } else {
         // Alert message when search box is empty
-        alert("Give us a hint! Search an actor or director for more recommendations.");
+        alert("Give us a hint! Search an actor or director for recommendations.");
     }
-};
-
-// function to display search results to watchList
-function createWatchList(data) {
-    // clear current results before adding new results
-    watchList.innerHTML = '';
-
-    // create container to hold search results heading
-    let resultsHeader = document.createElement('div');
-    resultsHeader.classList.add('results-header');
-
-    // write content to results header
-    resultsHeader.textContent = 'Search results';
-
-    // append results header into watch list section
-    watchList.appendChild(resultsHeader);
-
-    // iterate over results and create listing container to hold it within
-    data.forEach(movie => {
-        let {
-            poster_path,
-            title,
-            vote_average,
-            overview
-        } = movie;
-
-        // create container to hold search results
-        let listingContainer = document.createElement('div');
-        listingContainer.classList.add('listing');
-
-        // write content to listing container - poster image, title, rating
-        listingContainer.innerHTML = `
-        <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
-        <div class="listing-info">
-        <h4>${title}</h4>
-        <span>Rating ${vote_average}</span>
-        </div>
-        <div class="overview">
-        ${overview}  
-        </div>
-        `;
-
-        // append results container into watch list section
-        watchList.appendChild(listingContainer);
-    });
 };
