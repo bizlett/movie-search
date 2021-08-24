@@ -59,3 +59,152 @@ function getWatch(e) {
         alert("Give us a hint! Search an actor or director for recommendations.");
     }
 };
+
+// function to get popular movies
+function getPopularMovies(e) {
+    // calls to api url to get information
+    fetch(popularUrl)
+        // responds and returns response as json
+        .then((res) => res.json())
+        // logs data from api to console 
+        .then((data) => {
+            console.log(data);
+            createPopularList(data.results);
+        })
+        // if error - logs error to console 
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+// function to get trending movies
+function getTrendingMovies(e) {
+       // calls to api url to get information
+       fetch(trendingUrl)
+       // responds and returns response as json
+       .then((res) => res.json())
+       // logs data from api to console 
+       .then((data) => {
+           console.log(data);
+           createTrendingList(data.results);
+       })
+       // if error - logs error to console 
+       .catch((error) => {
+           console.log(error);
+       });
+}
+
+// function to display movies from search 
+function createWatchList(data) {
+   // clear current results before adding new results
+   watchList.innerHTML = '';
+
+   // create container to hold search results heading
+   let resultsHeader = document.createElement('div');
+   resultsHeader.classList.add('results-header');
+
+   // write content to results header
+   resultsHeader.textContent = 'Search results';
+
+   // append results header into watch list section
+   watchList.appendChild(resultsHeader);
+
+   // iterate over results and create listing container to hold it within
+   data.forEach(movie => {
+       let {
+           poster_path,
+           title,
+           vote_average,
+           overview
+       } = movie;
+
+       // create container to hold search results
+       let listingContainer = document.createElement('div');
+       listingContainer.classList.add('listing');
+
+       // write content to listing container - poster image, title, rating
+       listingContainer.innerHTML = `
+       <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
+       <div class="listing-info">
+       <h4>${title}</h4>
+       <span>Rating ${vote_average}</span>
+       </div>
+       <div class="overview">
+       ${overview}  
+       </div>
+       `;
+
+       // append results container into watch list section
+       watchList.appendChild(listingContainer);
+   });
+};
+
+// function to display popular movies  
+function createPopularList(data) {
+   // clear current results before adding new results
+   popularList.innerHTML = '';
+
+   // iterate over results and create listing container to hold it within
+   data.forEach(movie => {
+       let {
+           poster_path,
+           title,
+           vote_average,
+           overview
+       } = movie;
+
+       // create container to hold search results
+       let listingContainer = document.createElement('div');
+       listingContainer.classList.add('listing');
+
+       // write content to listing container - poster image, title, rating
+       listingContainer.innerHTML = `
+       <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
+       <div class="listing-info">
+       <h4>${title}</h4>
+       <span>Rating ${vote_average}</span>
+       </div>
+       <div class="overview">
+       ${overview}  
+       </div>
+       `;
+
+       // append results container into watch list section
+       popularList.appendChild(listingContainer);
+   });
+};
+
+// function to display trending movies  
+function createTrendingList(data) {
+   // clear current results before adding new results
+   trendingList.innerHTML = '';
+
+   // iterate over results and create listing container to hold it within
+   data.forEach(movie => {
+       let {
+           poster_path,
+           title,
+           vote_average,
+           overview
+       } = movie;
+
+       // create container to hold search results
+       let listingContainer = document.createElement('div');
+       listingContainer.classList.add('listing');
+
+       // write content to listing container - poster image, title, rating
+       listingContainer.innerHTML = `
+       <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
+       <div class="listing-info">
+       <h4>${title}</h4>
+       <span>Rating ${vote_average}</span>
+       </div>
+       <div class="overview">
+       ${overview}  
+       </div>
+       `;
+
+       // append results container into watch list section
+       trendingList.appendChild(listingContainer);
+   });
+};
