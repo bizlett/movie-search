@@ -106,7 +106,7 @@ function createWatchList(data) {
 
    // create container to hold search results heading
    let resultsHeader = document.createElement('div');
-   resultsHeader.classList.add('results-header');
+   resultsHeader.classList.add('list-header');
 
    // write content to results header
    resultsHeader.textContent = 'Search results';
