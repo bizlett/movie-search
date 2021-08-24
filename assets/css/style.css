@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-  }
+}
 
 body {
     background-color: rgb(33, 47, 69);
-} 
+}
 
 /* Navbar */
 
@@ -33,7 +33,7 @@ body {
 
 .navbar-brand:hover {
     color: #4d194d;
-} 
+}
 
 /* Search bar section - jumbotron */
 
@@ -46,7 +46,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    box-shadow: inset 0rem 0rem 10rem 4rem rgba(0,0,0,0.8);
+    box-shadow: inset 0rem 0rem 10rem 4rem rgba(0, 0, 0, 0.8);
 
     display: flex;
     align-items: center;
@@ -101,7 +101,7 @@ body {
 #search-button:hover {
     background-color: #3e1f47;
     border: solid #4d194d 2px;
-} 
+}
 
 /* Search results container styling */
 
@@ -116,12 +116,12 @@ body {
 }
 
 .listing {
-    color:#fff;
+    color: #fff;
     background-color: rgba(53, 126, 128, .4);
     height: 23rem;
     width: 16rem;
     margin: 1rem;
-    border-radius: 3px;    
+    border-radius: 3px;
 
     padding: .5rem;
     justify-content: center;
@@ -162,7 +162,3 @@ body {
 .listing:hover .overview {
     opacity: 1;
 }
-
-
- 
-
