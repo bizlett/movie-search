@@ -2,7 +2,10 @@
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
 const url = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}`;
 
-const posterImagePath = 'https://image.tmdb.org/t/p/w185/'
+const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
+const trendingUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_count.desc`;
+
+const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
@@ -28,7 +31,6 @@ function getWatch(e) {
     if (search != "") {
 
         // define parameters 
-        // with_cast for search person - though currently not returning any results
         let myUrl = url + '&query=' + search;
 
         // calls to api url to get information
@@ -50,7 +52,7 @@ function getWatch(e) {
 
     } else {
         // Alert message when search box is empty
-        alert("Give us a hint! Search a movie or series for more information.");
+        alert("Give us a hint! Search an actor or director for more recommendations.");
     }
 };
 
