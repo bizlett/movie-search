@@ -151,16 +151,6 @@ function createPopularList(data) {
     // clear current results before adding new results
     popularList.innerHTML = '';
 
-    // create container to hold search results heading
-    let listHeader = document.createElement('div');
-    listHeader.classList.add('list-header');
-
-    // write content to results header
-    listHeader.textContent = 'Popular';
-
-    // append results header into watch list section
-    popularList.appendChild(listHeader);
-
     // add if statement in case media type returned is tv_show which has different
     // properties
 
@@ -200,16 +190,6 @@ function createPopularList(data) {
 function createTrendingList(data) {
     // clear current results before adding new results
     trendingList.innerHTML = '';
-
-    // create container to hold search results heading
-    let listHeader = document.createElement('div');
-    listHeader.classList.add('list-header');
-
-    // write content to results header
-    listHeader.textContent = 'Trending';
-
-    // append results header into watch list section
-    trendingList.appendChild(listHeader);
 
     // add if statement in case media type returned is tv_show which has different
     // properties
