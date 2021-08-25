@@ -155,7 +155,7 @@ function createPopularList(data) {
     listHeader.classList.add('list-header');
 
     // write content to results header
-    listHeader.textContent = 'Popular movies';
+    listHeader.textContent = 'Popular';
 
     // append results header into watch list section
     popularList.appendChild(listHeader);
@@ -205,7 +205,7 @@ function createTrendingList(data) {
     listHeader.classList.add('list-header');
 
     // write content to results header
-    listHeader.textContent = 'Trending movies';
+    listHeader.textContent = 'Trending';
 
     // append results header into watch list section
     trendingList.appendChild(listHeader);
