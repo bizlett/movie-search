@@ -9,6 +9,7 @@
 
 body {
     background-color: rgb(33, 47, 69);
+    overflow-x: hidden;
 }
 
 /* Navbar */
@@ -69,11 +70,6 @@ body {
     font-size: 3rem;
 }
 
-/* .search-container h3 {
-    margin-bottom: 2rem;
-    padding: 1rem;
-} */
-
 .search-container p {
     margin-bottom: 1.5rem;
 }
@@ -103,10 +99,15 @@ body {
     border: solid #4d194d 2px;
 }
 
-/* Search results container styling */
+/* Listings containers & headings */
 
-#watch-list {
+#watch-list,
+#popular-list,
+#trending-list {
+    max-height: 30rem;
     justify-content: space-around;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .list-header {
@@ -161,4 +162,9 @@ body {
 
 .listing:hover .overview {
     opacity: 1;
+}
+
+.scroll-list {
+    overflow-x:scroll;
+    overflow-y:hidden;
 }

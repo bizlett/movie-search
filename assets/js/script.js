@@ -7,7 +7,8 @@ const trendingUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_K
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
-const searchForm = document.querySelector('#search-form');
+// searchForm isn't being used right now
+// const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
 
