@@ -145,7 +145,7 @@ body {
 }
 
 .overview {
-    position: absolute;
+    /* position: absolute;
     height: 23rem;
     width: 16rem;
     opacity: 0;
@@ -160,7 +160,7 @@ body {
     overflow: scroll;
     overflow-x: hidden;
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    scrollbar-width: none; */
 }
 
 .overview::-webkit-scrollbar {
@@ -174,4 +174,14 @@ body {
 .scroll-list {
     overflow-x:scroll;
     overflow-y:hidden;
+}
+
+/* alerts */
+
+.modal-content {
+
+}
+
+.bootbox-close-button {
+    
 }
