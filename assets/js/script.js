@@ -105,14 +105,14 @@ function createWatchList(data) {
     watchList.innerHTML = '';
 
     // create container to hold search results heading
-    let resultsHeader = document.createElement('div');
-    resultsHeader.classList.add('list-header');
+    let listHeader = document.createElement('div');
+    listHeader.classList.add('list-header');
 
     // write content to results header
-    resultsHeader.textContent = 'Search results';
+    listHeader.textContent = 'Search results';
 
     // append results header into watch list section
-    watchList.appendChild(resultsHeader);
+    watchList.appendChild(listHeader);
 
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {
@@ -150,6 +150,20 @@ function createPopularList(data) {
     // clear current results before adding new results
     popularList.innerHTML = '';
 
+    // create container to hold search results heading
+    let listHeader = document.createElement('div');
+    listHeader.classList.add('list-header');
+
+    // write content to results header
+    listHeader.textContent = 'Popular movies';
+
+    // append results header into watch list section
+    popularList.appendChild(listHeader);
+
+    // add if statement in case media type returned is tv_show which has different
+    // properties
+
+
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {
         let {
@@ -185,6 +199,19 @@ function createPopularList(data) {
 function createTrendingList(data) {
     // clear current results before adding new results
     trendingList.innerHTML = '';
+
+    // create container to hold search results heading
+    let listHeader = document.createElement('div');
+    listHeader.classList.add('list-header');
+
+    // write content to results header
+    listHeader.textContent = 'Trending movies';
+
+    // append results header into watch list section
+    trendingList.appendChild(listHeader);
+
+    // add if statement in case media type returned is tv_show which has different
+    // properties
 
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {
