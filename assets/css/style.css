@@ -9,8 +9,14 @@
 
 body {
     background-color: rgb(33, 47, 69);
-    overflow-x: hidden;
 }
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+
 
 /* Navbar */
 
@@ -101,11 +107,12 @@ body {
 
 /* Listings containers & headings */
 
-#watch-list,
+#watch-list{}
+
 #popular-list,
 #trending-list {
     max-height: 30rem;
-    justify-content: space-around;
+    justify-content:flex-start;
     display: flex;
     flex-wrap: nowrap;
 }
