@@ -1,9 +1,9 @@
 // Global variables
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
-const url = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}`;
+const url = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US`;
 
 const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&sort_by=popularity.desc`;
-const trendingUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_average.desc`;
+const trendingUrl = `https://api.themoviedb.org/3/discover/movie?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&sort_by=vote_average.desc`;
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
@@ -124,6 +124,8 @@ function createWatchList(data) {
             overview
         } = movie;
 
+        if (poster_path !== null) {
+        
         // create container to hold search results
         let listingContainer = document.createElement('div');
         listingContainer.classList.add('listing');
@@ -142,6 +144,7 @@ function createWatchList(data) {
 
         // append results container into watch list section
         watchList.appendChild(listingContainer);
+        }
     });
 };
 
@@ -164,6 +167,8 @@ function createPopularList(data) {
             overview
         } = movie;
 
+        if (poster_path !== null) {
+
         // create container to hold search results
         let listingContainer = document.createElement('div');
         listingContainer.classList.add('listing');
@@ -182,6 +187,7 @@ function createPopularList(data) {
 
         // append results container into watch list section
         popularList.appendChild(listingContainer);
+        }
     });
 };
 
@@ -190,9 +196,6 @@ function createPopularList(data) {
 function createTrendingList(data) {
     // clear current results before adding new results
     trendingList.innerHTML = '';
-
-    // add if statement in case media type returned is tv_show which has different
-    // properties
 
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {
@@ -203,6 +206,8 @@ function createTrendingList(data) {
             overview
         } = movie;
 
+        if (poster_path !== null) {
+            
         // create container to hold search results
         let listingContainer = document.createElement('div');
         listingContainer.classList.add('listing');
@@ -221,5 +226,6 @@ function createTrendingList(data) {
 
         // append results container into watch list section
         trendingList.appendChild(listingContainer);
+    }
     });
 };
