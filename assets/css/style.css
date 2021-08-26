@@ -11,13 +11,6 @@ body {
     background-color: rgb(33, 47, 69);
 }
 
-.wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 2rem;
-}
-
-
 /* Navbar */
 
 .navbar {
