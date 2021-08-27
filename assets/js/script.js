@@ -2,8 +2,8 @@
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
 const url = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US`;
 
-const popularUrl = `https://api.themoviedb.org/3/discover/movie?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&sort_by=popularity.desc`;
-const trendingUrl = `https://api.themoviedb.org/3/discover/movie?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&sort_by=vote_average.desc`;
+const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&page=`;
+const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&page=1`;
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
@@ -14,14 +14,14 @@ const searchButton = document.querySelector('#search-button');
 
 const watchList = document.querySelector('#watch-list');
 const popularList = document.querySelector('#popular-list');
-const trendingList = document.querySelector('#trending-list');
+const topRatedList = document.querySelector('#top-rated-list');
 
 // Event Listeners
 searchButton.addEventListener('click', getWatch);
 
 window.addEventListener('load', (event) => {
     getPopularMovies();
-    getTrendingMovies();
+    getTopRatedMovies();
 });
 
 // Functions 
@@ -82,16 +82,16 @@ function getPopularMovies(e) {
 }
 
 
-// function to get trending movies
-function getTrendingMovies(e) {
+// function to get top rated movies
+function getTopRatedMovies(e) {
     // calls to api url to get information
-    fetch(trendingUrl)
+    fetch(topRatedUrl)
         // responds and returns response as json
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
             console.log(data);
-            createTrendingList(data.results);
+            createTopRatedList(data.results);
         })
         // if error - logs error to console 
         .catch((error) => {
@@ -154,10 +154,6 @@ function createPopularList(data) {
     // clear current results before adding new results
     popularList.innerHTML = '';
 
-    // add if statement in case media type returned is tv_show which has different
-    // properties
-
-
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {
         let {
@@ -192,10 +188,10 @@ function createPopularList(data) {
 };
 
 
-// function to display trending movies  
-function createTrendingList(data) {
+// function to display top rated movies  
+function createTopRatedList(data) {
     // clear current results before adding new results
-    trendingList.innerHTML = '';
+    topRatedList.innerHTML = '';
 
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {
@@ -225,7 +221,7 @@ function createTrendingList(data) {
        `;
 
         // append results container into watch list section
-        trendingList.appendChild(listingContainer);
+        topRatedList.appendChild(listingContainer);
     }
     });
 };

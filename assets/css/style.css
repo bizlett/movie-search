@@ -103,7 +103,7 @@ body {
 #watch-list{}
 
 #popular-list,
-#trending-list {
+#top-rated-list {
     max-height: 30rem;
     justify-content:flex-start;
     display: flex;
