@@ -137,6 +137,18 @@ body {
     font-size: 1.2rem;
 }
 
+.zoom {
+    transition: transform .2s;
+}
+
+.zoom:hover {
+    transform: scale(0.95);
+}
+
+.zoom-right:hover {
+    transform: scale(0.95);
+}
+
 .overview {
     /* position: absolute;
     height: 23rem;

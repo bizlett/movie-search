@@ -128,7 +128,7 @@ function createWatchList(data) {
         
         // create container to hold search results
         let listingContainer = document.createElement('div');
-        listingContainer.classList.add('listing');
+        listingContainer.classList.add('listing', 'zoom');
 
         // write content to listing container - poster image, title, rating
         listingContainer.innerHTML = `
@@ -167,7 +167,7 @@ function createPopularList(data) {
 
         // create container to hold search results
         let listingContainer = document.createElement('div');
-        listingContainer.classList.add('listing');
+        listingContainer.classList.add('listing', 'zoom');
 
         // write content to listing container - poster image, title, rating
         listingContainer.innerHTML = `
@@ -175,9 +175,6 @@ function createPopularList(data) {
        <div class="listing-info">
        <h4>${title}</h4>
        <span>Rating ${vote_average}</span>
-       </div>
-       <div class="overview">
-       ${overview}  
        </div>
        `;
 
@@ -206,7 +203,7 @@ function createTopRatedList(data) {
             
         // create container to hold search results
         let listingContainer = document.createElement('div');
-        listingContainer.classList.add('listing');
+        listingContainer.classList.add('listing', 'zoom');
 
         // write content to listing container - poster image, title, rating
         listingContainer.innerHTML = `
