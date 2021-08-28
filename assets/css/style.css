@@ -100,8 +100,7 @@ body {
 
 /* Listings containers & headings */
 
-#watch-list{}
-
+#watch-list,
 #popular-list,
 #top-rated-list {
     max-height: 30rem;
