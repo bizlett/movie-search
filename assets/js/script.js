@@ -40,20 +40,20 @@ function getWatch(e) {
         // define parameters 
         let mySearchUrl = url + '&query=' + search;
 
-        // calls to api url to get information
+        // calls to api url to get person based on user search
         fetch(mySearchUrl)
             // responds and returns response as json
             .then((res) => res.json())
-            // logs data from api to console 
+            // get person id from previous api call
             .then((data) => {
-                // console.log(data);
-                // createWatchList(data.results[0].known_for);
                 let person_id = data.results[0].id;
+                // second api call to return movie credits using person id
                 fetch(`
                 https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
                 .then((res) =>res.json())
+                // trigger createWatchList function to display movie credit results
                 .then((data) => {
-                    console.log(data);
+                    createWatchList(data.cast);
                 })
             })
             
