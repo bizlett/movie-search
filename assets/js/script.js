@@ -46,9 +46,17 @@ function getWatch(e) {
             .then((res) => res.json())
             // logs data from api to console 
             .then((data) => {
-                console.log(data);
-                createWatchList(data.results[0].known_for);
+                // console.log(data);
+                // createWatchList(data.results[0].known_for);
+                let person_id = data.results[0].id;
+                fetch(`
+                https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
+                .then((res) =>res.json())
+                .then((data) => {
+                    console.log(data);
+                })
             })
+            
             // if error - logs error to console 
             .catch((error) => {
                 console.log(error);
