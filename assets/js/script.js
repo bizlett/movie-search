@@ -113,15 +113,8 @@ function createWatchList(data) {
     // clear current results before adding new results
     watchList.innerHTML = '';
 
-    // create container to hold search results heading
-    let listHeader = document.createElement('div');
-    listHeader.classList.add('list-header');
-
-    // write content to results header
-    listHeader.textContent = 'Search results';
-
-    // append results header into watch list section
-    watchList.appendChild(listHeader);
+    // show results header
+    document.getElementById('search-results-header').style.display = "block";
 
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {

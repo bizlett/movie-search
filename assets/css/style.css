@@ -100,6 +100,10 @@ body {
 
 /* Listings containers & headings */
 
+#search-results-header {
+    display: none;
+}
+
 #watch-list,
 #popular-list,
 #top-rated-list {
