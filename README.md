@@ -254,54 +254,15 @@ Finally, I asked friends and family to test the website on their devices. I aske
 
 ### **Bugs and Solutions**
 
-* Hero Image
-    * *Bug* - The hero image worked correctly on desktop and appeared to render correctly when using dev tools to test mobile responsiveness. However, when I deployed the site and checked on mobile devices, the image was rendering far too large - only a small corner was appearing. 
+getWatchList header created as div displaying inline with search results. Fixed by adding header div in html, display none which shows on search button click. 
 
-    * *Fix* - Applied flex-wrap to the hero image id in css.
+getWatchList originally only diplaying 3 results - what actor or director was known for. Wanted to display whole movie credits. Solved with 2 api calls in the function. 
 
-    * *Verdict* - Image now shows as expected on all browsers.
+getWatchList search accesses cast property to pull movie credits which doesn't work when you search directors. Need to access different property for results when it comes to directors. Look at director object and see what property most relevant. Likely need an if statement to differentiate whether actor or director. May not have time to sort this.
 
-* Hamburger dropdown menu
-    * *Bug* - On mobile devices when you click the hamburger icon, the menu appeared. When you click on one of the links the dropdown menu didn't disappear but stayed open. This was not a good user experience.
+getWatchList displays more than 20 results which makes the horizontal scroll bad (worse?!) ux. Would be better to limit to 20 results then add show more button as with popular and top rated movies
 
-    * *Fix* - I found various suggestions on fixes suggested on various forums, but this one from [Stack Overflow](https://stackoverflow.com/questions/42401606/how-to-hide-collapsible-bootstrap-navbar-on-click) provided me with a code that I could edit to fix the issue. I tried the data-bs-toggle and data-bs-target data attributes suggestion on each link to toggle the Collapse navbar but this didn't work. So I used the JavaScript solution to add a click event listener on the menu items and linked it to the navbarNavDropdown id.
-
-    * *Verdict* - The burger menu now collapses on click/tap of the nav link.
-
-* Creative team names and imdb Icons
-    * *Bug* - The creative team names and icons were originally in <p> tags within a div. They weren't particularly mobile responsive and the formatting and spacing was out when testing on other devices.  
-
-    * *Fix* - I rewrote the html to put the creative team names and imdb icons into a list. I put the icons as their own list item.
-   
-    * *Verdict* - The icons move responsively within the div now across all devices. 
-   
-* Fixed navigation bar
-    * *Bug* - The navigation bar wasn't sticking at the top of the page on scroll.
-
-    * *Fix* - I removed overflow: hidden properties which I had originally included as a fix to a white space issue (see further down!)
-
-    * *Verdict* - Navbar now stays at the top of the page when you scroll down across all devices.
-
-* Navigation bar width
-    * *Bug* - There was small gap on the left side of the website between the browser edge and the nav bar. The hero image was visible in the gap across all devices.
-
-    * *Fix* - I created a .row class to override the Bootstrap properties and remove the gutters.
-
-    * *Verdict* - Navbar now stretches 100% width with no gap.
-
-* Navigation and footer bar overflow
-    * *Bug* - White space was rendering on the right side of the website by the scroll bar caused by the navbar and footer overflowing.
-
-    * *Fix* - I reworked my html to adhere to container - row - column rules. I removed unnecessary nested divs and applied container-fluid class across the whole structure.
-
-    * *Verdict* - Containers all align and overflow on y-axis has disappeared. The user has a clean scrolling experience across all devices now.
-
-* Footer images
-    * *Bug* - Images in footer not rendering due to broken links/missing pathways.
-
-    * *Fix* - I tried to fix with absolute and relative pathways and neither solution appeared to be working. The issue was due to the cache! I couldn't see the fix from Gitpod workspace.
-
-    * *Verdict* - Relative paths did work. After pushing the code, I could see the issue was fixed.
+top rated and popular movies display only page 1 results as default everytime. Want different results (i.e. different pages) to display when you click 'see more' buttons. Would be nice for results to change on window.load too but may not have time for this. 
    
 [Back to Top](#table-of-contents)
 

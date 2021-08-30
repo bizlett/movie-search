@@ -7,14 +7,15 @@ const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=f0eb98
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
-// searchForm isn't being used right now
-// const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
 
 const watchList = document.querySelector('#watch-list');
 const popularList = document.querySelector('#popular-list');
 const topRatedList = document.querySelector('#top-rated-list');
+
+const morePopularMoviesButton = document.querySelector('#more-popular');
+const moreTopRatedMoviesButton = document.querySelector('#more-top-rated');
 
 // Event Listeners
 searchButton.addEventListener('click', getWatch);
@@ -23,6 +24,10 @@ window.addEventListener('load', (event) => {
     getPopularMovies();
     getTopRatedMovies();
 });
+
+morePopularMoviesButton.addEventListener('click', getMorePopularMovies);
+
+moreTopRatedMoviesButton.addEventListener('click', getMoreTopRatedMovies);
 
 // Functions 
 
@@ -50,13 +55,13 @@ function getWatch(e) {
                 // second api call to return movie credits using person id
                 fetch(`
                 https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
-                .then((res) =>res.json())
-                // trigger createWatchList function to display movie credit results
-                .then((data) => {
-                    createWatchList(data.cast);
-                })
+                    .then((res) => res.json())
+                    // trigger createWatchList function to display movie credit results
+                    .then((data) => {
+                        createWatchList(data.cast);
+                    })
             })
-            
+
             // if error - logs error to console 
             .catch((error) => {
                 console.log(error);
@@ -126,13 +131,13 @@ function createWatchList(data) {
         } = movie;
 
         if (poster_path !== null) {
-        
-        // create container to hold search results
-        let listingContainer = document.createElement('div');
-        listingContainer.classList.add('listing', 'zoom');
 
-        // write content to listing container - poster image, title, rating
-        listingContainer.innerHTML = `
+            // create container to hold search results
+            let listingContainer = document.createElement('div');
+            listingContainer.classList.add('listing', 'zoom');
+
+            // write content to listing container - poster image, title, rating
+            listingContainer.innerHTML = `
        <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
        <div class="listing-info">
        <h4>${title}</h4>
@@ -143,8 +148,8 @@ function createWatchList(data) {
        </div>
        `;
 
-        // append results container into watch list section
-        watchList.appendChild(listingContainer);
+            // append results container into watch list section
+            watchList.appendChild(listingContainer);
         }
     });
 };
@@ -166,12 +171,12 @@ function createPopularList(data) {
 
         if (poster_path !== null) {
 
-        // create container to hold search results
-        let listingContainer = document.createElement('div');
-        listingContainer.classList.add('listing', 'zoom');
+            // create container to hold search results
+            let listingContainer = document.createElement('div');
+            listingContainer.classList.add('listing', 'zoom');
 
-        // write content to listing container - poster image, title, rating
-        listingContainer.innerHTML = `
+            // write content to listing container - poster image, title, rating
+            listingContainer.innerHTML = `
        <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
        <div class="listing-info">
        <h4>${title}</h4>
@@ -179,8 +184,8 @@ function createPopularList(data) {
        </div>
        `;
 
-        // append results container into watch list section
-        popularList.appendChild(listingContainer);
+            // append results container into watch list section
+            popularList.appendChild(listingContainer);
         }
     });
 };
@@ -201,13 +206,13 @@ function createTopRatedList(data) {
         } = movie;
 
         if (poster_path !== null) {
-            
-        // create container to hold search results
-        let listingContainer = document.createElement('div');
-        listingContainer.classList.add('listing', 'zoom');
 
-        // write content to listing container - poster image, title, rating
-        listingContainer.innerHTML = `
+            // create container to hold search results
+            let listingContainer = document.createElement('div');
+            listingContainer.classList.add('listing', 'zoom');
+
+            // write content to listing container - poster image, title, rating
+            listingContainer.innerHTML = `
        <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
        <div class="listing-info">
        <h4>${title}</h4>
@@ -218,8 +223,21 @@ function createTopRatedList(data) {
        </div>
        `;
 
-        // append results container into watch list section
-        topRatedList.appendChild(listingContainer);
-    }
+            // append results container into watch list section
+            topRatedList.appendChild(listingContainer);
+        }
     });
 };
+
+// function to show next page of popular movie results
+function getMorePopularMovies(e, data) {
+    // clear current results before adding new results - TMDb limits to 20 per page
+    popularList.innerHTML = '';
+
+    // for loop to iterate through page results
+    // make page requests by using the page parameter (page=XX) up to 500
+    // each page is another call to the api
+    // can loop up to 500 times
+
+
+}
