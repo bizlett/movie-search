@@ -85,7 +85,7 @@ function getPopularMovies(e) {
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
-            // console.log(data);
+            console.log(data);
             createPopularList(data.results);
         })
         // if error - logs error to console 
@@ -232,9 +232,26 @@ function createTopRatedList(data) {
 };
 
 // function to show next page of popular movie results
-function getMorePopularMovies(e, data) {
+function getMorePopularMovies(e) {
     // clear current results before adding new results - TMDb limits to 20 per page
     popularList.innerHTML = '';
+
+    let page = [1, 2, 3, 4, 5]
+    let morePopularUrl = popularUrl + `${page}`
+
+    for (let i=0; i < page.length; i++)
+
+    fetch(morePopularUrl)
+    // responds and returns response as json
+    .then((res) => res.json())
+    // logs data from api to console 
+    .then((data) => {
+        console.log(data);
+    })
+    // if error - logs error to console 
+    .catch((error) => {
+        console.log(error);
+    });
 
     // for loop to iterate through page results
     // make page requests by using the page parameter (page=XX) up to 500
