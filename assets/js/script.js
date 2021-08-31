@@ -3,7 +3,7 @@ const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
 const url = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US`;
 
 const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&page=`;
-const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&page=1`;
+const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&page=`;
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
@@ -31,7 +31,7 @@ moreTopRatedMoviesButton.addEventListener('click', getMoreTopRatedMovies);
 
 // Functions 
 
-// Search movie/series function
+// Search movie/series function based on person
 function getWatch(e) {
     // prevent form from sumitting
     e.preventDefault();
@@ -231,32 +231,52 @@ function createTopRatedList(data) {
     });
 };
 
-// function to show next page of popular movie results
+
+// function to display new page of popular movie results when 'search more' button is clicked
 function getMorePopularMovies(e) {
     // clear current results before adding new results - TMDb limits to 20 per page
     popularList.innerHTML = '';
 
-    // We know there are 500 pages of results for popular movies 
-    // The url must use the page parameter query to access the next page
-    // So rather than use a for loop, we define page with a math.random to generate a num between 1-500 
-    // then we construct a new url for the fetch using the generated page number 
-    // this should mean we get a new page of results every time the see more button is clicked
-    
     // define page
     let page = Math.floor(Math.random() * 500) + 1;
 
     // calls to the api
     fetch(popularUrl + `${page}`) //url is constructed with randomly generated page number
 
-    // responds and returns response as json
-    .then((res) => res.json())
-    // logs data from api to console 
-    .then((data) => {
-        console.log(data);
-        createPopularList(data.results);
-    })
-    // if error - logs error to console 
-    .catch((error) => {
-        console.log(error);
-    });
-}   
+        // responds and returns response as json
+        .then((res) => res.json())
+        // logs data from api to console 
+        .then((data) => {
+            console.log(data);
+            createPopularList(data.results);
+        })
+        // if error - logs error to console 
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+
+// function to display new page of Top Rated movie results when 'search more' button is clicked
+function getMoreTopRatedMovies(e) {
+    // clear current results before adding new results - TMDb limits to 20 per page
+    popularList.innerHTML = '';
+
+    // define page
+    let page = Math.floor(Math.random() * 453) + 1;
+
+    // calls to the api
+    fetch(popularUrl + `${page}`) //url is constructed with randomly generated page number
+
+        // responds and returns response as json
+        .then((res) => res.json())
+        // logs data from api to console 
+        .then((data) => {
+            console.log(data);
+            createTopRatedList(data.results);
+        })
+        // if error - logs error to console 
+        .catch((error) => {
+            console.log(error);
+        });
+}
