@@ -129,7 +129,7 @@ function createWatchList(data) {
             vote_average,
             overview
         } = movie;
-
+        // removes any results that don't have a poster image
         if (poster_path !== null) {
 
             // create container to hold search results
@@ -169,6 +169,7 @@ function createPopularList(data) {
             overview
         } = movie;
 
+        // removes any results that don't have a poster image
         if (poster_path !== null) {
 
             // create container to hold search results
@@ -205,6 +206,7 @@ function createTopRatedList(data) {
             overview
         } = movie;
 
+        // removes any results that don't have a poster image
         if (poster_path !== null) {
 
             // create container to hold search results
