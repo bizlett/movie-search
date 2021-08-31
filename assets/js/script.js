@@ -236,27 +236,27 @@ function getMorePopularMovies(e) {
     // clear current results before adding new results - TMDb limits to 20 per page
     popularList.innerHTML = '';
 
-    let page = [1, 2, 3, 4, 5]
-    let morePopularUrl = popularUrl + `${page}`
+    // We know there are 500 pages of results for popular movies 
+    // The url must use the page parameter query to access the next page
+    // So rather than use a for loop, we define page with a math.random to generate a num between 1-500 
+    // then we construct a new url for the fetch using the generated page number 
+    // this should mean we get a new page of results every time the see more button is clicked
+    
+    // define page
+    let page = Math.floor(Math.random() * 500) + 1;
 
-    for (let i=0; i < page.length; i++)
+    // calls to the api
+    fetch(popularUrl + `${page}`) //url is constructed with randomly generated page number
 
-    fetch(morePopularUrl)
     // responds and returns response as json
     .then((res) => res.json())
     // logs data from api to console 
     .then((data) => {
         console.log(data);
+        createPopularList(data.results);
     })
     // if error - logs error to console 
     .catch((error) => {
         console.log(error);
     });
-
-    // for loop to iterate through page results
-    // make page requests by using the page parameter (page=XX) up to 500
-    // each page is another call to the api
-    // can loop up to 500 times
-
-
-}
+}   
