@@ -234,9 +234,6 @@ function createTopRatedList(data) {
 
 // function to display new page of popular movie results when 'search more' button is clicked
 function getMorePopularMovies(e) {
-    // clear current results before adding new results - TMDb limits to 20 per page
-    popularList.innerHTML = '';
-
     // define page
     let page = Math.floor(Math.random() * 500) + 1;
 
@@ -259,9 +256,6 @@ function getMorePopularMovies(e) {
 
 // function to display new page of Top Rated movie results when 'search more' button is clicked
 function getMoreTopRatedMovies(e) {
-    // clear current results before adding new results - TMDb limits to 20 per page
-    popularList.innerHTML = '';
-
     // define page
     let page = Math.floor(Math.random() * 453) + 1;
 
