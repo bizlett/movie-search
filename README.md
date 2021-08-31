@@ -263,6 +263,8 @@ getWatchList search accesses cast property to pull movie credits which doesn't w
 getWatchList displays more than 20 results which makes the horizontal scroll bad (worse?!) ux. Would be better to limit to 20 results then add show more button as with popular and top rated movies
 
 top rated and popular movies display only page 1 results as default everytime. Want different results (i.e. different pages) to display when you click 'see more' buttons. Would be nice for results to change on window.load too but may not have time for this. 
+
+when top rated see more button is clicked - popular movies list disappears until popular see more button is clicked
    
 [Back to Top](#table-of-contents)
 
