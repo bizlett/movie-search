@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Want to watch a movie but can't decide what? Let watcha do the hard work for you.
+    Powered by TMDb, our movie search recommends the most popular and trending movies for you to kick back and chill. 
+    Not feeling inspired? You can always search by actor, writer or director to discover something new!">
+    <meta name="keywords" content="film, movie, search, watch, actor, director, actress">
+    <meta name="author" content="Bizzy Day">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watcha Movie Search</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <section class="container">
+            <div class="navbar-header">
+                <a href="index.html" class="navbar-brand">watcha</a>
+            </div>
+        </section>
+    </nav>
+
+        <!-- Movie information container -->
+        <div class="container">
+            <div class="movie-info">
+                <h2>${title}</h2>
+                <ul>
+                    <li>${genre_ids}</li>
+                    <li>release_date</li>
+                </ul>
+            </div>
+            <div>
+                <p>${overview}</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <p>ADD TMDb LOGO. This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
+        </footer>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+    <!-- JS sheet -->
+    <script src="assets/js/script.js"></script>
+    <!-- Bootbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.js"
+        integrity="sha512-K3MtzSFJk6kgiFxCXXQKH6BbyBrTkTDf7E6kFh3xBZ2QNMtb6cU/RstENgQkdSLkAZeH/zAtzkxJOTTd8BqpHQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>
