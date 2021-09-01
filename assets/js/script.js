@@ -153,7 +153,6 @@ function createWatchList(data) {
             poster_path,
             title,
             vote_average,
-            overview
         } = movie;
         // removes any results that don't have a poster image
         if (poster_path !== null) {
@@ -170,7 +169,7 @@ function createWatchList(data) {
        <span>Rating ${vote_average}</span>
        </div>
        `;
-
+       
             // append results container into watch list section
             watchList.appendChild(listingContainer);
         }
@@ -189,7 +188,6 @@ function createPopularList(data) {
             poster_path,
             title,
             vote_average,
-            overview
         } = movie;
 
         // removes any results that don't have a poster image
@@ -207,7 +205,6 @@ function createPopularList(data) {
        <span>Rating ${vote_average}</span>
        </div>
        `;
-
             // append results container into watch list section
             popularList.appendChild(listingContainer);
         }
@@ -226,7 +223,6 @@ function createTopRatedList(data) {
             poster_path,
             title,
             vote_average,
-            overview
         } = movie;
 
         // removes any results that don't have a poster image
@@ -294,3 +290,4 @@ function getMoreTopRatedMovies(e) {
             console.log(error);
         });
 }
+
