@@ -98,7 +98,7 @@ function getWatch(e) {
 
     } else {
         // Alert message when search box is empty
-        bootbox.alert("Give us a hint! Search an actor or director for inspiration!");
+        bootbox.alert("Give us a hint! Search an actor, writer or director for inspiration!");
     }
 };
 
