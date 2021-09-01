@@ -1,6 +1,6 @@
 // Global variables
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
-const url = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US`;
+const url = `https://api.themoviedb.org/3/search/person?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US`;
 
 const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&page=`;
 const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&page=`;
@@ -51,15 +51,41 @@ function getWatch(e) {
             .then((res) => res.json())
             // get person id from previous api call
             .then((data) => {
-                let person_id = data.results[0].id;
-                // second api call to return movie credits using person id
-                fetch(`
-                https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
-                    .then((res) => res.json())
-                    // trigger createWatchList function to display movie credit results
-                    .then((data) => {
-                        createWatchList(data.cast);
-                    })
+                // if person is an actor
+                if (data.results[0].known_for_department == 'Acting') {
+                    let person_id = data.results[0].id;
+                    console.log(data);
+                    // second api call to return movie credits using person id
+                    fetch(`https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
+                        .then((res) => res.json())
+                        // trigger createWatchList function to display movie credit results
+                        .then((data) => {
+                            createWatchList(data.cast);
+                        })
+                } else if (data.results[0].known_for_department == 'Directing') {
+                    let person_id = data.results[0].id;
+                    console.log(data);
+                    // second api call to return movie credits using person id
+                    fetch(`https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
+                        .then((res) => res.json())
+                        // trigger createWatchList function to display movie credit results
+                        .then((data) => {
+                            createWatchList(data.crew);
+                        })
+                } else if (data.results[0].known_for_department == 'Writing') {
+                    let person_id = data.results[0].id;
+                    console.log(data);
+                    // second api call to return movie credits using person id
+                    fetch(`https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
+                        .then((res) => res.json())
+                        // trigger createWatchList function to display movie credit results
+                        .then((data) => {
+                            createWatchList(data.crew);
+                        })
+                } else {
+                    // Alert message to prompt to ask for director or actor
+                    bootbox.alert("Sorry no results here! Try searching for an actor, writer or director.");
+                }
             })
 
             // if error - logs error to console 
