@@ -169,9 +169,6 @@ function createWatchList(data) {
        <h4>${title}</h4>
        <span>Rating ${vote_average}</span>
        </div>
-       <div class="overview">
-       ${overview}  
-       </div>
        `;
 
             // append results container into watch list section
@@ -245,9 +242,6 @@ function createTopRatedList(data) {
        <div class="listing-info">
        <h4>${title}</h4>
        <span>Rating ${vote_average}</span>
-       </div>
-       <div class="overview">
-       ${overview}  
        </div>
        `;
 
