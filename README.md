@@ -265,6 +265,8 @@ getWatchList displays more than 20 results which makes the horizontal scroll bad
 top rated and popular movies display only page 1 results as default everytime. Want different results (i.e. different pages) to display when you click 'see more' buttons. Would be nice for results to change on window.load too but may not have time for this. 
 
 when top rated see more button is clicked - popular movies list disappears until popular see more button is clicked. Noted code hangover from getMorePopular function meant that the getMoreTopRated function was clearing popular list results and not top rated results. Removed clear results from both functions as unnecessary code due to the new page replacing the previous anyway. 
+
+when trending see more button clicked - new results don't always display. fixed by adjusting random number max from 1000 to 500. 
    
 [Back to Top](#table-of-contents)
 
