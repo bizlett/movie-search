@@ -2,8 +2,8 @@
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
 const url = `https://api.themoviedb.org/3/search/person?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US`;
 
-const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&page=`;
-const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US&page=`;
+const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US`;
+const trendingUrl = `https://api.themoviedb.org/3/trending/all/day?api_key=f0eb98b7c925ef27dc4b795263d8bfe8`;
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
@@ -12,22 +12,22 @@ const searchButton = document.querySelector('#search-button');
 
 const watchList = document.querySelector('#watch-list');
 const popularList = document.querySelector('#popular-list');
-const topRatedList = document.querySelector('#top-rated-list');
+const trendingList = document.querySelector('#trending-list');
 
 const morePopularMoviesButton = document.querySelector('#more-popular');
-const moreTopRatedMoviesButton = document.querySelector('#more-top-rated');
+const moreTrendingMoviesButton = document.querySelector('#more-trending');
 
 // Event Listeners
 searchButton.addEventListener('click', getWatch);
 
 window.addEventListener('load', (event) => {
     getPopularMovies();
-    getTopRatedMovies();
+    getTrendingMovies();
 });
 
 morePopularMoviesButton.addEventListener('click', getMorePopularMovies);
 
-moreTopRatedMoviesButton.addEventListener('click', getMoreTopRatedMovies);
+moreTrendingMoviesButton.addEventListener('click', getMoreTrendingMovies);
 
 // Functions 
 
@@ -122,15 +122,15 @@ function getPopularMovies(e) {
 
 
 // function to get top rated movies
-function getTopRatedMovies(e) {
+function getTrendingMovies(e) {
     // calls to api url to get information
-    fetch(topRatedUrl)
+    fetch(trendingUrl)
         // responds and returns response as json
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
             console.log(data);
-            createTopRatedList(data.results);
+            createTrendingList(data.results);
         })
         // if error - logs error to console 
         .catch((error) => {
@@ -213,9 +213,9 @@ function createPopularList(data) {
 
 
 // function to display top rated movies  
-function createTopRatedList(data) {
+function createTrendingList(data) {
     // clear current results before adding new results
-    topRatedList.innerHTML = '';
+    trendingList.innerHTML = '';
 
     // iterate over results and create listing container to hold it within
     data.forEach(movie => {
@@ -242,7 +242,7 @@ function createTopRatedList(data) {
        `;
 
             // append results container into watch list section
-            topRatedList.appendChild(listingContainer);
+            trendingList.appendChild(listingContainer);
         }
     });
 };
@@ -254,7 +254,7 @@ function getMorePopularMovies(e) {
     let page = Math.floor(Math.random() * 500) + 1;
 
     // calls to the api
-    fetch(popularUrl + `${page}`) //url is constructed with randomly generated page number
+    fetch(popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
 
         // responds and returns response as json
         .then((res) => res.json())
@@ -271,19 +271,19 @@ function getMorePopularMovies(e) {
 
 
 // function to display new page of Top Rated movie results when 'search more' button is clicked
-function getMoreTopRatedMovies(e) {
+function getMoreTrendingMovies(e) {
     // define page
-    let page = Math.floor(Math.random() * 453) + 1;
+    let page = Math.floor(Math.random() * 1000) + 1;
 
     // calls to the api
-    fetch(popularUrl + `${page}`) //url is constructed with randomly generated page number
+    fetch(popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
 
         // responds and returns response as json
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
             console.log(data);
-            createTopRatedList(data.results);
+            createTrendingList(data.results);
         })
         // if error - logs error to console 
         .catch((error) => {

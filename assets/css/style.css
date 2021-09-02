@@ -99,19 +99,19 @@ body {
 }
 
 #more-popular,
-#more-top-rated {
+#more-trending {
     color:#fff;
     font-size: 1rem;
     box-shadow: none;
 }
 
 #more-popular:hover,
-#more-top-rated:hover{
+#more-trending:hover{
     color:#6d236d;
 }
 
 #more-popular,
-#more-top-rated span {
+#more-trending span {
     display: inline;
 }
 
@@ -123,7 +123,7 @@ body {
 
 #watch-list,
 #popular-list,
-#top-rated-list {
+#trending-list {
     max-height: 30rem;
     justify-content:flex-start;
     display: flex;
