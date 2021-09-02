@@ -174,33 +174,6 @@ body {
     transform: scale(0.95);
 }
 
-.overview {
-    /* position: absolute;
-    height: 23rem;
-    width: 16rem;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #312244;
-    transform: translateY(-92.6%) translateX(-3.1%);
-    border-radius: 3px;
-    font-size: 1rem;
-    text-align: center;
-    padding: 1rem;
-    align-content: center;
-    overflow: scroll;
-    overflow-x: hidden;
-    -ms-overflow-style: none;
-    scrollbar-width: none; */
-}
-
-.overview::-webkit-scrollbar {
-    display: none;
-}
-
-.listing:hover .overview {
-    opacity: 1;
-}
-
 .scroll-list {
     overflow-x:scroll;
     overflow-y:hidden;
