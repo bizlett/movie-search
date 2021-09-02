@@ -53,20 +53,30 @@
         <section class="row g-0 scroll-list" id="watch-list"></section>
 
         <!-- Popular List container -->
-        <div class="list-header">Popular</div>
-        <button id="more-popular">Search more</button>
+        <div class="list-header">
+            <h2>Popular</h2>
+            <span><button id="more-popular" class="btn">Search more</button></span>
+        </div>
         <section class="row g-0 scroll-list" id="popular-list"></section>
 
         <!-- Top Rated List container -->
-        <div class="list-header">Top Rated</div>
-        <button id="more-top-rated">Search more</button>
+        <div class="list-header">
+            <h2>Top Rated</h2>
+            <span><button id="more-top-rated" class="btn">Search more</button></span>
+        </div>
         <section class="row g-0 scroll-list" id="top-rated-list"></section>
 
         <!-- Footer -->
         <footer class="text-center">
-            <p>ADD TMDb LOGO. This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
+            <div class="row">
+                <div class="col-12">
+                    <span><img src="/assets/images/tmdb.svg" alt="tmdb logo" id="tmdb-logo"> This website uses the TMDb API but is not endorsed or certified by TMDb.</span>
+                </div>
+            </div>
+           
         </footer>
     </section>
+
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

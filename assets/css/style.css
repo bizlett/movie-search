@@ -98,6 +98,23 @@ body {
     border: solid #4d194d 2px;
 }
 
+#more-popular,
+#more-top-rated {
+    color:#fff;
+    font-size: 1rem;
+    box-shadow: none;
+}
+
+#more-popular:hover,
+#more-top-rated:hover{
+    color:#6d236d;
+}
+
+#more-popular,
+#more-top-rated span {
+    display: inline;
+}
+
 /* Listings containers & headings */
 
 #search-results-header {
@@ -118,6 +135,10 @@ body {
     color: #fff;
     margin-left: 2rem;
     font-size: 1.75rem;
+}
+
+.list-header h2 {
+    display:inline-block;
 }
 
 .listing {
@@ -222,9 +243,54 @@ body {
 /* alerts */
 
 .modal-content {
-
+    text-align: center;
 }
 
 .bootbox-close-button {
-    
+    border: none;
+    background-color: #fff;
+    font-size: 2rem;
+    justify-items: left;
+}
+
+.bootbox-close-button:hover {
+    color: #6d236d;
+}
+
+.btn-primary {
+    background-color: #006466;
+    color: #fff;
+    border-radius: 5px;
+    border: solid #144552 2px;
+    box-shadow: none;
+}
+
+.btn-primary:focus {
+    background-color: #006466;
+    color: #fff;
+    border-radius: 5px;
+    border: solid #144552 2px;
+}
+
+.btn-primary:hover {
+    background-color: #3e1f47;
+    border: solid #4d194d 2px;
+}
+
+/* footer */
+
+footer {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#tmdb-logo {
+    height: 1rem;
+    display: flex;
+}
+
+footer span {
+    align-items: center;
+    display: inline-flex;
+    color: #ccc;
 }
