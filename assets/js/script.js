@@ -270,10 +270,10 @@ function getMorePopularMovies(e) {
 }
 
 
-// function to display new page of Top Rated movie results when 'search more' button is clicked
+// function to display new page of Trending movie results when 'search more' button is clicked
 function getMoreTrendingMovies(e) {
     // define page
-    let page = Math.floor(Math.random() * 1000) + 1;
+    let page = Math.floor(Math.random() * 500) + 1;
 
     // calls to the api
     fetch(popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
