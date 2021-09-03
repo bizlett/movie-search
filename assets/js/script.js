@@ -1,9 +1,10 @@
 // Global variables
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
-const url = `https://api.themoviedb.org/3/search/person?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US`;
-
-const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=f0eb98b7c925ef27dc4b795263d8bfe8&language=en-US`;
-const trendingUrl = `https://api.themoviedb.org/3/trending/all/day?api_key=f0eb98b7c925ef27dc4b795263d8bfe8`;
+const baseUrl = 'https://api.themoviedb.org/3/';
+const personUrl = `search/person?api_key=${API_KEY}&language=en-US`;
+const popularUrl = `popular?api_key=${API_KEY}&language=en-US`;
+const trendingUrl = `trending/all/day?api_key=${API_KEY}`;
+const movieUrl = `movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
