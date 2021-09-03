@@ -303,6 +303,7 @@ function getMoreTrendingMovies(e) {
 // function to open movie listing
 
 function openListing(e) {
-    alert('A movie listing will be here');
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'))
+        myModal.show();
 }
 
