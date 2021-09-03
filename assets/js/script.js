@@ -2,9 +2,9 @@
 const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
 const baseUrl = 'https://api.themoviedb.org/3/';
 const personUrl = `search/person?api_key=${API_KEY}&language=en-US`;
-const popularUrl = `popular?api_key=${API_KEY}&language=en-US`;
+const popularUrl = `movie/popular?api_key=${API_KEY}&language=en-US`;
 const trendingUrl = `trending/all/day?api_key=${API_KEY}`;
-const movieUrl = `movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
+// const movieUrl = `movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
@@ -44,10 +44,10 @@ function getWatch(e) {
     if (search != "") {
 
         // define parameters 
-        let mySearchUrl = url + '&query=' + search;
+        let searchInputUrl = baseUrl + personUrl + '&query=' + search;
 
         // calls to api url to get person based on user search
-        fetch(mySearchUrl)
+        fetch(searchInputUrl)
             // responds and returns response as json
             .then((res) => res.json())
             // get person id from previous api call
@@ -57,7 +57,7 @@ function getWatch(e) {
                     let person_id = data.results[0].id;
                     console.log(data);
                     // second api call to return movie credits using person id
-                    fetch(`https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
+                    fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
                         .then((res) => res.json())
                         // trigger createWatchList function to display movie credit results
                         .then((data) => {
@@ -67,7 +67,7 @@ function getWatch(e) {
                     let person_id = data.results[0].id;
                     console.log(data);
                     // second api call to return movie credits using person id
-                    fetch(`https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
+                    fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
                         .then((res) => res.json())
                         // trigger createWatchList function to display movie credit results
                         .then((data) => {
@@ -77,7 +77,7 @@ function getWatch(e) {
                     let person_id = data.results[0].id;
                     console.log(data);
                     // second api call to return movie credits using person id
-                    fetch(`https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
+                    fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
                         .then((res) => res.json())
                         // trigger createWatchList function to display movie credit results
                         .then((data) => {
@@ -107,7 +107,7 @@ function getWatch(e) {
 // function to get popular movies
 function getPopularMovies(e) {
     // calls to api url to get information
-    fetch(popularUrl)
+    fetch(baseUrl + popularUrl)
         // responds and returns response as json
         .then((res) => res.json())
         // logs data from api to console 
@@ -125,7 +125,7 @@ function getPopularMovies(e) {
 // function to get top rated movies
 function getTrendingMovies(e) {
     // calls to api url to get information
-    fetch(trendingUrl)
+    fetch(baseUrl + trendingUrl)
         // responds and returns response as json
         .then((res) => res.json())
         // logs data from api to console 
@@ -164,7 +164,7 @@ function createWatchList(data) {
 
             // write content to listing container - poster image, title, rating
             listingContainer.innerHTML = `
-       <img src="${posterImagePath + poster_path}" alt="${title} poster"/>
+       <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
        <div class="listing-info">
        <h4>${title}</h4>
        <span>Rating ${vote_average}</span>
@@ -255,7 +255,7 @@ function getMorePopularMovies(e) {
     let page = Math.floor(Math.random() * 500) + 1;
 
     // calls to the api
-    fetch(popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
+    fetch(baseUrl + popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
 
         // responds and returns response as json
         .then((res) => res.json())
@@ -277,7 +277,7 @@ function getMoreTrendingMovies(e) {
     let page = Math.floor(Math.random() * 500) + 1;
 
     // calls to the api
-    fetch(popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
+    fetch(baseUrl + trendingUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
 
         // responds and returns response as json
         .then((res) => res.json())
