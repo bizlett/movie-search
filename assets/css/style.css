@@ -156,6 +156,7 @@ body {
 
 .listing img {
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .listing-info h4 {
