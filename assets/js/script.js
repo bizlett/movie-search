@@ -31,10 +31,10 @@ moreTrendingMoviesButton.addEventListener('click', getMoreTrendingMovies);
 
 // Event delegation
 
-window.addEventListener('click', function(e) {
-	if(e.target.tagName.toLowerCase() == 'img') {
-		openListing();
-	}
+window.addEventListener('click', function (e) {
+    if (e.target.tagName.toLowerCase() == 'img') {
+        openListing();
+    }
 });
 
 // Functions 
@@ -177,7 +177,7 @@ function createWatchList(data) {
        <span>Rating ${vote_average}</span>
        </div>
        `;
-       
+
             // append results container into watch list section
             watchList.appendChild(listingContainer);
         }
@@ -302,8 +302,34 @@ function getMoreTrendingMovies(e) {
 
 // function to open movie listing
 
-function openListing(e) {
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'))
-        myModal.show();
-}
+function openListing(e, ) {
+    var myModal = new bootstrap.Modal(document.createElement('modal'))
+    
+    myModal.innerHTML = `
+    <div id="myModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">${title}</h5> <span>${release_date}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span>${genres}</span>
+                        <span>${runtime}</span>
+                    </div>
+                    <div>
+                        <h6>${tagline}</h6>
+                        <p>${overview}</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
 
+    myModal.show();
+}
