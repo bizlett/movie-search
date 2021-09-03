@@ -4,7 +4,6 @@ const baseUrl = 'https://api.themoviedb.org/3/';
 const personUrl = `search/person?api_key=${API_KEY}&language=en-US`;
 const popularUrl = `movie/popular?api_key=${API_KEY}&language=en-US`;
 const trendingUrl = `trending/all/day?api_key=${API_KEY}`;
-// const movieUrl = `movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
 
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
@@ -294,9 +293,6 @@ function getMoreTrendingMovies(e) {
 
 
 // function to open movie listing
-
-// Event delegation
-
 window.addEventListener('click', function (e) {
     if (e.target.tagName.toLowerCase() == 'img') {
         let target = e.target;
@@ -308,7 +304,21 @@ window.addEventListener('click', function (e) {
 function openListing(e) {
     let myModal = new bootstrap.Modal(document.getElementById('myModal'))
 
+    let movieDetailsUrl = `movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
+    let movieTrailerUrl = `movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US`;
+
     fetch()
+
+    // responds and returns response as json
+    .then((res) => res.json())
+    // logs data from api to console 
+    .then((data) => {
+        console.log(data);
+    })
+    // if error - logs error to console 
+    .catch((error) => {
+        console.log(error);
+    });
 
     // myModal.innerHTML = `
     // <div id="myModal" class="modal" tabindex="-1">
