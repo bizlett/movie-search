@@ -20,7 +20,7 @@ const moreTrendingMoviesButton = document.querySelector('#more-trending');
 // Event Listeners
 searchButton.addEventListener('click', getWatch);
 
-window.addEventListener('load', (event) => {
+window.addEventListener('load', (e) => {
     getPopularMovies();
     getTrendingMovies();
 });
@@ -28,6 +28,14 @@ window.addEventListener('load', (event) => {
 morePopularMoviesButton.addEventListener('click', getMorePopularMovies);
 
 moreTrendingMoviesButton.addEventListener('click', getMoreTrendingMovies);
+
+// Event delegation
+
+window.addEventListener('click', function(e) {
+	if(e.target.tagName.toLowerCase() == 'img') {
+		openListing();
+	}
+});
 
 // Functions 
 
@@ -289,5 +297,12 @@ function getMoreTrendingMovies(e) {
         .catch((error) => {
             console.log(error);
         });
+}
+
+
+// function to open movie listing
+
+function openListing(e) {
+    alert('A movie listing will be here');
 }
 
