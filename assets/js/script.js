@@ -297,56 +297,54 @@ window.addEventListener('click', function (e) {
     if (e.target.tagName.toLowerCase() == 'img') {
         let target = e.target;
         let movieId = target.dataset.movieId;
-        console.log(movieId);
-        openListing();
+        let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+        
+        fetch(baseUrl + movieDetailsUrl)
+            .then((res) => res.json())
+            .then((data) => {
+                    console.log(data);
+                    data.forEach(movieInfo => {
+                        let {
+                            title,
+                            release_date,
+                            genres,
+                            runtime,
+                            tagline,
+                            overview
+                        } = movieInfo;
+
+                        let movieInfoRef = new bootstrap.Modal(document.getElementById('movie-modal'));
+
+                        movieInfoRef.innerHTML = `
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">${title}</h5> <span>${release_date}</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <span>${genres}</span>
+                                    <span>${runtime}</span>
+                                </div>
+                                <div>
+                                    <h6>${tagline}</h6>
+                                    <p>${overview}</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                })
+                    // if error - logs error to console 
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                    
+                    movieInfoRef.show();
+            });   
     }
-
-function openListing(e) {
-    let myModal = new bootstrap.Modal(document.getElementById('myModal'))
-
-    let movieDetailsUrl = `movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
-    let movieTrailerUrl = `movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US`;
-
-    fetch()
-
-    // responds and returns response as json
-    .then((res) => res.json())
-    // logs data from api to console 
-    .then((data) => {
-        console.log(data);
-    })
-    // if error - logs error to console 
-    .catch((error) => {
-        console.log(error);
-    });
-
-    // myModal.innerHTML = `
-    // <div id="myModal" class="modal" tabindex="-1">
-    //     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    //         <div class="modal-content">
-    //             <div class="modal-header">
-    //                 <h5 class="modal-title">${title}</h5> <span>${release_date}</span>
-    //                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    //             </div>
-    //             <div class="modal-body">
-    //                 <div>
-    //                     <span>${genres}</span>
-    //                     <span>${runtime}</span>
-    //                 </div>
-    //                 <div>
-    //                     <h6>${tagline}</h6>
-    //                     <p>${overview}</p>
-    //                 </div>
-    //             </div>
-    //             <div class="modal-footer">
-    //                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
-    // `;
-    
-    myModal.show();
-}
-
 });
