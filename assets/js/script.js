@@ -302,7 +302,7 @@ window.addEventListener('click', function (e) {
         fetch(baseUrl + movieDetailsUrl)
             .then((res) => res.json())
             .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     data.forEach(movieInfo => {
                         let {
                             title,
@@ -312,6 +312,9 @@ window.addEventListener('click', function (e) {
                             tagline,
                             overview
                         } = movieInfo;
+
+                        // TypeError - foreach is not a function. 
+                        // to fix I need to call something like Object.keys or Array.from on the parsed data
 
                         let movieInfoRef = new bootstrap.Modal(document.getElementById('movie-modal'));
 
@@ -343,7 +346,7 @@ window.addEventListener('click', function (e) {
                     .catch((error) => {
                         console.log(error);
                     });
-                    
+
                     movieInfoRef.show();
             });   
     }
