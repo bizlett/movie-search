@@ -298,27 +298,18 @@ window.addEventListener('click', function (e) {
         let target = e.target;
         let movieId = target.dataset.movieId;
         let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
-        
+
         fetch(baseUrl + movieDetailsUrl)
             .then((res) => res.json())
             .then((data) => {
-                    // console.log(data);
-                    data.forEach(movieInfo => {
-                        let {
-                            title,
-                            release_date,
-                            genres,
-                            runtime,
-                            tagline,
-                            overview
-                        } = movieInfo;
+                let filters = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
+                let movieInfo = Object.fromEntries(Object.entries(data).filter(([k, v]) => filters.includes(k)));
 
-                        // TypeError - foreach is not a function. 
-                        // to fix I need to call something like Object.keys or Array.from on the parsed data
+                console.log(data);
 
-                        let movieInfoRef = new bootstrap.Modal(document.getElementById('movie-modal'));
+                let movieInfoRef = new bootstrap.Modal(document.getElementById('movie-modal'));
 
-                        movieInfoRef.innerHTML = `
+                movieInfoRef.innerHTML = `
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -341,13 +332,14 @@ window.addEventListener('click', function (e) {
                         </div>
                     </div>
                     `;
-                })
-                    // if error - logs error to console 
-                    .catch((error) => {
-                        console.log(error);
-                    });
+            })
+            // if error - logs error to console 
+            .catch((error) => {
+                console.log(error);
 
-                    movieInfoRef.show();
-            });   
-    }
+            });
+
+            movieInfoRef.show();
+    };
+
 });
