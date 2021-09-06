@@ -307,7 +307,7 @@ window.addEventListener('click', function (e) {
 
                 console.log(movieInfo);
 
-                let movieModalRef = document.getElementById('movie-modal');
+                let movieModalRef = new bootstrap.Modal(document.getElementById('myModal'))
 
                 movieModalRef.innerHTML = `
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
