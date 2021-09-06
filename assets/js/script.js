@@ -314,17 +314,26 @@ window.addEventListener('click', function (e) {
                     backdrop: true
                 });
 
-                movieModal.innerHTML = `
-                <h5 class="modal-title" id="movieModalTitle">${movieInfo.title}</h5>
-                    <div>
-                        <span>${movieInfo.genres}</span>
-                        <span>${movieInfo.runtime}</span>
+                movieModalRef.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="movieModalTitle">${movieInfo.title}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div>
-                        <h6>${movieInfo.tagline}</h6>
-                        <p>${movieInfo.overview}</p>
-                    </div>
-                </div>         
+                    <div class="modal-body">
+                        <div>                
+                            <span>${movieInfo.genres}</span>
+                            <span>${movieInfo.runtime} minutes</span>
+                        </div>
+                        <div>
+                            <h6>${movieInfo.tagline}</h6>
+                            <p>${movieInfo.overview}</p>
+                        </div>
+                    </div>         
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back to movies</button>
+                </div>
                     `;
 
                     movieModal.show();
@@ -333,9 +342,6 @@ window.addEventListener('click', function (e) {
             .catch((error) => {
                 console.log(error);
 
-            });
-
-            
+            }); 
     };
-
 });
