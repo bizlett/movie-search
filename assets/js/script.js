@@ -54,7 +54,7 @@ function getWatch(e) {
                 // if person is an actor
                 if (data.results[0].known_for_department == 'Acting') {
                     let person_id = data.results[0].id;
-                    console.log(data);
+                    
                     // second api call to return movie credits using person id
                     fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
                         .then((res) => res.json())
@@ -64,7 +64,7 @@ function getWatch(e) {
                         })
                 } else if (data.results[0].known_for_department == 'Directing') {
                     let person_id = data.results[0].id;
-                    console.log(data);
+                    
                     // second api call to return movie credits using person id
                     fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
                         .then((res) => res.json())
@@ -74,7 +74,7 @@ function getWatch(e) {
                         })
                 } else if (data.results[0].known_for_department == 'Writing') {
                     let person_id = data.results[0].id;
-                    console.log(data);
+                   
                     // second api call to return movie credits using person id
                     fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
                         .then((res) => res.json())
@@ -111,7 +111,7 @@ function getPopularMovies(e) {
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
-            console.log(data);
+            
             createPopularList(data.results);
         })
         // if error - logs error to console 
@@ -129,7 +129,7 @@ function getTrendingMovies(e) {
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
-            console.log(data);
+   
             createTrendingList(data.results);
         })
         // if error - logs error to console 
@@ -260,7 +260,7 @@ function getMorePopularMovies(e) {
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
-            console.log(data);
+            
             createPopularList(data.results);
         })
         // if error - logs error to console 
@@ -282,7 +282,7 @@ function getMoreTrendingMovies(e) {
         .then((res) => res.json())
         // logs data from api to console 
         .then((data) => {
-            console.log(data);
+            
             createTrendingList(data.results);
         })
         // if error - logs error to console 
@@ -307,7 +307,7 @@ window.addEventListener('click', function (e) {
 
                 console.log(movieInfo);
 
-                let movieModalRef = new bootstrap.Modal(document.getElementById('movie-modal'));
+                let movieModalRef = document.getElementById('movie-modal');
 
                 movieModalRef.innerHTML = `
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
