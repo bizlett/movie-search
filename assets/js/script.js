@@ -317,7 +317,7 @@ window.addEventListener('click', function (e) {
                 movieModalRef.innerHTML = `
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="movieModalTitle">${movieInfo.title}</h5>
+                        <h5 class="modal-title" id="movieModalTitle"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -328,7 +328,7 @@ window.addEventListener('click', function (e) {
                                     <span>${movieInfo.runtime} minutes</span>
                                 </div>
                                 <div>
-                                    <h6>${movieInfo.tagline}</h6>
+                                    <h6><em>${movieInfo.tagline}</em></h6>
                                     <p>${movieInfo.overview}</p>
                                 </div>
                             </div>
