@@ -321,18 +321,22 @@ window.addEventListener('click', function (e) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div>                
-                            <span>${movieInfo.genres}</span>
-                            <span>${movieInfo.runtime} minutes</span>
-                        </div>
-                        <div>
-                            <h6>${movieInfo.tagline}</h6>
-                            <p>${movieInfo.overview}</p>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div>                
+                                    <span>${movieInfo.genres}</span>
+                                    <span>${movieInfo.runtime} minutes</span>
+                                </div>
+                                <div>
+                                    <h6>${movieInfo.tagline}</h6>
+                                    <p>${movieInfo.overview}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>         
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back to movies</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back to movies</button>
+                    </div>
                 </div>
                     `;
 
