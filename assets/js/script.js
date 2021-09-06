@@ -313,17 +313,17 @@ window.addEventListener('click', function (e) {
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">${title}</h5> <span>${release_date}</span>
+                                <h5 class="modal-title">${movieInfo.title}</h5> <span>${movieInfo.release_date}</span>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div>
-                                    <span>${genres}</span>
-                                    <span>${runtime}</span>
+                                    <span>${movieInfo.genres}</span>
+                                    <span>${movieInfo.runtime}</span>
                                 </div>
                                 <div>
-                                    <h6>${tagline}</h6>
-                                    <p>${overview}</p>
+                                    <h6>${movieInfo.tagline}</h6>
+                                    <p>${movieInfo.overview}</p>
                                 </div>
                             </div>
                             <div class="modal-footer">
