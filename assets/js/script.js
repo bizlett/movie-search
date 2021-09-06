@@ -305,11 +305,11 @@ window.addEventListener('click', function (e) {
                 let filters = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
                 let movieInfo = Object.fromEntries(Object.entries(data).filter(([k, v]) => filters.includes(k)));
 
-                console.log(data);
+                console.log(movieInfo);
 
-                let movieInfoRef = new bootstrap.Modal(document.getElementById('movie-modal'));
+                let movieModalRef = new bootstrap.Modal(document.getElementById('movie-modal'));
 
-                movieInfoRef.innerHTML = `
+                movieModalRef.innerHTML = `
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -332,6 +332,8 @@ window.addEventListener('click', function (e) {
                         </div>
                     </div>
                     `;
+
+                    movieModalRef.show();
             })
             // if error - logs error to console 
             .catch((error) => {
@@ -339,7 +341,7 @@ window.addEventListener('click', function (e) {
 
             });
 
-            movieInfoRef.show();
+            
     };
 
 });
