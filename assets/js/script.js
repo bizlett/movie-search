@@ -307,33 +307,27 @@ window.addEventListener('click', function (e) {
 
                 console.log(movieInfo);
 
-                let movieModalRef = new bootstrap.Modal(document.getElementById('movie-modal'))
+                //let movieModalRef = new bootstrap.Modal(document.getElementById('movie-modal'))
 
-                movieModalRef.innerHTML = `
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">${movieInfo.title}</h5> <span>${movieInfo.release_date}</span>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div>
-                                    <span>${movieInfo.genres}</span>
-                                    <span>${movieInfo.runtime}</span>
-                                </div>
-                                <div>
-                                    <h6>${movieInfo.tagline}</h6>
-                                    <p>${movieInfo.overview}</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
+                let movieModalRef = document.querySelector("#movie-modal");
+                let movieModal = new bootstrap.Modal(movieModalRef, {
+                    backdrop: true
+                });
+
+                movieModal.innerHTML = `
+                <h5 class="modal-title" id="movieModalTitle">${movieInfo.title}</h5>
+                    <div>
+                        <span>${movieInfo.genres}</span>
+                        <span>${movieInfo.runtime}</span>
                     </div>
+                    <div>
+                        <h6>${movieInfo.tagline}</h6>
+                        <p>${movieInfo.overview}</p>
+                    </div>
+                </div>         
                     `;
 
-                    movieModalRef.show();
+                    movieModal.show();
             })
             // if error - logs error to console 
             .catch((error) => {
