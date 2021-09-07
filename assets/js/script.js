@@ -78,30 +78,6 @@ function getResults(person_id, actor) {
     })
 }
 
-// function to get popular movies
-function getPopularMovies(e) {
-    fetch(baseUrl + popularUrl)
-        .then((res) => res.json())
-        .then((data) => {  
-            displayMovies(data.results);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
-
-// function to get top rated movies
-function getTrendingMovies(e) {
-    fetch(baseUrl + trendingUrl)
-        .then((res) => res.json())
-        .then((data) => {
-            displayMovies(data.results);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
-
 // function to display movies from search 
 function createWatchList(data) {
     watchList.innerHTML = '';
@@ -128,9 +104,34 @@ function createWatchList(data) {
     });
 };
 
+// function to get popular movies
+function getPopularMovies(e) {
+    fetch(baseUrl + popularUrl)
+        .then((res) => res.json())
+        .then((data) => {  
+            displayMovies(data.results);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+// function to get top rated movies
+function getTrendingMovies(e) {
+    fetch(baseUrl + trendingUrl)
+        .then((res) => res.json())
+        .then((data) => {
+            displayMovies(data.results);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
 //function to display movies
 function displayMovies(data, listType) {
+    // console logs both sets of data from getPopularMovies & getTrendingMovies
+    // you cannot differentiate between the two objects other than popular comes first, trending second
     console.log(data);
     data.forEach(movie => {
         let {
@@ -139,6 +140,8 @@ function displayMovies(data, listType) {
             vote_average,
         } = movie;
 
+        // this is what we want to create to hold the results in
+        // its the same whether its trending or popular
         let listingContainer = document.createElement('div');
         listingContainer.classList.add('listing', 'zoom');
 
@@ -149,7 +152,10 @@ function displayMovies(data, listType) {
        <span>Rating ${vote_average}</span>
        </div>
        `;
-
+        // here is where we need to differentiate between the two objects in order to direct the
+        // right movies to the right list.
+        // the data objects look the same - the only way to differentiate is by the url
+        
        switch(listType) {
         case 'popular':
             popularList.innerHTML('');
