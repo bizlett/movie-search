@@ -3,7 +3,7 @@ const API_KEY = 'f0eb98b7c925ef27dc4b795263d8bfe8';
 const baseUrl = 'https://api.themoviedb.org/3/';
 const personUrl = `search/person?api_key=${API_KEY}&language=en-US`;
 const popularUrl = `movie/popular?api_key=${API_KEY}&language=en-US`;
-const trendingUrl = `trending/all/day?api_key=${API_KEY}`;
+const trendingUrl = `trending/movie/day?api_key=${API_KEY}`;
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
