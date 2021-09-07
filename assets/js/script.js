@@ -56,7 +56,6 @@ function searchPerson(e) {
             .catch((error) => {
                 console.log(error);
             });
-
         // clear search input
         searchInput.value = '';
     } else {
@@ -180,12 +179,15 @@ function getMoreTrendingMovies(e) {
         });
 }
 
+
 // function to open movie listing
 window.addEventListener('click', function (e) {
     if (e.target.tagName.toLowerCase() == 'img') {
         let target = e.target;
         let movieId = target.dataset.movieId;
         let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+
+        console.log("Target + API call urls set")
 
         fetch(baseUrl + movieDetailsUrl)
             .then((res) => res.json())
@@ -203,32 +205,35 @@ window.addEventListener('click', function (e) {
                 });
 
                 movieModalRef.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="movieModalTitle"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div>                
-                                    <span>${movieInfo.genres}</span>
-                                    <span>${movieInfo.runtime} minutes</span>
-                                </div>
-                                <div>
-                                    <h6><em>${movieInfo.tagline}</em></h6>
-                                    <p>${movieInfo.overview}</p>
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="movieModalTitle"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
+                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div>                
+                                        <span>${movieInfo.genres}</span>
+                                        <span>${movieInfo.runtime} minutes</span>
+                                    </div>
+                                    <div>
+                                        <h6><em>${movieInfo.tagline}</em></h6>
+                                        <p>${movieInfo.overview}</p>
+                                    </div>
                                 </div>
                             </div>
+                        </div>         
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to movies</button>
                         </div>
-                    </div>         
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back to movies</button>
                     </div>
                 </div>
                     `;
 
                     movieModal.show();
+                    console.log(`movieModal shown: ${movieModal}`)
             })
             // if error - logs error to console 
             .catch((error) => {
