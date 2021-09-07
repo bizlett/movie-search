@@ -4,16 +4,12 @@ const baseUrl = 'https://api.themoviedb.org/3/';
 const personUrl = `search/person?api_key=${API_KEY}&language=en-US`;
 const popularUrl = `movie/popular?api_key=${API_KEY}&language=en-US`;
 const trendingUrl = `trending/all/day?api_key=${API_KEY}`;
-
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
-
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
-
 const watchList = document.querySelector('#watch-list');
 const popularList = document.querySelector('#popular-list');
 const trendingList = document.querySelector('#trending-list');
-
 const morePopularMoviesButton = document.querySelector('#more-popular');
 const moreTrendingMoviesButton = document.querySelector('#more-trending');
 
@@ -48,15 +44,12 @@ function searchPerson(e) {
                     case 'Acting':
                         getResults(data.results[0].id, true);
                         break;
-                    
                     case 'Writing':
                         getResults(data.results[0].id, false);
                         break;
-
                     case 'Directing':
                         getResults(data.results[0].id, false);                        
                         break;
-
                     default:
                         bootbox.alert("Sorry no results here! Try searching for an actor, writer or director.");
                         break;
@@ -85,76 +78,51 @@ function getResults(person_id, actor) {
     })
 }
 
-
-
 // function to get popular movies
 function getPopularMovies(e) {
-    // calls to api url to get information
     fetch(baseUrl + popularUrl)
-        // responds and returns response as json
         .then((res) => res.json())
-        // logs data from api to console 
-        .then((data) => {
-            
+        .then((data) => {  
             createPopularList(data.results);
         })
-        // if error - logs error to console 
         .catch((error) => {
             console.log(error);
         });
 }
-
 
 // function to get top rated movies
 function getTrendingMovies(e) {
-    // calls to api url to get information
     fetch(baseUrl + trendingUrl)
-        // responds and returns response as json
         .then((res) => res.json())
-        // logs data from api to console 
         .then((data) => {
-   
             createTrendingList(data.results);
         })
-        // if error - logs error to console 
         .catch((error) => {
             console.log(error);
         });
 }
 
-
 // function to display movies from search 
 function createWatchList(data) {
-    // clear current results before adding new results
     watchList.innerHTML = '';
-
-    // show results header
     document.getElementById('search-results-header').style.display = "block";
-
-    // iterate over results and create listing container to hold it within
     data.forEach(movie => {
         let {
             poster_path,
             title,
             vote_average,
         } = movie;
-        // removes any results that don't have a poster image
-        if (poster_path !== null) {
 
-            // create container to hold search results
+        if (poster_path !== null) {
             let listingContainer = document.createElement('div');
             listingContainer.classList.add('listing', 'zoom');
-
-            // write content to listing container - poster image, title, rating
             listingContainer.innerHTML = `
-       <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
-       <div class="listing-info">
-       <h4>${title}</h4>
-       <span>Rating ${vote_average}</span>
-       </div>
-       `;
-
-            // append results container into watch list section
+            <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
+            <div class="listing-info">
+            <h4>${title}</h4>
+            <span>Rating ${vote_average}</span>
+            </div>
+            `;
             watchList.appendChild(listingContainer);
         }
     });
@@ -165,8 +133,6 @@ function createWatchList(data) {
 function createPopularList(data) {
     // clear current results before adding new results
     popularList.innerHTML = '';
-
-    // iterate over results and create listing container to hold it within
     data.forEach(movie => {
         let {
             poster_path,
@@ -174,22 +140,16 @@ function createPopularList(data) {
             vote_average,
         } = movie;
 
-        // removes any results that don't have a poster image
         if (poster_path !== null) {
-
-            // create container to hold search results
             let listingContainer = document.createElement('div');
             listingContainer.classList.add('listing', 'zoom');
-
-            // write content to listing container - poster image, title, rating
             listingContainer.innerHTML = `
-       <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
-       <div class="listing-info">
-       <h4>${title}</h4>
-       <span>Rating ${vote_average}</span>
-       </div>
-       `;
-            // append results container into watch list section
+            <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
+            <div class="listing-info">
+            <h4>${title}</h4>
+            <span>Rating ${vote_average}</span>
+            </div>
+            `;
             popularList.appendChild(listingContainer);
         }
     });
@@ -198,10 +158,7 @@ function createPopularList(data) {
 
 // function to display top rated movies  
 function createTrendingList(data) {
-    // clear current results before adding new results
     trendingList.innerHTML = '';
-
-    // iterate over results and create listing container to hold it within
     data.forEach(movie => {
         let {
             poster_path,
@@ -209,23 +166,16 @@ function createTrendingList(data) {
             vote_average,
         } = movie;
 
-        // removes any results that don't have a poster image
         if (poster_path !== null) {
-
-            // create container to hold search results
             let listingContainer = document.createElement('div');
             listingContainer.classList.add('listing', 'zoom');
-
-            // write content to listing container - poster image, title, rating
             listingContainer.innerHTML = `
-       <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
-       <div class="listing-info">
-       <h4>${title}</h4>
-       <span>Rating ${vote_average}</span>
-       </div>
-       `;
-
-            // append results container into watch list section
+            <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
+            <div class="listing-info">
+            <h4>${title}</h4>
+            <span>Rating ${vote_average}</span>
+            </div>
+            `;
             trendingList.appendChild(listingContainer);
         }
     });
@@ -234,47 +184,30 @@ function createTrendingList(data) {
 
 // function to display new page of popular movie results when 'search more' button is clicked
 function getMorePopularMovies(e) {
-    // define page
     let page = Math.floor(Math.random() * 500) + 1;
 
-    // calls to the api
     fetch(baseUrl + popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
-
-        // responds and returns response as json
         .then((res) => res.json())
-        // logs data from api to console 
         .then((data) => {
-            
             createPopularList(data.results);
         })
-        // if error - logs error to console 
         .catch((error) => {
             console.log(error);
         });
 }
-
 
 // function to display new page of Trending movie results when 'search more' button is clicked
 function getMoreTrendingMovies(e) {
-    // define page
     let page = Math.floor(Math.random() * 500) + 1;
-
-    // calls to the api
     fetch(baseUrl + trendingUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
-
-        // responds and returns response as json
         .then((res) => res.json())
-        // logs data from api to console 
         .then((data) => {
-            
             createTrendingList(data.results);
         })
-        // if error - logs error to console 
         .catch((error) => {
             console.log(error);
         });
 }
-
 
 // function to open movie listing
 window.addEventListener('click', function (e) {
