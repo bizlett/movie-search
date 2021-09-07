@@ -18,7 +18,7 @@ const morePopularMoviesButton = document.querySelector('#more-popular');
 const moreTrendingMoviesButton = document.querySelector('#more-trending');
 
 // Event Listeners
-searchButton.addEventListener('click', getWatch);
+searchButton.addEventListener('click', searchPerson);
 
 window.addEventListener('load', (e) => {
     getPopularMovies();
@@ -32,75 +32,59 @@ moreTrendingMoviesButton.addEventListener('click', getMoreTrendingMovies);
 // Functions 
 
 // Search movie/series function based on person
-function getWatch(e) {
-    // prevent form from sumitting
+function searchPerson(e) {
     e.preventDefault();
 
-    // grab value from form input
     let search = searchInput.value;
 
-    // check if there is text to submit, then run function
     if (search != "") {
-
-        // define parameters 
         let searchInputUrl = baseUrl + personUrl + '&query=' + search;
-
         // calls to api url to get person based on user search
         fetch(searchInputUrl)
-            // responds and returns response as json
             .then((res) => res.json())
-            // get person id from previous api call
             .then((data) => {
-                // if person is an actor
-                if (data.results[0].known_for_department == 'Acting') {
-                    let person_id = data.results[0].id;
+                console.log(data);
+                switch (data.results[0].known_for_department) {
+                    case 'Acting':
+                        getResults(data.results[0].id, true);
+                        break;
                     
-                    // second api call to return movie credits using person id
-                    fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
-                        .then((res) => res.json())
-                        // trigger createWatchList function to display movie credit results
-                        .then((data) => {
-                            createWatchList(data.cast);
-                        })
-                } else if (data.results[0].known_for_department == 'Directing') {
-                    let person_id = data.results[0].id;
-                    
-                    // second api call to return movie credits using person id
-                    fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
-                        .then((res) => res.json())
-                        // trigger createWatchList function to display movie credit results
-                        .then((data) => {
-                            createWatchList(data.crew);
-                        })
-                } else if (data.results[0].known_for_department == 'Writing') {
-                    let person_id = data.results[0].id;
-                   
-                    // second api call to return movie credits using person id
-                    fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
-                        .then((res) => res.json())
-                        // trigger createWatchList function to display movie credit results
-                        .then((data) => {
-                            createWatchList(data.crew);
-                        })
-                } else {
-                    // Alert message to prompt to ask for director or actor
-                    bootbox.alert("Sorry no results here! Try searching for an actor, writer or director.");
+                    case 'Writing':
+                        getResults(data.results[0].id, false);
+                        break;
+
+                    case 'Directing':
+                        getResults(data.results[0].id, false);                        
+                        break;
+
+                    default:
+                        bootbox.alert("Sorry no results here! Try searching for an actor, writer or director.");
+                        break;
                 }
             })
-
-            // if error - logs error to console 
             .catch((error) => {
                 console.log(error);
             });
 
         // clear search input
         searchInput.value = '';
-
-    } else {
-        // Alert message when search box is empty
-        bootbox.alert("Give us a hint! Search an actor, writer or director for inspiration!");
     }
-};
+}
+
+// function to get results from person search
+function getResults(person_id, actor) {
+    //second api call to return movie credits using person id         
+    fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
+    .then((res) => res.json())
+    .then((data) => {
+        if (actor) {
+            createWatchList(data.cast);
+        } else {
+            createWatchList(data.crew);
+        }
+    })
+}
+
 
 
 // function to get popular movies
