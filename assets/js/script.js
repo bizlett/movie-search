@@ -69,17 +69,66 @@ function getResults(person_id, actor) {
     .then((res) => res.json())
     .then((data) => {
         if (actor) {
-            createWatchList(data.cast);
+            displayMovies(data.cast, watchList);
         } else {
-            createWatchList(data.crew);
+            displayMovies(data.crew, watchList);
         }
     })
 }
 
-// function to display movies from search 
-function createWatchList(data) {
-    watchList.innerHTML = '';
-    document.getElementById('search-results-header').style.display = "block";
+// // function to display movies from search 
+// function createWatchList(data) {
+//     watchList.innerHTML = '';
+//     document.getElementById('search-results-header').style.display = "block";
+//     data.forEach(movie => {
+//         let {
+//             poster_path,
+//             title,
+//             vote_average,
+//         } = movie;
+
+//         if (poster_path !== null) {
+//             let listingContainer = document.createElement('div');
+//             listingContainer.classList.add('listing', 'zoom');
+//             listingContainer.innerHTML = `
+//             <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
+//             <div class="listing-info">
+//             <h4>${title}</h4>
+//             <span>Rating ${vote_average}</span>
+//             </div>
+//             `;
+//             watchList.appendChild(listingContainer);
+//         }
+//     });
+// };
+
+// function to get popular movies
+function getPopularMovies(e) {
+    fetch(baseUrl + popularUrl)
+        .then((res) => res.json())
+        .then((data) => {  
+            displayMovies(data.results, popularList);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+// function to get top rated movies
+function getTrendingMovies(e) {
+    fetch(baseUrl + trendingUrl)
+        .then((res) => res.json())
+        .then((data) => {
+            displayMovies(data.results, trendingList);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+// function to display popular and trending movies  
+function displayMovies(data, listType) {
+    listType.innerHTML = '';
     data.forEach(movie => {
         let {
             poster_path,
@@ -97,136 +146,10 @@ function createWatchList(data) {
             <span>Rating ${vote_average}</span>
             </div>
             `;
-            watchList.appendChild(listingContainer);
+            listType.appendChild(listingContainer);
         }
     });
 };
-
-// function to get popular movies
-function getPopularMovies(e) {
-    fetch(baseUrl + popularUrl)
-        .then((res) => res.json())
-        .then((data) => {  
-            displayMovies(data.results);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
-
-// function to get top rated movies
-function getTrendingMovies(e) {
-    fetch(baseUrl + trendingUrl)
-        .then((res) => res.json())
-        .then((data) => {
-            displayMovies(data.results);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
-
-// what do i need to run this function?
-    // data.results is being passed into this function from the getPopularMovies function and from the getTrendingMovies function
-    // the data looks the same. There is nothing in the two objects that set them apart
-    // the urls are different though
-
-//function to display movies
-function displayMovies() {
-    if (!data.length > 0) return;
-    console.log(data);
-    data.forEach(movie => {
-        let {
-            poster_path,
-            title,
-            vote_average,
-        } = movie;
-
-        let listingContainer = document.createElement('div');
-        listingContainer.classList.add('listing', 'zoom');
-        listingContainer.innerHTML = `
-       <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
-       <div class="listing-info">
-       <h4>${title}</h4>
-       <span>Rating ${vote_average}</span>
-       </div>
-       `;
-
-    // if the url the object has been generated from contains 'popular' - append listingContainer to popularList
-
-    // if the url the object has been generated from contains 'trending' - append listingContainer to trendingList
-    
-       switch(url) {
-        case 'popular':
-            popularList.innerHTML('');
-            popularList.appendChild(listingContainer);
-            break;
-        
-        case 'trending':
-            trendingList.innerHTML('');
-            trendingList.appendChild(listingContainer);
-            break;
-        
-        default:
-            //bootbox.alert("Opps! Sorry there's problem here. Try refreshing the page to search movies again.");
-            break;
-       }
-    })
-}
-
-
-// // function to display popular movies  
-// function createPopularList(data) {
-//     // clear current results before adding new results
-//     popularList.innerHTML = '';
-//     data.forEach(movie => {
-//         let {
-//             poster_path,
-//             title,
-//             vote_average,
-//         } = movie;
-
-//         if (poster_path !== null) {
-//             let listingContainer = document.createElement('div');
-//             listingContainer.classList.add('listing', 'zoom');
-//             listingContainer.innerHTML = `
-//             <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
-//             <div class="listing-info">
-//             <h4>${title}</h4>
-//             <span>Rating ${vote_average}</span>
-//             </div>
-//             `;
-//             popularList.appendChild(listingContainer);
-//         }
-//     });
-// };
-
-
-// // function to display top rated movies  
-// function createTrendingList(data) {
-//     trendingList.innerHTML = '';
-//     data.forEach(movie => {
-//         let {
-//             poster_path,
-//             title,
-//             vote_average,
-//         } = movie;
-
-//         if (poster_path !== null) {
-//             let listingContainer = document.createElement('div');
-//             listingContainer.classList.add('listing', 'zoom');
-//             listingContainer.innerHTML = `
-//             <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
-//             <div class="listing-info">
-//             <h4>${title}</h4>
-//             <span>Rating ${vote_average}</span>
-//             </div>
-//             `;
-//             trendingList.appendChild(listingContainer);
-//         }
-//     });
-// };
-
 
 // function to display new page of popular movie results when 'search more' button is clicked
 function getMorePopularMovies(e) {
@@ -235,7 +158,7 @@ function getMorePopularMovies(e) {
     fetch(baseUrl + popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
         .then((res) => res.json())
         .then((data) => {
-            createPopularList(data.results);
+            displayMovies(data.results, popularList);
         })
         .catch((error) => {
             console.log(error);
@@ -248,7 +171,7 @@ function getMoreTrendingMovies(e) {
     fetch(baseUrl + trendingUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
         .then((res) => res.json())
         .then((data) => {
-            createTrendingList(data.results);
+            displayMovies(data.results, trendingList);
         })
         .catch((error) => {
             console.log(error);
