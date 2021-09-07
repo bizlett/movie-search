@@ -30,9 +30,7 @@ moreTrendingMoviesButton.addEventListener('click', getMoreTrendingMovies);
 // Search movie/series function based on person
 function searchPerson(e) {
     e.preventDefault();
-
     let search = searchInput.value;
-
     if (search != "") {
         let searchInputUrl = baseUrl + personUrl + '&query=' + search;
         // calls to api url to get person based on user search
@@ -128,10 +126,14 @@ function getTrendingMovies(e) {
         });
 }
 
+// what do i need to run this function?
+    // data.results is being passed into this function from the getPopularMovies function and from the getTrendingMovies function
+    // the data looks the same. There is nothing in the two objects that set them apart
+    // the urls are different though
+
 //function to display movies
-function displayMovies(data, listType) {
-    // console logs both sets of data from getPopularMovies & getTrendingMovies
-    // you cannot differentiate between the two objects other than popular comes first, trending second
+function displayMovies() {
+    if (!data.length > 0) return;
     console.log(data);
     data.forEach(movie => {
         let {
@@ -140,11 +142,8 @@ function displayMovies(data, listType) {
             vote_average,
         } = movie;
 
-        // this is what we want to create to hold the results in
-        // its the same whether its trending or popular
         let listingContainer = document.createElement('div');
         listingContainer.classList.add('listing', 'zoom');
-
         listingContainer.innerHTML = `
        <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
        <div class="listing-info">
@@ -152,11 +151,12 @@ function displayMovies(data, listType) {
        <span>Rating ${vote_average}</span>
        </div>
        `;
-        // here is where we need to differentiate between the two objects in order to direct the
-        // right movies to the right list.
-        // the data objects look the same - the only way to differentiate is by the url
-        
-       switch(listType) {
+
+    // if the url the object has been generated from contains 'popular' - append listingContainer to popularList
+
+    // if the url the object has been generated from contains 'trending' - append listingContainer to trendingList
+    
+       switch(url) {
         case 'popular':
             popularList.innerHTML('');
             popularList.appendChild(listingContainer);
@@ -168,6 +168,7 @@ function displayMovies(data, listType) {
             break;
         
         default:
+            //bootbox.alert("Opps! Sorry there's problem here. Try refreshing the page to search movies again.");
             break;
        }
     })
