@@ -59,6 +59,8 @@ function searchPerson(e) {
 
         // clear search input
         searchInput.value = '';
+    } else {
+        bootbox.alert("Give us a hint! Try searching for an actor, writer or director.");
     }
 }
 
