@@ -21,9 +21,9 @@ window.addEventListener('load', (e) => {
     getTrendingMovies();
 });
 
-morePopularMoviesButton.addEventListener('click', getMorePopularMovies);
+morePopularMoviesButton.addEventListener('click', getMoreMovies);
 
-moreTrendingMoviesButton.addEventListener('click', getMoreTrendingMovies);
+moreTrendingMoviesButton.addEventListener('click', getMoreMovies);
 
 // Functions 
 
@@ -127,7 +127,7 @@ function getTrendingMovies(e) {
         });
 }
 
-// function to display popular and trending movies  
+// function to display movies  
 function displayMovies(data, listType) {
     listType.innerHTML = '';
     data.forEach(movie => {
@@ -150,13 +150,14 @@ function displayMovies(data, listType) {
             listType.appendChild(listingContainer);
         }
     });
-};
+}
 
-// function to display new page of popular movie results when 'search more' button is clicked
-function getMorePopularMovies(e) {
+// function to display new page of movie results when 'search more' button is clicked
+function getMoreMovies(e) {
     let page = Math.floor(Math.random() * 500) + 1;
 
-    fetch(baseUrl + popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
+    if (e.target.id === 'more-popular') {
+        fetch(baseUrl + popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
         .then((res) => res.json())
         .then((data) => {
             displayMovies(data.results, popularList);
@@ -164,12 +165,8 @@ function getMorePopularMovies(e) {
         .catch((error) => {
             console.log(error);
         });
-}
-
-// function to display new page of Trending movie results when 'search more' button is clicked
-function getMoreTrendingMovies(e) {
-    let page = Math.floor(Math.random() * 500) + 1;
-    fetch(baseUrl + trendingUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
+    } else {
+        fetch(baseUrl + trendingUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
         .then((res) => res.json())
         .then((data) => {
             displayMovies(data.results, trendingList);
@@ -177,8 +174,8 @@ function getMoreTrendingMovies(e) {
         .catch((error) => {
             console.log(error);
         });
+    }
 }
-
 
 // function to open movie listing
 window.addEventListener('click', function (e) {
