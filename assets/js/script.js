@@ -177,7 +177,7 @@ function getMoreMovies(e) {
     }
 }
 
-// function to open movie listing 
+// function to open movie listing modal
 // original code to target img element from Esterling Accime (https://www.youtube.com/watch?v=mWg2udweauY&t=3518s)
 // support from tutor support on object.fromEntries and to solve display bug with modal
 window.addEventListener('click', function (e) {
