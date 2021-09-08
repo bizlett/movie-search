@@ -184,18 +184,11 @@ window.addEventListener('click', function (e) {
         let movieId = target.dataset.movieId;
         let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
 
-        console.log("Target + API call urls set")
-
         fetch(baseUrl + movieDetailsUrl)
             .then((res) => res.json())
             .then((data) => {
                 let filters = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
                 let movieInfo = Object.fromEntries(Object.entries(data).filter(([k, v]) => filters.includes(k)));
-
-                console.log(movieInfo);
-
-                //let movieModalRef = new bootstrap.Modal(document.getElementById('movie-modal'))
-
                 let movieModalRef = document.querySelector("#movie-modal");
                 let movieModal = new bootstrap.Modal(movieModalRef, {
                     backdrop: true
@@ -228,9 +221,7 @@ window.addEventListener('click', function (e) {
                     </div>
                 </div>
                     `;
-
                     movieModal.show();
-                    console.log(`movieModal shown: ${movieModal}`)
             })
             // if error - logs error to console 
             .catch((error) => {
