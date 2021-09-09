@@ -21,6 +21,16 @@ window.addEventListener('load', (e) => {
     getTrendingMovies();
 });
 
+window.addEventListener('click', function (e) {
+    if (e.target.tagName.toLowerCase() == 'img') {
+
+        let target = e.target;
+        let movieId = target.dataset.movieId;
+
+        showMovieDetails(e, movieId);
+    };
+});
+
 morePopularMoviesButton.addEventListener('click', getMoreMovies);
 
 moreTrendingMoviesButton.addEventListener('click', getMoreMovies);
@@ -46,7 +56,7 @@ function searchPerson(e) {
                         getResults(data.results[0].id, false);
                         break;
                     case 'Directing':
-                        getResults(data.results[0].id, false);                        
+                        getResults(data.results[0].id, false);
                         break;
                     default:
                         bootbox.alert("Sorry no results here! Try searching for an actor, writer or director.");
@@ -67,14 +77,19 @@ function searchPerson(e) {
 function getResults(person_id, actor) {
     //second api call to return movie credits using person id         
     fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
-    .then((res) => res.json())
-    .then((data) => {
-        if (actor) {
-            displayMovies(data.cast, watchList);
-        } else {
-            displayMovies(data.crew, watchList);
-        }
-    })
+        .then((res) => res.json())
+        .then((data) => {
+            if (actor) {
+                displayMovies(data.cast, watchList);
+            } else {
+                displayMovies(data.crew, watchList);
+            }
+        })
+        // if error - logs error to console 
+        .catch((error) => {
+            console.log(error);
+
+        });
 }
 
 // // function to display movies from search 
@@ -107,7 +122,7 @@ function getResults(person_id, actor) {
 function getPopularMovies(e) {
     fetch(baseUrl + popularUrl)
         .then((res) => res.json())
-        .then((data) => {  
+        .then((data) => {
             displayMovies(data.results, popularList);
         })
         .catch((error) => {
@@ -158,45 +173,42 @@ function getMoreMovies(e) {
 
     if (e.target.id === 'more-popular') {
         fetch(baseUrl + popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
-        .then((res) => res.json())
-        .then((data) => {
-            displayMovies(data.results, popularList);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then((res) => res.json())
+            .then((data) => {
+                displayMovies(data.results, popularList);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     } else {
         fetch(baseUrl + trendingUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
-        .then((res) => res.json())
-        .then((data) => {
-            displayMovies(data.results, trendingList);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then((res) => res.json())
+            .then((data) => {
+                displayMovies(data.results, trendingList);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 }
 
 // function to open movie listing modal
 // original code to target img element from Esterling Accime (https://www.youtube.com/watch?v=mWg2udweauY&t=3518s)
 // support from tutor support on object.fromEntries and to solve display bug with modal
-window.addEventListener('click', function (e) {
-    if (e.target.tagName.toLowerCase() == 'img') {
-        let target = e.target;
-        let movieId = target.dataset.movieId;
-        let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+function showMovieDetails(e, movieId) {
+    let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+    //second api call to return movie details using movie id 
+    fetch(baseUrl + movieDetailsUrl)
+        .then((res) => res.json())
+        .then((data) => {
+            let filters = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
+            let movieInfo = Object.fromEntries(Object.entries(data).filter(([k, v]) => filters.includes(k)));
+            let movieModalRef = document.querySelector("#movie-modal");
+            let movieModal = new bootstrap.Modal(movieModalRef, {
+                backdrop: true
+            });
 
-        fetch(baseUrl + movieDetailsUrl)
-            .then((res) => res.json())
-            .then((data) => {
-                let filters = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
-                let movieInfo = Object.fromEntries(Object.entries(data).filter(([k, v]) => filters.includes(k)));
-                let movieModalRef = document.querySelector("#movie-modal");
-                let movieModal = new bootstrap.Modal(movieModalRef, {
-                    backdrop: true
-                });
-
-                movieModalRef.innerHTML = `
+            movieModalRef.innerHTML = `
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -223,12 +235,12 @@ window.addEventListener('click', function (e) {
                     </div>
                 </div>
                     `;
-                    movieModal.show();
-            })
-            // if error - logs error to console 
-            .catch((error) => {
-                console.log(error);
+            movieModal.show();
+        })
+        // if error - logs error to console 
+        .catch((error) => {
+            console.log(error);
+        });
 
-            }); 
-    };
-});
+}
+
