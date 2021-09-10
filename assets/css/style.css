@@ -214,10 +214,33 @@ body {
     -webkit-box-shadow: inset 0 0 6px #006466;
 }
 
-/* alerts */
+/* Modal and alerts */
 
-.modal-content{
+.modal-content {
     text-align: center;
+    color: seashell;
+}
+
+.modal-content h5 {
+    margin-right: .5rem;
+}
+
+.modal-content h6 {
+    margin-top: 1rem;
+}
+
+.modal-content span {
+    margin-right: .5rem;
+    padding-bottom: .5rem;
+}
+
+.modal-header, 
+.modal-footer {
+    background-color: #0b525b;
+}
+
+.modal-body{
+    background-color: #212f45;
 }
 
 .bootbox-close-button {
