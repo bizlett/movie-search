@@ -208,6 +208,11 @@ function showMovieDetails(e, movieId) {
                 backdrop: true
             });
 
+            let genreNames = movieInfo.genres;
+            for (let i = 0; i < genreNames.length; i++) { 
+                console.log(genreNames[i].name);
+              }
+
             movieModalRef.innerHTML = `
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
@@ -219,7 +224,7 @@ function showMovieDetails(e, movieId) {
                             <div class="container-fluid">
                                 <div class="row">
                                     <div>                
-                                        <span>${movieInfo.genres}</span>
+                                        <span>${genreNames}</span>
                                         <span>${movieInfo.runtime} minutes</span>
                                     </div>
                                     <div>
@@ -235,8 +240,11 @@ function showMovieDetails(e, movieId) {
                     </div>
                 </div>
                     `;
+            
             movieModal.show();
         })
+
+    
         // if error - logs error to console 
         .catch((error) => {
             console.log(error);
