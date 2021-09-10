@@ -118,10 +118,11 @@ body {
 /* Listings containers & headings */
 
 #search-results-header {
+    margin-top: 1rem;
     display: none;
 }
 
-#watch-list,
+#search-results-list,
 #popular-list,
 #trending-list {
     max-height: 30rem;

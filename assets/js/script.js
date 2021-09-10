@@ -7,7 +7,7 @@ const trendingUrl = `trending/movie/day?api_key=${API_KEY}`;
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
-const watchList = document.querySelector('#watch-list');
+const searchResultsList = document.querySelector('#search-results-list');
 const popularList = document.querySelector('#popular-list');
 const trendingList = document.querySelector('#trending-list');
 const morePopularMoviesButton = document.querySelector('#more-popular');
@@ -80,9 +80,9 @@ function getSearchResults(person_id, actor) {
         .then((res) => res.json())
         .then((data) => {
             if (actor) {
-                displaySearchResults(data.cast, watchList);
+                displaySearchResults(data.cast, searchResultsList);
             } else {
-                displaySearchResults(data.crew, watchList);
+                displaySearchResults(data.crew, searchResultsList);
             }
         })
         .catch((error) => {
@@ -92,7 +92,7 @@ function getSearchResults(person_id, actor) {
 
 // // function to display movies from search 
 function displaySearchResults(data) {
-    watchList.innerHTML = '';
+    searchResultsList.innerHTML = '';
     document.getElementById('search-results-header').style.display = "block";
     data.forEach(movie => {
         let {
@@ -111,7 +111,7 @@ function displaySearchResults(data) {
             <span>Rating ${vote_average}</span>
             </div>
             `;
-            watchList.appendChild(listingContainer);
+            searchResultsList.appendChild(listingContainer);
         }
     });
 };
