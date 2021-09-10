@@ -191,7 +191,7 @@ function getMoreMovies(e) {
 
 // function to open movie listing modal
 // original code to target img element from Esterling Accime (https://www.youtube.com/watch?v=mWg2udweauY&t=3518s)
-// support from tutor support on object.fromEntries and to solve display bug with modal
+// support from tutor support on object.fromEntries, to solve display bug with modal and to create genreString
 function showMovieDetails(e, movieId) {
     let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
     //second api call to return movie details using movie id 
@@ -204,33 +204,29 @@ function showMovieDetails(e, movieId) {
             let movieModal = new bootstrap.Modal(movieModalRef, {
                 backdrop: true
             });
-            let genreName = movieInfo.genres;
-            genreName.forEach(genre => {
-                let {
-                    name
-                } = genre;
+            let genres = movieInfo.genres;
+            let genreString = "";
+            for (let i = 0; i < genres.length; i++) {
+                genreString += genres[i].name + ", ";
+            }
+            console.log(`Genre String: ${genreString}`);
 
-                console.log(genre);
-
-            });
-
-                
-                movieModalRef.innerHTML = `
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content" id="movie-modal-content">
-                            <div class="modal-header" id="movie-modal-header">
-                                <h5 class="modal-title"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
-                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            let movieModalContent = `
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content" id="movie-modal-content">
+                    <div class="modal-header" id="movie-modal-header">
+                        <h5 class="modal-title"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="movie-modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                            <div>                
+                                <span id="genres"><strong>${genreString} </strong></span>
+                                <span> ${movieInfo.runtime} minutes</span>
                             </div>
-                            <div class="modal-body" id="movie-modal-body">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div>                
-                                            <span id="genres"><strong>${movieInfo.genres} </strong></span>
-                                            <span> ${movieInfo.runtime} minutes</span>
-                                        </div>
-                                        <div>
-                                            <h6><em>${movieInfo.tagline}</em></h6>
+                            <div>
+                                <h6><em>${movieInfo.tagline}</em></h6>
                                             <p>${movieInfo.overview}</p>
                                         </div>
                                     </div>
@@ -241,12 +237,11 @@ function showMovieDetails(e, movieId) {
                             </div>
                         </div>
                     </div>
-                    `; 
-            
+            `;
+            movieModalRef.innerHTML = movieModalContent;
             movieModal.show();
-        })    
+        })
         .catch((error) => {
             console.log(error);
         });
 }
-
