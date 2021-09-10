@@ -209,7 +209,6 @@ function showMovieDetails(e, movieId) {
             for (let i = 0; i < genres.length; i++) {
                 genreString += genres[i].name + ", ";
             }
-            console.log(`Genre String: ${genreString}`);
 
             let movieModalContent = `
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
