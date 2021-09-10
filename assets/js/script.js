@@ -80,9 +80,9 @@ function getResults(person_id, actor) {
         .then((res) => res.json())
         .then((data) => {
             if (actor) {
-                displayMovies(data.cast, watchList);
+                displaySearchResults(data.cast, watchList);
             } else {
-                displayMovies(data.crew, watchList);
+                displaySearchResults(data.crew, watchList);
             }
         })
         .catch((error) => {
@@ -91,30 +91,30 @@ function getResults(person_id, actor) {
 }
 
 // // function to display movies from search 
-// function createWatchList(data) {
-//     watchList.innerHTML = '';
-//     document.getElementById('search-results-header').style.display = "block";
-//     data.forEach(movie => {
-//         let {
-//             poster_path,
-//             title,
-//             vote_average,
-//         } = movie;
+function displaySearchResults(data) {
+    watchList.innerHTML = '';
+    document.getElementById('search-results-header').style.display = "block";
+    data.forEach(movie => {
+        let {
+            poster_path,
+            title,
+            vote_average,
+        } = movie;
 
-//         if (poster_path !== null) {
-//             let listingContainer = document.createElement('div');
-//             listingContainer.classList.add('listing', 'zoom');
-//             listingContainer.innerHTML = `
-//             <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
-//             <div class="listing-info">
-//             <h4>${title}</h4>
-//             <span>Rating ${vote_average}</span>
-//             </div>
-//             `;
-//             watchList.appendChild(listingContainer);
-//         }
-//     });
-// };
+        if (poster_path !== null) {
+            let listingContainer = document.createElement('div');
+            listingContainer.classList.add('listing', 'zoom');
+            listingContainer.innerHTML = `
+            <img src="${posterImagePath + poster_path}" alt="${title} poster" data-movie-id=${movie.id}>
+            <div class="listing-info">
+            <h4>${title}</h4>
+            <span>Rating ${vote_average}</span>
+            </div>
+            `;
+            watchList.appendChild(listingContainer);
+        }
+    });
+};
 
 // function to get popular movies
 function getPopularMovies(e) {
