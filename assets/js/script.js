@@ -211,35 +211,36 @@ function showMovieDetails(e, movieId) {
             let genreNames = movieInfo.genres;
             for (let i = 0; i < genreNames.length; i++) { 
                 console.log(genreNames[i].name);
-              }
-
-            movieModalRef.innerHTML = `
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="movieModalTitle"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
-                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div>                
-                                        <span>${genreNames}</span>
-                                        <span>${movieInfo.runtime} minutes</span>
-                                    </div>
-                                    <div>
-                                        <h6><em>${movieInfo.tagline}</em></h6>
-                                        <p>${movieInfo.overview}</p>
+              
+                movieModalRef.innerHTML = `
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="movieModalTitle"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
+                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div>                
+                                            <span>${genreNames[i].name}</span>
+                                            <span>${movieInfo.runtime} minutes</span>
+                                        </div>
+                                        <div>
+                                            <h6><em>${movieInfo.tagline}</em></h6>
+                                            <p>${movieInfo.overview}</p>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>         
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to movies</button>
                             </div>
-                        </div>         
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to movies</button>
                         </div>
                     </div>
-                </div>
                     `;
+
+                }
             
             movieModal.show();
         })
