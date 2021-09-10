@@ -85,10 +85,8 @@ function getResults(person_id, actor) {
                 displayMovies(data.crew, watchList);
             }
         })
-        // if error - logs error to console 
         .catch((error) => {
             console.log(error);
-
         });
 }
 
@@ -207,16 +205,13 @@ function showMovieDetails(e, movieId) {
             let movieModal = new bootstrap.Modal(movieModalRef, {
                 backdrop: true
             });
-
             let genreName = movieInfo.genres;
-
             genreName.forEach(genre => {
                 let {
                     name
                 } = genre;
 
                 console.log(genre);
-
                 movieModalRef.innerHTML = `
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
@@ -228,8 +223,8 @@ function showMovieDetails(e, movieId) {
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div>                
-                                            <span>${genre.name}</span>
-                                            <span>${movieInfo.runtime} minutes</span>
+                                            <span id="genres"><strong>${genre.name} </strong></span>
+                                            <span> ${movieInfo.runtime} minutes</span>
                                         </div>
                                         <div>
                                             <h6><em>${movieInfo.tagline}</em></h6>
@@ -243,53 +238,12 @@ function showMovieDetails(e, movieId) {
                             </div>
                         </div>
                     </div>
-                    `;
-        
-                
+                    `; 
             });
-
-            
-            // for (let i = 0; i < genreNames.length; i++) { 
-            //     console.log(genreNames[i].name);
-              
-            //     movieModalRef.innerHTML = `
-            //         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            //             <div class="modal-content">
-            //                 <div class="modal-header">
-            //                     <h5 class="modal-title" id="movieModalTitle"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
-            //                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-            //                 </div>
-            //                 <div class="modal-body">
-            //                     <div class="container-fluid">
-            //                         <div class="row">
-            //                             <div>                
-            //                                 <span>${genreNames[i].name}</span>
-            //                                 <span>${movieInfo.runtime} minutes</span>
-            //                             </div>
-            //                             <div>
-            //                                 <h6><em>${movieInfo.tagline}</em></h6>
-            //                                 <p>${movieInfo.overview}</p>
-            //                             </div>
-            //                         </div>
-            //                     </div>
-            //                 </div>         
-            //                 <div class="modal-footer">
-            //                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to movies</button>
-            //                 </div>
-            //             </div>
-            //         </div>
-            //         `;
-
-                
-            
             movieModal.show();
-        })
-
-    
-        // if error - logs error to console 
+        })    
         .catch((error) => {
             console.log(error);
         });
-
 }
 
