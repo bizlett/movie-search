@@ -217,30 +217,30 @@ body {
 
 /* Modal and alerts */
 
-.modal-content {
+#movie-modal-content {
     text-align: center;
     color: seashell;
 }
 
-.modal-content h5 {
+#movie-modal-content h5 {
     margin-right: .5rem;
 }
 
-.modal-content h6 {
+#movie-modal-content h6 {
     margin-top: 1rem;
 }
 
-.modal-content span {
+#movie-modal-content span {
     margin-right: .5rem;
     padding-bottom: .5rem;
 }
 
-.modal-header, 
-.modal-footer {
+#movie-modal-header, 
+#movie-modal-footer {
     background-color: #0b525b;
 }
 
-.modal-body{
+#movie-modal-body{
     background-color: #212f45;
 }
 

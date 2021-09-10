@@ -23,10 +23,8 @@ window.addEventListener('load', (e) => {
 
 window.addEventListener('click', function (e) {
     if (e.target.tagName.toLowerCase() == 'img') {
-
         let target = e.target;
         let movieId = target.dataset.movieId;
-
         showMovieDetails(e, movieId);
     };
 });
@@ -93,6 +91,7 @@ function getSearchResults(person_id, actor) {
 // // function to display movies from search 
 function displaySearchResults(data) {
     searchResultsList.innerHTML = '';
+    // shows list header
     document.getElementById('search-results-header').style.display = "block";
     data.forEach(movie => {
         let {
@@ -212,18 +211,22 @@ function showMovieDetails(e, movieId) {
                 } = genre;
 
                 console.log(genre);
+
+            });
+
+                
                 movieModalRef.innerHTML = `
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="movieModalTitle"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
+                        <div class="modal-content" id="movie-modal-content">
+                            <div class="modal-header" id="movie-modal-header">
+                                <h5 class="modal-title"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
                                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" id="movie-modal-body">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div>                
-                                            <span id="genres"><strong>${genre.name} </strong></span>
+                                            <span id="genres"><strong>${movieInfo.genres} </strong></span>
                                             <span> ${movieInfo.runtime} minutes</span>
                                         </div>
                                         <div>
@@ -233,13 +236,13 @@ function showMovieDetails(e, movieId) {
                                     </div>
                                 </div>
                             </div>         
-                            <div class="modal-footer">
+                            <div class="modal-footer" id="movie-modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to movies</button>
                             </div>
                         </div>
                     </div>
                     `; 
-            });
+            
             movieModal.show();
         })    
         .catch((error) => {
