@@ -50,13 +50,13 @@ function searchPerson(e) {
                 console.log(data);
                 switch (data.results[0].known_for_department) {
                     case 'Acting':
-                        getResults(data.results[0].id, true);
+                        getSearchResults(data.results[0].id, true);
                         break;
                     case 'Writing':
-                        getResults(data.results[0].id, false);
+                        getSearchResults(data.results[0].id, false);
                         break;
                     case 'Directing':
-                        getResults(data.results[0].id, false);
+                        getSearchResults(data.results[0].id, false);
                         break;
                     default:
                         bootbox.alert("Sorry no results here! Try searching for an actor, writer or director.");
@@ -74,7 +74,7 @@ function searchPerson(e) {
 }
 
 // function to get results from person search
-function getResults(person_id, actor) {
+function getSearchResults(person_id, actor) {
     //second api call to return movie credits using person id         
     fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
         .then((res) => res.json())
