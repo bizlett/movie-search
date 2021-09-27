@@ -6,7 +6,7 @@
 
 Want to watch a movie but can't decide what? Let watcha do the hard work for you.
 
-Powered by TMDb, our movie search recommends the most popular and trending movies for you to kick back and chill. Not feeling inspired? You can always search by [actor/director/genre/TBC] to discover something new!
+Powered by TMDb, our movie search recommends the most popular and trending movies for you to kick back and chill. Not feeling inspired? You can always search by actor, writer or director to discover something new!
 
 Thank you for visiting my project! If you have any feedback or questions, head over to my GitHub contact details and feel free to reach out to me. 
 
@@ -57,13 +57,13 @@ Thank you for visiting my project! If you have any feedback or questions, head o
 * As a returning user, I want to see different film recommendations to what I've seen before. 
 
 #### **Frequent Visitor Goals**
-* As a frequent user, I want to be able to search for movies to watch based on different queries.
+* As a frequent user, I want to be able to search for movies to watch based on different search terms.
 
 <a></a>
 
 ### **Business Goals**
-* Inform the user about popular or trending movies
-* Provide the user with recommendations for movies to watch from their favourite writers, directors or producers
+* Inform the user about popular or trending movies.
+* Provide the user with recommendations for movies to watch from their favourite writers, directors or actors.
 
 <a></a>
 
@@ -89,7 +89,7 @@ I have used [Bootstrap v5.0.2](https://getbootstrap.com/) to create the overall 
 
 #### *Imagery*
 
-My hero image was sourced from [Pexels](https://www.pexels.com/). I sought an image that has an almost retro feel to it to appeal to my target demographic of university students.
+My hero image was sourced from [Pexels](https://www.pexels.com/). Watcha has universal appeal, but I sought an image that has an almost retro feel to it to appeal to my target demographic of university students.
 
 [Back to Top](#table-of-contents)
 
@@ -129,7 +129,7 @@ I used [Balsamiq](https://balsamiq.com/wireframes/) to create wireframes for my 
 
 ![screenshot of nav bar]()
 
-Text
+I wanted to strip back the navbar so in this version I opted only for a navbar brand that refreshes the page when tapped or clicked. There is certainly scope to add to this however as noted in the Future Features section of this readme.
 
 #### Hero Image
 
@@ -181,31 +181,42 @@ The footer for the page is very basic and features only the logo and attribution
 
 ![screenshot of custom scroll bar](assets/readme/scroll-bar.png)
 
-I used -webkit- extensions to style it in order to cover as many different browsers in one go. I styled the scrollbar in line with my Coolors palette. 
+I used -webkit- extensions to style it in order to cover as many different browsers in one go. I styled the scrollbars in line with my Coolors palette. 
 
 <a></a>
 
 ### **Future Features**
 
-User responses from testing have been very useful when thinking about future designs:
+Other features which could be added and/or further developed:
 
-*"I signed up to the newsletter but got no confirmation to say it worked"*
+*Navbar*
+In a future version, further nav links could be added such as 'How it works', 'Login' and/or 'My list'. 
 
-In a future version, I would add custom error messages and confirmation that information has been submitted. 
+The 'How it works' nav link would provide further information on the api and how the code uses the information that it grabs from the api calls - not dissimilar to the information provided in the Existing Features section of this readme.
 
-*"Clicking on the photo didn't open it or give it the option to zoom in"*
+The 'My List' nav link would be part of a bigger change to the website - the ability to select and save titles the user is interested in watching into their own personal list. This link would direct the user to a new html page where the list is stored.
 
-In a future version, I would add an image modal to give functionality for images to be opened.
+The 'Login' nav link would direct the user to a dropdown email and password input to access their personal profile. A personal profile would give the user the ability to create and save different movie lists. 
 
-*"I was kind of expecting the Watch links would link to the film's page..."*
+*'My List' - local storage*
+In a future version, 'My List' would be a personalised list where users can save movies they are interested in watching. The first iteration of this list could be local storage, allowing a user to return to their list even after navigating away from the website. It would be accessed through a simple nav link.
 
-If this was a real film, once the film was released these images would link to the appropriate page on the streamer website. To manage this expectation, in a future version I would disable the links and edit the text to note that the film will be released on these platforms from December 2021.
+*User profile login*
+In a future version, the user profile login would give the user the ability to create and save different movie lists. 
 
-Other features which could be added:
+In both 'My List' and within a user profile where you could build customisable lists, the user would have the ability to add or remove items from the lists.
 
-* Reviews section
-* Blog page featuring content as part of the release plans. This would have a comments section for fans of the film and potential audiences to comment
-* Mini-game page - an interactive viral campaign which allows the user to make choices for the character about what to do next. Based on challenges the protogonist faces in the film to enable a user to experience the world firsthand
+*'Add to my list' button*
+In a future version, an additional button 'Add to my list' could be added to the movie information modal. Clicking this button would add the movie title to a personalised list.
+
+*Movie trailer*
+In a future version, the movie modal could be written to include an iframe in which to display a movie's trailer. This would offer the user more visually arresting information to aid their decision and better serve the business goals. 
+
+User responses from testing have also been very useful when thinking about future designs:
+
+*"Would you be able to add films into the search function too?"*
+
+In a future version, the ability to search by movie name in addition to a person search would extend the business goals but better meet the user goals of a frequent user. It is a common and important piece of feedback. Movie databases generally enable a user to search by movie and so that is the users expectation. That watcha relies on person search as a discovery tool does set it apart from similar websites, but it is not necessarily to its benefit. The ability to search by movie could mitigate that issue.
 
 [Back to Top](#table-of-contents)
 
