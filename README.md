@@ -155,25 +155,33 @@ The movie credits are then displayed in this section and the header is revealed 
 
 ![screenshot of recommended section]()
 
-Text
+Popular movies makes a call to the TMDB api to get a list of the current popular movies on TMDB. This list updates daily.  
+
+There are two functions associated to getting to the endpoint of displaying trending movies. The first is triggered by the event listener on window load. The second takes the data from the first call to the api and the list type (whether popular or trending), then displays them in the popular list container. 
+
+There are approximately 500 pages of results for the popular movies call, each page is limited to 20 results. It is not possible to load more than 20 results at the same time, you need to change the page parameter in the url to access the other results. To allow the user to see more results, I created a 'see more' button. The button triggers a function that constructs a new url with a randomly generated page number between 1 and 500 everytime its clicked. This means another 20 results from the popular movies on TMDB will be displayed.
 
 #### Trending
 
 ![screenshot of trending section]()
 
-Text
+Trending movies makes a call to the TMDb api to get the daily or weekly trending items. The daily trending list tracks items over the period of a day while items have a 24 hour half life. The weekly list tracks items over a 7 day period, with a 7 day half life. I have written the call to the api to be based on daily trending items to ensure returning users will get different results.
+
+Again, there are two functions associated to getting to the endpoint of displaying trending movies. The first is triggered by the event listener on window load. The second takes the data from the first call to the api and the list type (whether popular or trending), then displays them in the trending list container. It uses the same function as popular movies, just with different parameters. 
+
+The trending section 'see more' button also utilises the same function as the popular movies section to load further results.
 
 #### Footer
 
 ![screenshot of footer]()
 
-Text
+The footer for the page is very basic and features only the logo and attribution required, as part of the terms of use for the TMDB api.
 
 #### Scrollbar
 
 ![screenshot of custom scroll bar](assets/readme/scroll-bar.png)
 
-I decided to style the scrollbar at a late stage in response to user feedback. I used -webkit- extensions to style it in order to cover as many different browsers in one go. I styled the scrollbar in line with my Coolors palette. 
+I used -webkit- extensions to style it in order to cover as many different browsers in one go. I styled the scrollbar in line with my Coolors palette. 
 
 <a></a>
 
