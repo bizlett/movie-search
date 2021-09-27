@@ -62,8 +62,8 @@ Thank you for visiting my project! If you have any feedback or questions, head o
 <a></a>
 
 ### **Business Goals**
-* Inform the user about popular movies
-* Provide the user with recommendations for movies to watch that fit their requirements
+* Inform the user about popular or trending movies
+* Provide the user with recommendations for movies to watch from their favourite writers, directors or producers
 
 <a></a>
 
@@ -71,7 +71,7 @@ Thank you for visiting my project! If you have any feedback or questions, head o
 #### *Fonts*
 I selected all my fonts from [Google fonts](https://fonts.google.com/).
 
-The website name on the nav bar has its own font in order to make it stand out. I used [Righteous](https://fonts.google.com/specimen/Righteous). I made the font colour white to make it stand out. However, I added a hover pseudo element to change the text to a complementary colour from my palette. Clicking the text refreshes the page.   
+The website name on the nav bar has its own font in order to make it stand out. I used [Righteous](https://fonts.google.com/specimen/Righteous). I made the font colour white to make it stand out. However, I added a hover pseudo element to change the text to a complementary colour from my palette. Clicking the 'watcha' text refreshes the page.   
 
 The overall content is written in [Poppins](https://fonts.google.com/specimen/Poppins), with sans serif as the secondary. 
 
