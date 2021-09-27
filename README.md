@@ -143,9 +143,15 @@ I also added a box shadow to the hero image to make the 'watcha' text on the nav
 
 ![screenshot of results section]()
 
-Text
+Results from the search are displayed here. The header is hidden and is shown when the results are displayed. The container is on the page but isn't visible to the user because the background colour masks it until it is populated with results from the search. 
 
-#### Recommended 
+There are a few steps associated with getting to the endpoint of displaying the results in this container. First the user searches by the name of their chosen actor, writer or director. If the search is given the correct input, it will grab the person id associated with that person based on what they are known for - writing, directing or acting. 
+
+A second call to the api is then made. This function uses the person id grabbed from the first function to get their full movie credits.
+
+The movie credits are then displayed in this section and the header is revealed using a third function.
+
+#### Popular 
 
 ![screenshot of recommended section]()
 
