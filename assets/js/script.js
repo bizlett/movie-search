@@ -26,7 +26,7 @@ window.addEventListener('click', function (e) {
         let target = e.target;
         let movieId = target.dataset.movieId;
         showMovieDetails(e, movieId);
-    };
+    }
 });
 
 morePopularMoviesButton.addEventListener('click', getMoreMovies);
@@ -113,7 +113,7 @@ function displaySearchResults(data) {
             searchResultsList.appendChild(listingContainer);
         }
     });
-};
+}
 
 // function to get popular movies
 function getPopularMovies(e) {
