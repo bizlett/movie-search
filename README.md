@@ -85,7 +85,7 @@ I used [Coolors](https://coolors.co/) to put together a palette for my website. 
 
 #### *Structure*
 
-I have used [Bootstrap v5.0.2](https://getbootstrap.com/) to create the overall structure of my website.
+I have used [Bootstrap v4.6](https://getbootstrap.com/) to create the overall structure of my website.
 
 #### *Imagery*
 
@@ -190,26 +190,31 @@ I used -webkit- extensions to style it in order to cover as many different brows
 Other features which could be added and/or further developed:
 
 *Navbar*
+
 In a future version, further nav links could be added such as 'How it works', 'Login' and/or 'My list'. 
 
-The 'How it works' nav link would provide further information on the api and how the code uses the information that it grabs from the api calls - not dissimilar to the information provided in the Existing Features section of this readme.
+The 'How it works' nav link would provide further information on the api and how the code uses the information that it grabs from the api, as well as information on creating and editing movie lists (a feature not in this version of the website).
 
 The 'My List' nav link would be part of a bigger change to the website - the ability to select and save titles the user is interested in watching into their own personal list. This link would direct the user to a new html page where the list is stored.
 
 The 'Login' nav link would direct the user to a dropdown email and password input to access their personal profile. A personal profile would give the user the ability to create and save different movie lists. 
 
 *'My List' - local storage*
+
 In a future version, 'My List' would be a personalised list where users can save movies they are interested in watching. The first iteration of this list could be local storage, allowing a user to return to their list even after navigating away from the website. It would be accessed through a simple nav link.
 
 *User profile login*
+
 In a future version, the user profile login would give the user the ability to create and save different movie lists. 
 
 In both 'My List' and within a user profile where you could build customisable lists, the user would have the ability to add or remove items from the lists.
 
 *'Add to my list' button*
+
 In a future version, an additional button 'Add to my list' could be added to the movie information modal. Clicking this button would add the movie title to a personalised list.
 
 *Movie trailer*
+
 In a future version, the movie modal could be written to include an iframe in which to display a movie's trailer. This would offer the user more visually arresting information to aid their decision and better serve the business goals. 
 
 User responses from testing have also been very useful when thinking about future designs:
@@ -279,19 +284,40 @@ Finally, I asked friends and family to test the website on their devices. I aske
 
 ### **Bugs and Solutions**
 
-getWatchList header created as div displaying inline with search results. Fixed by adding header div in html, display none which shows on search button click. 
+*Issue*
 
-getWatchList originally only diplaying 3 results - what actor or director was known for. Wanted to display whole movie credits. Solved with 2 api calls in the function. 
+Search results heading was being created as a div as part of the function. However rather than displaying as block, as a dynamically created element it was displaying inline with search results. This was affecting how search results were displaying, pushing everything outside of the container.
 
-getWatchList search accesses cast property to pull movie credits which doesn't work when you search directors. Need to access different property for results when it comes to directors. Look at director object and see what property most relevant. Likely need an if statement to differentiate whether actor or director. May not have time to sort this.
+*Solution*
 
-getWatchList displays more than 20 results which makes the horizontal scroll bad (worse?!) ux. Would be better to limit to 20 results then add show more button as with popular and top rated movies
+I fixed the issue by adding the heading div in html and then applying display none in CSS. I then changed the function to display the heading div on search button click. 
 
-top rated and popular movies display only page 1 results as default everytime. Want different results (i.e. different pages) to display when you click 'see more' buttons. Would be nice for results to change on window.load too but may not have time for this. 
+*Issue*
 
-when top rated see more button is clicked - popular movies list disappears until popular see more button is clicked. Noted code hangover from getMorePopular function meant that the getMoreTopRated function was clearing popular list results and not top rated results. Removed clear results from both functions as unnecessary code due to the new page replacing the previous anyway. 
+displaySearchResults function was originally only diplaying 3 results. This is because I had specfied that the api must show the credits that the person was known for. I wanted to display whole movie credits. 
 
-when trending see more button clicked - new results don't always display. fixed by adjusting random number max from 1000 to 500. 
+*Solution*
+
+I solved this issue with 2 api calls in the function - the first to get the person id and the second to get their full movie credits. Using the known for property was still essential to access the necessary credits based on whether the person was an actor, director or writer. I was then able to specify whether to access cast credits or crew credits to get the full information I needed. 
+
+*Issue*
+
+Trending and popular movies list display only page 1 results as default everytime. I wanted different results (i.e. different pages) to display when you click 'see more' buttons.
+
+*Solution*
+
+In order to access different pages of results, the page parameter in the url must be changed. To achieve this, I used random to select a number between 1-500 (the number of pages of results). Then I used concatenation to build a new url everytime the 'see more' buttons are clicked to return different results. I originally had two functions doing this but refactored the code to use only one function for both buttons. 
+
+*Issue*
+
+When a movie poster image was clicked, the modal containing the movie information would appear but wasn't displaying properly. The background wasn't present and the text was hard to read, appearing in the top left of the window. You would need to refresh the page to get rid of the modal.
+
+*Solution*
+
+The problem was two-fold. First, I was originally using Bootstrap 5. On further research into this it appeared that there was a potential bug there so I switched the links to Bootstrap 4.6. This got the modal working but it would only work for the first movie clicked. 
+
+The next issue was that the inner html was overwriting a key part of the modal code. Dynamically it was writing over itself, producing a modal which featured information from the same movie irrespective of what movie was clicked. I fixed the problem by adjusting how I'd written the innerHTML code in the showMovieDetails function. Student support helped me to work through this particular issue to find a solution. 
+
    
 [Back to Top](#table-of-contents)
 
@@ -329,23 +355,26 @@ To run the project locally:
 
 ### **Code**
 
-* [W3Schools Online](https://www.w3schools.com/)
-* [Stackoverflow]()
-* [CSS Tricks](https://css-tricks.com/)
-* [Javascfript & Jquery by Jon Duckett]()
+* [Bootstrap Documentation](https://getbootstrap.com/docs/4.6/getting-started/introduction/) for modal code
+* [Esterling Accime](https://www.youtube.com/channel/UC81OIFgbiCv9lE2ws07lsjA) for code on how to target the movie poster image to trigger the modal (specific video [Build the latest movie app with JavaScript](https://www.youtube.com/watch?v=mWg2udweauY))
 
 <a></a>
 
 ### **Media**
 
-* [Lucas Pezeta](pexels link)
+* [Lucas Pezeta](https://www.pexels.com/@lucaspezeta)
 
 <a></a>
 
 ### **Acknowledgements**
 
 * [Simen Dahlin](https://github.com/Eventyret) for his support in creating this website
-* Stack Overflow community
+* Student support for being such superstars exploring issues with me then supporting me to find solutions
+* Code Institute Slack Community
+* [Javascript & Jquery by Jon Duckett](http://javascriptbook.com/) and [A Smarter Way to Learn Javascript by Mark Myers](https://www.asmarterwaytolearn.com/js/) were excellent additional learning materials
+* [Web Dev Simplified](https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw) for tutorials around using an api (specific video [Learn Fetch API In 6 Minutes](https://www.youtube.com/watch?v=cuEtnrL9-H0))
+* [Florin Pop](https://www.youtube.com/channel/UCeU-1X402kT-JlLdAitxSMA) for giving me a foundational understanding of what I wanted to achieve and how to go about starting it (specific video [Movies App - React Project](https://www.youtube.com/watch?v=sZ0bZGfg_m4&t=303s))
+* [Asish George Tech](https://www.youtube.com/channel/UC9v2BVgmJCQNN_RJKN6pZDw) for insight into using the TMDB api for a movie app/website (specific video [Movie app based on TMDB API | Day 17 | HTML CSS JS | 50Projects50Days](https://www.youtube.com/watch?v=9Bvt6BFf6_U&t=1360s))
 
 [Back to Top](#table-of-contents)
 
