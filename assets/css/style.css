@@ -296,7 +296,7 @@ footer span {
 /* Media queries */
 
 @media only screen and (max-width: 775px) {
-    .search-container h2, h3 {
+    .search-container h2 {
         display: none;
     }
 
