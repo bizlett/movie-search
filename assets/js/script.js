@@ -214,8 +214,7 @@ function showMovieDetails(e, movieId) {
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content" id="movie-modal-content">
                     <div class="modal-header" id="movie-modal-header">
-                        <h5 class="modal-title"><strong>${movieInfo.title} </h5> <span> (${movieInfo.release_date.slice(0,4)})</span></strong>
-                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title"><strong>${movieInfo.title} </h5><span>${movieInfo.release_date.slice(0,4)}</span></strong>
                     </div>
                     <div class="modal-body" id="movie-modal-body">
                         <div class="container-fluid">
