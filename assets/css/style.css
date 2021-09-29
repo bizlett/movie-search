@@ -17,6 +17,15 @@ body {
     .search-container h2, h3 {
         display: none;
     }
+
+    footer {
+        font-size: .75rem;
+    }
+    
+    #tmdb-logo {
+        height: .75rem;
+        display: flex;
+    }
 }
 
 /* Navbar */
