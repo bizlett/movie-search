@@ -11,6 +11,11 @@ body {
     background-color: rgb(33, 47, 69);
 }
 
+.row {
+    margin-right: 0; 
+    margin-left: 0;
+}
+
 /* Navbar */
 
 .navbar {
