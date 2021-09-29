@@ -11,23 +11,6 @@ body {
     background-color: rgb(33, 47, 69);
 }
 
-/* Media queries */
-
-@media only screen and (max-width: 700px) {
-    .search-container h2, h3 {
-        display: none;
-    }
-
-    footer {
-        font-size: .75rem;
-    }
-    
-    #tmdb-logo {
-        height: .75rem;
-        display: flex;
-    }
-}
-
 /* Navbar */
 
 .navbar {
@@ -308,4 +291,37 @@ footer span {
     align-items: center;
     display: inline-flex;
     color: #ccc;
+}
+
+/* Media queries */
+
+@media only screen and (max-width: 775px) {
+    .search-container h2, h3 {
+        display: none;
+    }
+
+    footer {
+        font-size: .75rem;
+         margin-left: .5rem;
+    }
+    
+    #tmdb-logo {
+        height: .75rem;
+        display: flex;
+    }
+
+    .navbar-brand {
+        font-size: 1.75rem;
+        padding-left: 0rem;
+    }
+
+    .list-header {
+        margin-left: 1rem;
+        font-size: 1rem;
+    }
+    
+    .list-header h2 {
+        font-size: 1.75rem;
+    }
+
 }
