@@ -296,6 +296,14 @@ footer span {
 /* Media queries */
 
 @media only screen and (max-width: 775px) {
+    .jumbotron {
+        background: url(../images/hero.jpeg) no-repeat center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
     .search-container {
         padding: 1rem;
     }
