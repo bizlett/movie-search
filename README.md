@@ -1,6 +1,6 @@
 # **watcha - discover movies database**
 
-![Mock up image]()
+![Mock up image](assets/images/readme/mockup.png)
 
 ## **Goal for this project**
 
@@ -81,7 +81,7 @@ I created a favicon for the website using the logo generator at [Favicon](http//
 #### *Colours*
 I used [Coolors](https://coolors.co/) to put together a palette for my website. I used my hero image as the starting point, using a colour picker to draw out blues initially. 
 
-<img src="assets/readme/coolors-palette.png" alt="coolors palette for watcha website">
+<img src="assets/images/readme/watcha-coolors.png" alt="coolors palette for watcha website">
 
 #### *Structure*
 
@@ -125,23 +125,23 @@ I used [Balsamiq](https://balsamiq.com/wireframes/) to create wireframes for my 
 
 ### **Existing Features**
 
-#### Navigation
+*Navigation*
 
-![screenshot of nav bar]()
+![screenshot of nav bar](assets/images/readme/navbar.png)
 
 I wanted to strip back the navbar so in this version I opted only for a navbar brand that refreshes the page when tapped or clicked. There is certainly scope to add to this however as noted in the Future Features section of this readme.
 
-#### Hero Image
+*Hero Image*
 
-![screenshot of hero]()
+![screenshot of hero](assets/images/readme/hero.png)
 
 I opted for a 100% width hero image and transparent nav bar for a minimalist feel. I added the search input in a container that was centered to draw the user directly to directions on using the website, though made the background colour slightly transparent so as not to interfere with the hero image. 
 
 I also added a box shadow to the hero image to make the 'watcha' text on the nav bar stand out. It also helps to draw the eye to the centre. 
 
-#### Results
+*Results*
 
-![screenshot of results section]()
+![screenshot of results section](assets/images/readme/search-results.png)
 
 Results from the search are displayed here. The header is hidden and is shown when the results are displayed. The container is on the page but isn't visible to the user because the background colour masks it until it is populated with results from the search. 
 
@@ -151,9 +151,9 @@ A second call to the api is then made. This function uses the person id grabbed 
 
 The movie credits are then displayed in this section and the header is revealed using a third function.
 
-#### Popular 
+*Popular* 
 
-![screenshot of recommended section]()
+![screenshot of recommended section](assets/images/readme/popular-section.png)
 
 Popular movies makes a call to the TMDB api to get a list of the current popular movies on TMDB. This list updates daily.  
 
@@ -161,9 +161,9 @@ There are two functions associated to getting to the endpoint of displaying tren
 
 There are approximately 500 pages of results for the popular movies call, each page is limited to 20 results. It is not possible to load more than 20 results at the same time, you need to change the page parameter in the url to access the other results. To allow the user to see more results, I created a 'see more' button. The button triggers a function that constructs a new url with a randomly generated page number between 1 and 500 everytime its clicked. This means another 20 results from the popular movies on TMDB will be displayed.
 
-#### Trending
+*Trending*
 
-![screenshot of trending section]()
+![screenshot of trending section](assets/images/readme/trending-section.png)
 
 Trending movies makes a call to the TMDb api to get the daily or weekly trending items. The daily trending list tracks items over the period of a day while items have a 24 hour half life. The weekly list tracks items over a 7 day period, with a 7 day half life. I have written the call to the api to be based on daily trending items to ensure returning users will get different results.
 
@@ -171,17 +171,17 @@ Again, there are two functions associated to getting to the endpoint of displayi
 
 The trending section 'see more' button also utilises the same function as the popular movies section to load further results.
 
-#### Footer
+*Footer*
 
-![screenshot of footer]()
+![screenshot of footer](assets/images/readme/footer.png)
 
 The footer for the page is very basic and features only the logo and attribution required, as part of the terms of use for the TMDB api.
 
-#### Scrollbar
+*Scrollbar*
 
-![screenshot of custom scroll bar](assets/readme/scroll-bar.png)
+![screenshot of custom scroll bar](assets/images/readme/scrollbars.png)
 
-I used -webkit- extensions to style it in order to cover as many different browsers in one go. I styled the scrollbars in line with my Coolors palette. 
+As I am using both horizontal and vertical scrollbars, I wanted to ensure a uniform style for them which would work with the aesthetic and design of the website. I used -webkit- extensions to style the scrollbars in order to cover as many different browsers in one go. I styled them in line with my Coolors palette. 
 
 <a></a>
 
