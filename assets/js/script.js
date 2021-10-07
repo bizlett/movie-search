@@ -45,7 +45,6 @@ function searchPerson(e) {
         fetch(searchInputUrl)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 switch (data.results[0].known_for_department) {
                     case 'Acting':
                         getSearchResults(data.results[0].id, true);
@@ -57,12 +56,13 @@ function searchPerson(e) {
                         getSearchResults(data.results[0].id, false);
                         break;
                     default:
-                        bootbox.alert("Sorry no results here! Try searching for an actor, writer or director.");
+                bootbox.alert("Try searching for an actor, writer or director to return movie suggestions.");
                         break;
                 }
             })
             .catch((error) => {
                 console.log(error);
+                bootbox.alert("Try searching for an actor, writer or director to return movie suggestions.");
             });
         // clear search input
         searchInput.value = '';
