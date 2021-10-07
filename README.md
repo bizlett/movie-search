@@ -103,15 +103,15 @@ I used [Balsamiq](https://balsamiq.com/wireframes/) to create wireframes for my 
 
 <a></a>
 
-* [Desktop](raw github user content link)
+* [Desktop](https://raw.githubusercontent.com/bizlett/watcha-movie-search/master/assets/wireframes/desktop.png)
 
 <a></a>
 
-* [Tablet](https://raw.githubusercontent.com/bizlett/tbc)
+* [Tablet](https://raw.githubusercontent.com/bizlett/watcha-movie-search/master/assets/wireframes/tablet.png)
 
 <a></a>
 
-* [Mobile](https://raw.githubusercontent.com/bizlett/tbc)
+* [Mobile](https://raw.githubusercontent.com/bizlett/watcha-movie-search/master/assets/wireframes/mobile.png)
 
 [Back to Top](#table-of-contents)
 
