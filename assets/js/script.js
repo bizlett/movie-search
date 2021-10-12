@@ -76,9 +76,9 @@ function searchPerson(e) {
 }
 
 // function to get results from person search
-function getSearchResults(person_id, actor) {
+function getSearchResults(personId, actor) {
     //second api call to return movie credits using person id         
-    fetch(baseUrl + `person/${person_id}/movie_credits?api_key=${API_KEY}&language=en-US`)
+    fetch(baseUrl + `person/${personId}/movie_credits?api_key=${API_KEY}&language=en-US`)
         .then((res) => res.json())
         .then((data) => {
             if (actor) {
