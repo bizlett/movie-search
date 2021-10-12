@@ -169,7 +169,7 @@ function displayMovies(data, listType) {
 }
 
 // function to display new page of movie results when 'search more' button is clicked
-function getMoreMovies(e) {
+function getMoreMovies() {
     let page = Math.floor(Math.random() * 500) + 1;
 
     if (e.target.id === 'more-popular') {
