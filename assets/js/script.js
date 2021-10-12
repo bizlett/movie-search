@@ -25,7 +25,7 @@ window.addEventListener('load', (e) => {
 window.addEventListener('click', function (e) {
     if (e.target.tagName.toLowerCase() == 'img') {
         let movieId = e.target.dataset.movieId;
-        showMovieDetails(e, movieId);
+        getMovieDetails(e, movieId);
     }
 });
 
@@ -56,7 +56,7 @@ function searchPerson(e) {
                         getSearchResults(data.results[0].id, false);
                         break;
                     default:
-                bootbox.alert("Try searching for an actor, writer or director to return movie suggestions.");
+                        bootbox.alert("Try searching for an actor, writer or director to return movie suggestions.");
                         break;
                 }
             })
@@ -192,54 +192,56 @@ function getMoreMovies(e) {
 // function to open movie listing modal
 // original code to target img element from Esterling Accime (https://www.youtube.com/watch?v=mWg2udweauY&t=3518s)
 // support from tutor support on object.fromEntries, to solve display bug with modal and to create genreString
-function showMovieDetails(e, movieId) {
+function getMovieDetails(e, movieId) {
     let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
     //second api call to return movie details using movie id 
     fetch(baseUrl + movieDetailsUrl)
         .then((res) => res.json())
         .then((data) => {
-            let filters = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
-            let movieInfo = Object.fromEntries(Object.entries(data).filter(([k, v]) => filters.includes(k)));
-            let movieModalRef = document.querySelector("#movie-modal");
-            let movieModal = new bootstrap.Modal(movieModalRef, {
-                backdrop: true
-            });
-            let genres = movieInfo.genres;
-            let genreString = "";
-            for (let i = 0; i < genres.length; i++) {
-                genreString += genres[i].name + ", ";
-            }
+            showMovieDetails(data); 
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
-            let movieModalContent = `
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content" id="movie-modal-content">
-                    <div class="modal-header" id="movie-modal-header">
-                        <h5 class="modal-title"><strong>${movieInfo.title} </h5><span>${movieInfo.release_date.slice(0,4)}</span></strong>
-                    </div>
-                    <div class="modal-body" id="movie-modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
+function showMovieDetails(data) {
+    let filters = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
+    let movieInfo = Object.fromEntries(Object.entries(data).filter(([k, v]) => filters.includes(k)));
+    let movieModalRef = document.querySelector("#movie-modal");
+    let movieModal = new bootstrap.Modal(movieModalRef);
+    let genres = movieInfo.genres;
+    let genreString = "";
+    for (let i = 0; i < genres.length; i++) {
+        genreString += genres[i].name + ", ";
+    }
+
+    let movieModalContent = `
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" id="movie-modal-content">
+                <div class="modal-header" id="movie-modal-header">
+                    <h5 class="modal-title"><strong>${movieInfo.title} </h5><span>${movieInfo.release_date.slice(0,4)}</span></strong>
+                </div>
+                <div class="modal-body" id="movie-modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
                             <div>                
                                 <span id="genres"><strong>${genreString} </strong></span>
                                 <span> ${movieInfo.runtime} minutes</span>
                             </div>
                             <div>
                                 <h6><em>${movieInfo.tagline}</em></h6>
-                                            <p>${movieInfo.overview}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>         
-                            <div class="modal-footer" id="movie-modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to movies</button>
+                                <p>${movieInfo.overview}</p>
                             </div>
                         </div>
                     </div>
-            `;
-            movieModalRef.innerHTML = movieModalContent;
-            movieModal.show();
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+                </div>         
+                <div class="modal-footer" id="movie-modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to movies</button>
+                </div>
+            </div>
+        </div>
+        `;
+    movieModalRef.innerHTML = movieModalContent;
+    movieModal.show();
 }
