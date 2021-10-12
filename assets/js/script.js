@@ -13,6 +13,9 @@ const popularListRef = document.querySelector('#popular-list');
 const trendingListRef = document.querySelector('#trending-list');
 const morePopularMoviesButtonRef = document.querySelector('#more-popular');
 const moreTrendingMoviesButtonRef = document.querySelector('#more-trending');
+const movieModalRef = document.querySelector("#movie-modal");
+
+const movieDetails = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
 
 // Event Listeners
 searchButtonRef.addEventListener('click', searchPerson);
@@ -191,7 +194,7 @@ function getMoreMovies(e) {
 
 // function to open movie listing modal
 // original code to target img element from Esterling Accime (https://www.youtube.com/watch?v=mWg2udweauY&t=3518s)
-// support from tutor support on object.fromEntries, to solve display bug with modal and to create genreString
+// support from tutor support on object.fromEntries, to solve display bug with modal and to create movieGenres
 function getMovieDetails(e, movieId) {
     let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
     //second api call to return movie details using movie id 
@@ -206,14 +209,13 @@ function getMovieDetails(e, movieId) {
 }
 
 function showMovieDetails(data) {
-    let filters = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
-    let movieInfo = Object.fromEntries(Object.entries(data).filter(([k, v]) => filters.includes(k)));
-    let movieModalRef = document.querySelector("#movie-modal");
+    let movieInfo = Object.fromEntries(Object.entries(data).filter(([key, value]) => movieDetails.includes(key)));
     let movieModal = new bootstrap.Modal(movieModalRef);
     let genres = movieInfo.genres;
-    let genreString = "";
+    let movieGenres = "";
+
     for (let i = 0; i < genres.length; i++) {
-        genreString += genres[i].name + ", ";
+        movieGenres += genres[i].name + ", ";
     }
 
     let movieModalContent = `
@@ -226,7 +228,7 @@ function showMovieDetails(data) {
                     <div class="container-fluid">
                         <div class="row">
                             <div>                
-                                <span id="genres"><strong>${genreString} </strong></span>
+                                <span id="genres"><strong>${movieGenres} </strong></span>
                                 <span> ${movieInfo.runtime} minutes</span>
                             </div>
                             <div>
