@@ -5,16 +5,17 @@ const personUrl = `search/person?api_key=${API_KEY}&language=en-US`;
 const popularUrl = `movie/popular?api_key=${API_KEY}&language=en-US`;
 const trendingUrl = `trending/movie/day?api_key=${API_KEY}`;
 const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
-const searchInput = document.querySelector('#search-input');
-const searchButton = document.querySelector('#search-button');
-const searchResultsList = document.querySelector('#search-results-list');
-const popularList = document.querySelector('#popular-list');
-const trendingList = document.querySelector('#trending-list');
-const morePopularMoviesButton = document.querySelector('#more-popular');
-const moreTrendingMoviesButton = document.querySelector('#more-trending');
+
+const searchInputRef = document.querySelector('#search-input');
+const searchButtonRef = document.querySelector('#search-button');
+const searchResultsListRef = document.querySelector('#search-results-list');
+const popularListRef = document.querySelector('#popular-list');
+const trendingListRef = document.querySelector('#trending-list');
+const morePopularMoviesButtonRef = document.querySelector('#more-popular');
+const moreTrendingMoviesButtonRef = document.querySelector('#more-trending');
 
 // Event Listeners
-searchButton.addEventListener('click', searchPerson);
+searchButtonRef.addEventListener('click', searchPerson);
 
 window.addEventListener('load', (e) => {
     getPopularMovies();
@@ -23,26 +24,25 @@ window.addEventListener('load', (e) => {
 
 window.addEventListener('click', function (e) {
     if (e.target.tagName.toLowerCase() == 'img') {
-        let target = e.target;
-        let movieId = target.dataset.movieId;
+        let movieId = e.target.dataset.movieId;
         showMovieDetails(e, movieId);
     }
 });
 
-morePopularMoviesButton.addEventListener('click', getMoreMovies);
+morePopularMoviesButtonRef.addEventListener('click', getMoreMovies);
 
-moreTrendingMoviesButton.addEventListener('click', getMoreMovies);
+moreTrendingMoviesButtonRef.addEventListener('click', getMoreMovies);
 
 // Functions 
 
 // Search movie/series function based on person
 function searchPerson(e) {
     e.preventDefault();
-    let search = searchInput.value;
+    let search = searchInputRef.value;
     if (search != "") {
-        let searchInputUrl = baseUrl + personUrl + '&query=' + search;
+        let searchInputRefUrl = baseUrl + personUrl + '&query=' + search;
         // calls to api url to get person based on user search
-        fetch(searchInputUrl)
+        fetch(searchInputRefUrl)
             .then((res) => res.json())
             .then((data) => {
                 switch (data.results[0].known_for_department) {
@@ -65,7 +65,7 @@ function searchPerson(e) {
                 bootbox.alert("Try searching for an actor, writer or director to return movie suggestions.");
             });
         // clear search input
-        searchInput.value = '';
+        searchInputRef.value = '';
     } else {
         bootbox.alert("Give us a hint! Try searching for an actor, writer or director.");
     }
@@ -78,9 +78,9 @@ function getSearchResults(person_id, actor) {
         .then((res) => res.json())
         .then((data) => {
             if (actor) {
-                displaySearchResults(data.cast, searchResultsList);
+                displaySearchResults(data.cast, searchResultsListRef);
             } else {
-                displaySearchResults(data.crew, searchResultsList);
+                displaySearchResults(data.crew, searchResultsListRef);
             }
         })
         .catch((error) => {
@@ -90,7 +90,7 @@ function getSearchResults(person_id, actor) {
 
 // // function to display movies from search 
 function displaySearchResults(data) {
-    searchResultsList.innerHTML = '';
+    searchResultsListRef.innerHTML = '';
     // shows list header
     document.getElementById('search-results-header').style.display = "block";
     data.forEach(movie => {
@@ -110,7 +110,7 @@ function displaySearchResults(data) {
             <span>Rating ${vote_average}</span>
             </div>
             `;
-            searchResultsList.appendChild(listingContainer);
+            searchResultsListRef.appendChild(listingContainer);
         }
     });
 }
@@ -120,7 +120,7 @@ function getPopularMovies(e) {
     fetch(baseUrl + popularUrl)
         .then((res) => res.json())
         .then((data) => {
-            displayMovies(data.results, popularList);
+            displayMovies(data.results, popularListRef);
         })
         .catch((error) => {
             console.log(error);
@@ -132,7 +132,7 @@ function getTrendingMovies(e) {
     fetch(baseUrl + trendingUrl)
         .then((res) => res.json())
         .then((data) => {
-            displayMovies(data.results, trendingList);
+            displayMovies(data.results, trendingListRef);
         })
         .catch((error) => {
             console.log(error);
@@ -172,7 +172,7 @@ function getMoreMovies(e) {
         fetch(baseUrl + popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
             .then((res) => res.json())
             .then((data) => {
-                displayMovies(data.results, popularList);
+                displayMovies(data.results, popularListRef);
             })
             .catch((error) => {
                 console.log(error);
@@ -181,7 +181,7 @@ function getMoreMovies(e) {
         fetch(baseUrl + trendingUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
             .then((res) => res.json())
             .then((data) => {
-                displayMovies(data.results, trendingList);
+                displayMovies(data.results, trendingListRef);
             })
             .catch((error) => {
                 console.log(error);
