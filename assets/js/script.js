@@ -16,6 +16,7 @@ const moreTrendingMoviesButtonRef = document.querySelector('#more-trending');
 const movieModalRef = document.querySelector("#movie-modal");
 
 const movieDetails = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
+const movieModal = new bootstrap.Modal(movieModalRef);
 
 // Event Listeners
 searchButtonRef.addEventListener('click', searchPerson);
@@ -209,8 +210,7 @@ function getMovieDetails(e, movieId) {
 }
 
 function showMovieDetails(data) {
-    let movieInfo = Object.fromEntries(Object.entries(data).filter(([key, value]) => movieDetails.includes(key)));
-    let movieModal = new bootstrap.Modal(movieModalRef);
+    const movieInfo = Object.fromEntries(Object.entries(data).filter(([key, value]) => movieDetails.includes(key)));
     let genres = movieInfo.genres;
     let movieGenres = "";
 
