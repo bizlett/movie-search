@@ -120,7 +120,7 @@ function displaySearchResults(data) {
 }
 
 // function to get popular movies
-function getPopularMovies(e) {
+function getPopularMovies() {
     fetch(baseUrl + popularUrl)
         .then((res) => res.json())
         .then((data) => {
@@ -132,7 +132,7 @@ function getPopularMovies(e) {
 }
 
 // function to get top rated movies
-function getTrendingMovies(e) {
+function getTrendingMovies() {
     fetch(baseUrl + trendingUrl)
         .then((res) => res.json())
         .then((data) => {
