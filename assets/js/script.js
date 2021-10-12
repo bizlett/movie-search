@@ -40,7 +40,7 @@ moreTrendingMoviesButtonRef.addEventListener('click', getMoreMovies);
 // Functions 
 
 // Search movie/series function based on person
-function searchPerson(e) {
+function searchPerson() {
     e.preventDefault();
     let search = searchInputRef.value;
     if (search != "") {
