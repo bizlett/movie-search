@@ -8,6 +8,7 @@ const posterImagePath = 'https://image.tmdb.org/t/p/w185/';
 
 const searchInputRef = document.querySelector('#search-input');
 const searchButtonRef = document.querySelector('#search-button');
+const searchResultsHeaderRef = document.querySelector('#search-results-header');
 const searchResultsListRef = document.querySelector('#search-results-list');
 const popularListRef = document.querySelector('#popular-list');
 const trendingListRef = document.querySelector('#trending-list');
@@ -48,16 +49,16 @@ function searchPerson(e) {
         // calls to api url to get person based on user search
         fetch(searchInputRefUrl)
             .then((res) => res.json())
-            .then((data) => {
-                switch (data.results[0].known_for_department) {
+            .then((person) => {
+                switch (person.results[0].known_for_department) {
                     case 'Acting':
-                        getSearchResults(data.results[0].id, true);
+                        getSearchResults(person.results[0].id, true);
                         break;
                     case 'Writing':
-                        getSearchResults(data.results[0].id, false);
+                        getSearchResults(person.results[0].id, false);
                         break;
                     case 'Directing':
-                        getSearchResults(data.results[0].id, false);
+                        getSearchResults(person.results[0].id, false);
                         break;
                     default:
                         bootbox.alert("Try searching for an actor, writer or director to return movie suggestions.");
@@ -80,11 +81,11 @@ function getSearchResults(personId, actor) {
     //second api call to return movie credits using person id         
     fetch(baseUrl + `person/${personId}/movie_credits?api_key=${API_KEY}&language=en-US`)
         .then((res) => res.json())
-        .then((data) => {
+        .then((movies) => {
             if (actor) {
-                displaySearchResults(data.cast, searchResultsListRef);
+                displaySearchResults(movies.cast, searchResultsListRef);
             } else {
-                displaySearchResults(data.crew, searchResultsListRef);
+                displaySearchResults(movies.crew, searchResultsListRef);
             }
         })
         .catch((error) => {
@@ -93,11 +94,11 @@ function getSearchResults(personId, actor) {
 }
 
 // // function to display movies from search 
-function displaySearchResults(data) {
+function displaySearchResults(movies) {
     searchResultsListRef.innerHTML = '';
     // shows list header
-    document.getElementById('search-results-header').style.display = "block";
-    data.forEach(movie => {
+    searchResultsHeaderRef.style.display = "block";
+    movies.forEach(movie => {
         let {
             poster_path,
             title,
@@ -123,8 +124,8 @@ function displaySearchResults(data) {
 function getPopularMovies() {
     fetch(baseUrl + popularUrl)
         .then((res) => res.json())
-        .then((data) => {
-            displayMovies(data.results, popularListRef);
+        .then((movies) => {
+            displayMovies(movies.results, popularListRef);
         })
         .catch((error) => {
             console.log(error);
@@ -135,8 +136,8 @@ function getPopularMovies() {
 function getTrendingMovies() {
     fetch(baseUrl + trendingUrl)
         .then((res) => res.json())
-        .then((data) => {
-            displayMovies(data.results, trendingListRef);
+        .then((movies) => {
+            displayMovies(movies.results, trendingListRef);
         })
         .catch((error) => {
             console.log(error);
@@ -144,9 +145,9 @@ function getTrendingMovies() {
 }
 
 // function to display movies  
-function displayMovies(data, listType) {
+function displayMovies(movies, listType) {
     listType.innerHTML = '';
-    data.forEach(movie => {
+    movies.forEach(movie => {
         let {
             poster_path,
             title,
@@ -175,8 +176,8 @@ function getMoreMovies(e) {
     if (e.target.id === 'more-popular') {
         fetch(baseUrl + popularUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
             .then((res) => res.json())
-            .then((data) => {
-                displayMovies(data.results, popularListRef);
+            .then((movies) => {
+                displayMovies(movies.results, popularListRef);
             })
             .catch((error) => {
                 console.log(error);
@@ -184,8 +185,8 @@ function getMoreMovies(e) {
     } else {
         fetch(baseUrl + trendingUrl + '&page=' + `${page}`) //url is constructed with randomly generated page number
             .then((res) => res.json())
-            .then((data) => {
-                displayMovies(data.results, trendingListRef);
+            .then((movies) => {
+                displayMovies(movies.results, trendingListRef);
             })
             .catch((error) => {
                 console.log(error);
