@@ -40,13 +40,17 @@ moreTrendingMoviesButtonRef.addEventListener('click', getMoreMovies);
 
 // Functions 
 
-// Search movie/series function based on person
+/**
+ * This function searches for a person based on the user input. 
+ * The user types search term into the input and clicks searchButtonRef.
+ * It calls to the TMDB API to get the person ID.
+ * @param {EventListener} e
+ */
 function searchPerson(e) {
     e.preventDefault();
     let search = searchInputRef.value;
     if (search != "") {
         let searchInputRefUrl = baseUrl + personUrl + '&query=' + search;
-        // calls to api url to get person based on user search
         fetch(searchInputRefUrl)
             .then((res) => res.json())
             .then((person) => {
@@ -69,16 +73,18 @@ function searchPerson(e) {
                 console.log(error);
                 bootbox.alert("Try searching for an actor, writer or director to return movie suggestions.");
             });
-        // clear search input
         searchInputRef.value = '';
     } else {
         bootbox.alert("Give us a hint! Try searching for an actor, writer or director.");
     }
 }
 
-// function to get results from person search
-function getSearchResults(personId, actor) {
-    //second api call to return movie credits using person id         
+/**
+ * This function gets the movie credits of person a user has searched for.
+ * @param {Number} personId
+ * @param {String} actor 
+ */
+function getSearchResults(personId, actor) {        
     fetch(baseUrl + `person/${personId}/movie_credits?api_key=${API_KEY}&language=en-US`)
         .then((res) => res.json())
         .then((movies) => {
@@ -93,7 +99,10 @@ function getSearchResults(personId, actor) {
         });
 }
 
-// // function to display movies from search 
+/**
+ * This function displays the list of movies from the users search.
+ * @param {Array.Object} movies The list of movies (filmography) of the person that the user searched for
+ */
 function displaySearchResults(movies) {
     searchResultsListRef.innerHTML = '';
     // shows list header
@@ -120,7 +129,9 @@ function displaySearchResults(movies) {
     });
 }
 
-// function to get popular movies
+/**
+ * This function gets a list of movies that are popular on TMDB.
+ */
 function getPopularMovies() {
     fetch(baseUrl + popularUrl)
         .then((res) => res.json())
@@ -132,7 +143,9 @@ function getPopularMovies() {
         });
 }
 
-// function to get top rated movies
+/**
+ * This function gets a list of movies that are trending on TMDB.
+ */
 function getTrendingMovies() {
     fetch(baseUrl + trendingUrl)
         .then((res) => res.json())
@@ -144,7 +157,11 @@ function getTrendingMovies() {
         });
 }
 
-// function to display movies  
+/**
+ * This function displays the list of popular movies and trending movies in the relevant container.
+ * @param {Array.Object} movies 
+ * @param {Element} listType 
+ */  
 function displayMovies(movies, listType) {
     listType.innerHTML = '';
     movies.forEach(movie => {
@@ -169,7 +186,11 @@ function displayMovies(movies, listType) {
     });
 }
 
-// function to display new page of movie results when 'search more' button is clicked
+/**
+ * This function loads another page of results from the list of popular or trending movies.
+ * It loads more movies when the user clicks the 'Search more' buttons 
+ * @param {EventListener} e 
+ */
 function getMoreMovies(e) {
     let page = Math.floor(Math.random() * 500) + 1;
 
@@ -194,12 +215,15 @@ function getMoreMovies(e) {
     }
 }
 
-// function to open movie listing modal
-// original code to target img element from Esterling Accime (https://www.youtube.com/watch?v=mWg2udweauY&t=3518s)
-// support from tutor support on object.fromEntries, to solve display bug with modal and to create movieGenres
+/**
+ * This function gets movie data to pass into the showMovieDetails function.
+ * It uses an eventlistener targeting the poster image.
+ * The original code to target the img element came from Esterling Accime (https://www.youtube.com/watch?v=mWg2udweauY&t=3518s)
+ * @param {EventListener} e 
+ * @param {number} movieId 
+ */
 function getMovieDetails(e, movieId) {
     let movieDetailsUrl = `movie/${movieId}?api_key=${API_KEY}&language=en-US`;
-    //second api call to return movie details using movie id 
     fetch(baseUrl + movieDetailsUrl)
         .then((res) => res.json())
         .then((data) => {
@@ -210,6 +234,10 @@ function getMovieDetails(e, movieId) {
         });
 }
 
+/**
+ *  * This function creates a modal displaying information about the movie the user has clicked. 
+ * @param {Object} data 
+ */
 function showMovieDetails(data) {
     const movieInfo = Object.fromEntries(Object.entries(data).filter(([key, value]) => movieDetails.includes(key)));
     let genres = movieInfo.genres;
