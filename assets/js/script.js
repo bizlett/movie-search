@@ -84,7 +84,7 @@ function searchPerson(e) {
  * @param {Number} personId
  * @param {String} actor 
  */
-function getSearchResults(personId, actor) {        
+function getSearchResults(personId, actor) {
     fetch(baseUrl + `person/${personId}/movie_credits?api_key=${API_KEY}&language=en-US`)
         .then((res) => res.json())
         .then((movies) => {
@@ -161,7 +161,7 @@ function getTrendingMovies() {
  * This function displays the list of popular movies and trending movies in the relevant container.
  * @param {Array.Object} movies 
  * @param {Element} listType 
- */  
+ */
 function displayMovies(movies, listType) {
     listType.innerHTML = '';
     movies.forEach(movie => {
@@ -227,7 +227,7 @@ function getMovieDetails(e, movieId) {
     fetch(baseUrl + movieDetailsUrl)
         .then((res) => res.json())
         .then((data) => {
-            showMovieDetails(data); 
+            showMovieDetails(data);
         })
         .catch((error) => {
             console.log(error);
@@ -254,11 +254,11 @@ function showMovieDetails(data) {
             <div class="modal-content" id="movie-modal-content">
                 <div class="modal-header" id="movie-modal-header">
                     <div>
-                    <h5 class="modal-title"><strong>${movieInfo.title}</h5> ${movieInfo.release_date.slice(0,4)} </strong>
+                        <h5 class="modal-title"><strong>${movieInfo.title}</h5> ${movieInfo.release_date.slice(0,4)} </strong>
                     </div>
                     <div>              
-                            <span id="genres"><strong>${movieGenres} </strong></span>
-                            <span> ${movieInfo.runtime} minutes</span>
+                        <span id="genres"><strong>${movieGenres} </strong></span>
+                        <span> ${movieInfo.runtime} minutes</span>
                     </div>
                 </div>
                 <div class="modal-body" id="movie-modal-body">

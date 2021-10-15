@@ -12,7 +12,7 @@ body {
 }
 
 .row {
-    margin-right: 0; 
+    margin-right: 0;
     margin-left: 0;
 }
 
@@ -106,14 +106,14 @@ body {
 
 #more-popular,
 #more-trending {
-    color:#fff;
+    color: #fff;
     font-size: 1rem;
     box-shadow: none;
 }
 
 #more-popular:hover,
-#more-trending:hover{
-    color:#6d236d;
+#more-trending:hover {
+    color: #6d236d;
 }
 
 #more-popular,
@@ -132,7 +132,7 @@ body {
 #popular-list,
 #trending-list {
     max-height: 30rem;
-    justify-content:flex-start;
+    justify-content: flex-start;
     display: flex;
     flex-wrap: nowrap;
     margin-bottom: 1.5rem;
@@ -145,7 +145,7 @@ body {
 }
 
 .list-header h2 {
-    display:inline-block;
+    display: inline-block;
 }
 
 .listing {
@@ -183,8 +183,8 @@ body {
 }
 
 .scroll-list {
-    overflow-x:scroll;
-    overflow-y:hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 /* Scroll bars */
@@ -200,8 +200,8 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #ccc; 
-    border-radius: 5px; 
+    background-color: #ccc;
+    border-radius: 5px;
     -webkit-box-shadow: inset 0 0 6px #006466;
 }
 
@@ -216,8 +216,8 @@ body {
 }
 
 .scroll-list::-webkit-scrollbar-thumb {
-    background-color: #ccc; 
-    border-radius: 5px; 
+    background-color: #ccc;
+    border-radius: 5px;
     -webkit-box-shadow: inset 0 0 6px #006466;
 }
 
@@ -241,7 +241,7 @@ body {
     padding-bottom: .5rem;
 }
 
-#movie-modal-header, 
+#movie-modal-header,
 #movie-modal-footer {
     background-color: #0b525b;
 }
@@ -342,9 +342,9 @@ footer span {
 
     footer {
         font-size: .75rem;
-         margin-left: .5rem;
+        margin-left: .5rem;
     }
-    
+
     #tmdb-logo {
         height: .75rem;
         display: flex;
@@ -358,7 +358,7 @@ footer span {
     .list-header {
         margin-left: 1rem;
     }
-    
+
     .list-header h2 {
         font-size: 1.75rem;
     }
