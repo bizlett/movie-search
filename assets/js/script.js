@@ -243,8 +243,6 @@ function showMovieDetails(data) {
     let genres = movieInfo.genres;
     let movieGenres = "";
 
-    console.log(data);
-
     for (let i = 0; i < genres.length; i++) {
         movieGenres += genres[i].name + ", ";
     }
