@@ -16,7 +16,7 @@ const morePopularMoviesButtonRef = document.querySelector('#more-popular');
 const moreTrendingMoviesButtonRef = document.querySelector('#more-trending');
 const movieModalRef = document.querySelector("#movie-modal");
 
-const movieDetails = ["title", "release_date", "genres", "runtime", "tagline", "overview"];
+const movieDetails = ["title", "release_date", "genres", "runtime", "tagline", "overview", "poster_path"];
 const movieModal = new bootstrap.Modal(movieModalRef);
 
 // Event Listeners
@@ -243,7 +243,8 @@ function showMovieDetails(data) {
     let genres = movieInfo.genres;
     let movieGenres = "";
 
-    
+    console.log(data);
+
     for (let i = 0; i < genres.length; i++) {
         movieGenres += genres[i].name + ", ";
     }
@@ -257,6 +258,9 @@ function showMovieDetails(data) {
                 <div class="modal-body" id="movie-modal-body">
                     <div class="container-fluid">
                         <div class="row">
+                            <div class="modal-poster">
+                                <img src="${posterImagePath + movieInfo.poster_path}" alt="${movieInfo.title} poster">
+                            </div>
                             <div>                
                                 <span id="genres"><strong>${movieGenres} </strong></span>
                                 <span> ${movieInfo.runtime} minutes</span>
