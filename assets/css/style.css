@@ -246,8 +246,26 @@ body {
     background-color: #0b525b;
 }
 
-#movie-modal-body{
+#movie-modal-header {
+    display: block;
+    position: relative;
+}
+
+#movie-modal-body {
     background-color: #212f45;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#movie-modal-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-poster img {
+    border-radius: 3px;
 }
 
 .bootbox-close-button {

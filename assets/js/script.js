@@ -253,17 +253,19 @@ function showMovieDetails(data) {
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content" id="movie-modal-content">
                 <div class="modal-header" id="movie-modal-header">
-                    <h5 class="modal-title"><strong>${movieInfo.title} </h5><span>${movieInfo.release_date.slice(0,4)}</span></strong>
+                    <div>
+                    <h5 class="modal-title"><strong>${movieInfo.title}</h5> ${movieInfo.release_date.slice(0,4)} </strong>
+                    </div>
+                    <div>              
+                            <span id="genres"><strong>${movieGenres} </strong></span>
+                            <span> ${movieInfo.runtime} minutes</span>
+                    </div>
                 </div>
                 <div class="modal-body" id="movie-modal-body">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="modal-poster">
-                                <img src="${posterImagePath + movieInfo.poster_path}" alt="${movieInfo.title} poster">
-                            </div>
-                            <div>                
-                                <span id="genres"><strong>${movieGenres} </strong></span>
-                                <span> ${movieInfo.runtime} minutes</span>
+                        <div id="movie-modal-row" class="row">
+                            <div>
+                                <img class="modal-poster" src="${posterImagePath + movieInfo.poster_path}" alt="${movieInfo.title} poster">
                             </div>
                             <div>
                                 <h6><em>${movieInfo.tagline}</em></h6>
