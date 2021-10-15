@@ -264,7 +264,7 @@ body {
     align-items: center;
 }
 
-.modal-poster img {
+.modal-poster {
     border-radius: 3px;
 }
 
