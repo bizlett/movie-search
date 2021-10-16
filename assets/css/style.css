@@ -46,7 +46,7 @@ body {
     height: 90vh;
     width: auto;
 
-    background: url(../images/hero.jpeg) no-repeat bottom fixed;
+    background: url(../images/hero.jpeg) no-repeat fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
