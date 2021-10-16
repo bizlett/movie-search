@@ -252,6 +252,9 @@ function showMovieDetails(data) {
             <div class="modal-content" id="movie-modal-content">
                 <div class="modal-header" id="movie-modal-header">
                     <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                         <h5 class="modal-title"><strong>${movieInfo.title}</h5> ${movieInfo.release_date.slice(0,4)} </strong>
                     </div>
                     <div>              
