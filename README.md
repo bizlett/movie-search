@@ -147,7 +147,7 @@ Results from the search are displayed here. The header is hidden and is shown wh
 
 There are a few steps associated with getting to the endpoint of displaying the results in this container. First the user searches by the name of their chosen actor, writer or director. If the search is given the correct input, it will grab the person id associated with that person based on what they are known for - writing, directing or acting. 
 
-A second call to the api is then made. This function uses the person id grabbed from the first function to get their full movie credits.
+A second call to the API is then made. This function uses the person id grabbed from the first function to get their full movie credits.
 
 The movie credits are then displayed in this section and the header is revealed using a third function.
 
@@ -155,19 +155,19 @@ The movie credits are then displayed in this section and the header is revealed 
 
 ![screenshot of recommended section](assets/images/readme/popular-section.png)
 
-Popular movies makes a call to the TMDB api to get a list of the current popular movies on TMDB. This list updates daily.  
+Popular movies makes a call to the TMDB API to get a list of the current popular movies on TMDB. This list updates daily.  
 
-There are two functions associated to getting to the endpoint of displaying trending movies. The first is triggered by the event listener on window load. The second takes the data from the first call to the api and the list type (whether popular or trending), then displays them in the popular list container. 
+There are two functions associated to getting to the endpoint of displaying trending movies. The first is triggered by the event listener on window load. The second takes the data from the first call to the API and the list type (whether popular or trending), then displays them in the popular list container. 
 
-There are approximately 500 pages of results for the popular movies call, each page is limited to 20 results. It is not possible to load more than 20 results at the same time, you need to change the page parameter in the url to access the other results. To allow the user to see more results, I created a 'see more' button. The button triggers a function that constructs a new url with a randomly generated page number between 1 and 500 everytime its clicked. This means another 20 results from the popular movies on TMDB will be displayed.
+There are approximately 500 pages of results for the popular movies call, each page is limited to 20 results. It is not possible to load more than 20 results at the same time, you need to change the page parameter in the URL to access the other results. To allow the user to see more results, I created a 'see more' button. The button triggers a function that constructs a new URL with a randomly generated page number between 1 and 500 every time its clicked. This means another 20 results from the popular movies on TMDB will be displayed.
 
 *Trending*
 
 ![screenshot of trending section](assets/images/readme/trending-section.png)
 
-Trending movies makes a call to the TMDb api to get the daily or weekly trending items. The daily trending list tracks items over the period of a day while items have a 24 hour half life. The weekly list tracks items over a 7 day period, with a 7 day half life. I have written the call to the api to be based on daily trending items to ensure returning users will get different results.
+Trending movies makes a call to the TMDb API to get the daily or weekly trending items. The daily trending list tracks items over the period of a day while items have a 24 hour half life. The weekly list tracks items over a 7 day period, with a 7 day half life. I have written the call to the API to be based on daily trending items to ensure returning users will get different results.
 
-Again, there are two functions associated to getting to the endpoint of displaying trending movies. The first is triggered by the event listener on window load. The second takes the data from the first call to the api and the list type (whether popular or trending), then displays them in the trending list container. It uses the same function as popular movies, just with different parameters. 
+Again, there are two functions associated to getting to the endpoint of displaying trending movies. The first is triggered by the event listener on window load. The second takes the data from the first call to the API and the list type (whether popular or trending), then displays them in the trending list container. It uses the same function as popular movies, just with different parameters. 
 
 The trending section 'see more' button also utilises the same function as the popular movies section to load further results.
 
@@ -175,7 +175,7 @@ The trending section 'see more' button also utilises the same function as the po
 
 ![screenshot of footer](assets/images/readme/footer.png)
 
-The footer for the page is very basic and features only the logo and attribution required, as part of the terms of use for the TMDB api.
+The footer for the page is very basic and features only the logo and attribution required, as part of the terms of use for the TMDB API.
 
 *Scrollbar*
 
@@ -199,7 +199,7 @@ Other features which could be added and/or further developed:
 
 In a future version, further nav links could be added such as 'How it works', 'Login' and/or 'My list'. 
 
-The 'How it works' nav link could provide further information on the api and how the code uses the information that it grabs from the api, as well as information on creating and editing movie lists (a feature not in this version of the website).
+The 'How it works' nav link could provide further information on the API and how the code uses the information that it grabs from the API, as well as information on creating and editing movie lists (a feature not in this version of the website).
 
 The 'My List' nav link would be part of a bigger change to the website - the ability to select and save titles the user is interested in watching into their own personal list. This link would direct the user to a new html page where the list is stored.
 
@@ -300,19 +300,19 @@ I fixed the issue by adding the heading div in html and then applying display no
 
 *Issue*
 
-displaySearchResults function was originally only diplaying 3 results. This is because I had specfied that the api must show the credits that the person was known for. I wanted to display whole movie credits. 
+displaySearchResults function was originally only diplaying 3 results. This is because I had specified that the API must show the credits that the person was known for. I wanted to display whole movie credits. 
 
 *Solution*
 
-I solved this issue with 2 api calls in the function - the first to get the person id and the second to get their full movie credits. Using the known for property was still essential to access the necessary credits based on whether the person was an actor, director or writer. I was then able to specify whether to access cast credits or crew credits to get the full information I needed. 
+I solved this issue with 2 API calls in the function - the first to get the person id and the second to get their full movie credits. Using the known for property was still essential to access the necessary credits based on whether the person was an actor, director or writer. I was then able to specify whether to access cast credits or crew credits to get the full information I needed. 
 
 *Issue*
 
-Trending and popular movies list display only page 1 results as default everytime. I wanted different results (i.e. different pages) to display when you click 'see more' buttons.
+Trending and popular movies list display only page 1 results as default every time. I wanted different results (i.e. different pages) to display when you click 'see more' buttons.
 
 *Solution*
 
-In order to access different pages of results, the page parameter in the url must be changed. To achieve this, I used random to select a number between 1-500 (the number of pages of results). Then I used concatenation to build a new url everytime the 'see more' buttons are clicked to return different results. I originally had two functions doing this but refactored the code to use only one function for both buttons. 
+In order to access different pages of results, the page parameter in the URL must be changed. To achieve this, I used random to select a number between 1-500 (the number of pages of results). Then I used concatenation to build a new URL every time the 'see more' buttons are clicked to return different results. I originally had two functions doing this but refactored the code to use only one function for both buttons. 
 
 *Issue*
 
@@ -347,7 +347,7 @@ To run the project locally:
 2. Using the Clone with HTTPS option, copy the link displayed.
 3. Open your IDE, and ensure the Git Terminal is open.
 4. Change the working directory to the location where the cloned directory is to go.
-5. Use the "git clone" command and paste the url copied in the second step.
+5. Use the "git clone" command and paste the URL copied in the second step.
 
 [Back to Top](#table-of-contents)
 
@@ -377,11 +377,9 @@ To run the project locally:
 * [Simen Dahlin](https://github.com/Eventyret) for his support in creating this website
 * Student support for being such superstars exploring issues with me, then supporting me to find solutions
 * Code Institute Slack Community
-* [Javascript & Jquery by Jon Duckett](http://javascriptbook.com/) and [A Smarter Way to Learn Javascript by Mark Myers](https://www.asmarterwaytolearn.com/js/) were excellent additional learning materials
-* [Web Dev Simplified](https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw) for tutorials around using an api (specific video [Learn Fetch API In 6 Minutes](https://www.youtube.com/watch?v=cuEtnrL9-H0))
+* [JavaScript & JQuery by Jon Duckett](http://javascriptbook.com/) and [A Smarter Way to Learn Javascript by Mark Myers](https://www.asmarterwaytolearn.com/js/) were excellent additional learning materials
+* [Web Dev Simplified](https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw) for tutorials around using an API (specific video [Learn Fetch API In 6 Minutes](https://www.youtube.com/watch?v=cuEtnrL9-H0))
 * [Florin Pop](https://www.youtube.com/channel/UCeU-1X402kT-JlLdAitxSMA) for giving me a foundational understanding of what I wanted to achieve and how to go about starting it (specific video [Movies App - React Project](https://www.youtube.com/watch?v=sZ0bZGfg_m4&t=303s))
-* [Asish George Tech](https://www.youtube.com/channel/UC9v2BVgmJCQNN_RJKN6pZDw) for insight into using the TMDB api for a movie app/website (specific video [Movie app based on TMDB API | Day 17 | HTML CSS JS | 50Projects50Days](https://www.youtube.com/watch?v=9Bvt6BFf6_U&t=1360s))
+* [Asish George Tech](https://www.youtube.com/channel/UC9v2BVgmJCQNN_RJKN6pZDw) for insight into using the TMDB API for a movie app/website (specific video [Movie app based on TMDB API | Day 17 | HTML CSS JS | 50Projects50Days](https://www.youtube.com/watch?v=9Bvt6BFf6_U&t=1360s))
 
 [Back to Top](#table-of-contents)
-
----
