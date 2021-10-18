@@ -183,6 +183,12 @@ The footer for the page is very basic and features only the logo and attribution
 
 As I am using both horizontal and vertical scrollbars, I wanted to ensure a uniform style for them which would work with the aesthetic and design of the website. I used -webkit- extensions to style the scrollbars in order to cover as many different browsers in one go. I styled them in line with my Coolors palette. 
 
+*Modal*
+
+![screenshot of modal](assets/images/readme/modal.png)
+
+The modal displays information about the film including the movie genres, running time and synopsis. It provides a snapshot of information about the movie to pique the users interest.
+
 <a></a>
 
 ### **Future Features**
@@ -193,7 +199,7 @@ Other features which could be added and/or further developed:
 
 In a future version, further nav links could be added such as 'How it works', 'Login' and/or 'My list'. 
 
-The 'How it works' nav link would provide further information on the api and how the code uses the information that it grabs from the api, as well as information on creating and editing movie lists (a feature not in this version of the website).
+The 'How it works' nav link could provide further information on the api and how the code uses the information that it grabs from the api, as well as information on creating and editing movie lists (a feature not in this version of the website).
 
 The 'My List' nav link would be part of a bigger change to the website - the ability to select and save titles the user is interested in watching into their own personal list. This link would direct the user to a new html page where the list is stored.
 
@@ -316,7 +322,7 @@ When a movie poster image was clicked, the modal containing the movie informatio
 
 The problem was two-fold. First, I was originally using Bootstrap 5. On further research into this it appeared that there was a potential bug there so I switched the links to Bootstrap 4.6. This got the modal working but it would only work for the first movie clicked. 
 
-The next issue was that the inner html was overwriting a key part of the modal code. Dynamically it was writing over itself, producing a modal which featured information from the same movie irrespective of what movie was clicked. I fixed the problem by adjusting how I'd written the innerHTML code in the showMovieDetails function. Student support helped me to work through this particular issue to find a solution. 
+The next issue was that the inner html was overwriting a key part of the modal code. Dynamically, it was writing over itself, producing a modal which featured information from the same movie irrespective of what movie was clicked. I fixed the problem by adjusting how I'd written the innerHTML code in the showMovieDetails function. Student support helped me to work through this particular issue to find a solution. 
 
    
 [Back to Top](#table-of-contents)
@@ -369,7 +375,7 @@ To run the project locally:
 ### **Acknowledgements**
 
 * [Simen Dahlin](https://github.com/Eventyret) for his support in creating this website
-* Student support for being such superstars exploring issues with me then supporting me to find solutions
+* Student support for being such superstars exploring issues with me, then supporting me to find solutions
 * Code Institute Slack Community
 * [Javascript & Jquery by Jon Duckett](http://javascriptbook.com/) and [A Smarter Way to Learn Javascript by Mark Myers](https://www.asmarterwaytolearn.com/js/) were excellent additional learning materials
 * [Web Dev Simplified](https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw) for tutorials around using an api (specific video [Learn Fetch API In 6 Minutes](https://www.youtube.com/watch?v=cuEtnrL9-H0))
